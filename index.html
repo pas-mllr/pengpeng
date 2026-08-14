@@ -793,6 +793,43 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .sleep b{display:block;font-size:.88rem}
   .sleep .z{color:var(--gold-deep);margin-right:6px}
 
+  /* weather */
+  .wx{
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    background:#fff;border:1px solid var(--line);border-radius:10px;
+    padding:8px 12px;font-size:.84rem;min-height:38px
+  }
+  .wx .wx-ico{font-size:1.25rem;line-height:1}
+  .wx .wx-t{font-weight:700}
+  .wx .wx-muted{color:var(--ink-soft)}
+  .wx .wx-arrow{display:inline-block;font-weight:700;color:var(--green-deep)}
+  .wx-meta{font-size:.75rem;color:var(--ink-soft);margin-top:10px}
+  /* hourly popover */
+  .wx.has-pop{cursor:pointer;position:relative}
+  .wx-pop{
+    display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+    z-index:600;background:var(--ink);color:#f5f2ea;border-radius:12px;
+    padding:12px 14px;box-shadow:0 8px 30px rgba(0,0,0,.35);width:max-content;max-width:86vw
+  }
+  .wx.open .wx-pop{display:block}
+  @media (hover:hover){ .wx.has-pop:hover .wx-pop{display:block} }
+  .wx-pop::after{
+    content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);
+    border:7px solid transparent;border-top-color:var(--ink)
+  }
+  .wx-pop h4{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:#b8b2a4;margin:0 0 8px;font-family:inherit}
+  .wx-pop table{border-collapse:collapse;font-size:.78rem;font-variant-numeric:tabular-nums}
+  .wx-pop td{padding:2.5px 8px 2.5px 0;white-space:nowrap}
+  .wx-pop td:last-child{padding-right:0}
+  .wx-pop .h{color:#b8b2a4}
+  .wx-pop .wx-arrow{color:#9fc08f}
+  .wx-pop .wx-foot{margin-top:8px;padding-top:8px;border-top:1px solid #4a473f;font-size:.75rem;color:#b8b2a4}
+  .wx-pop tr.thead td{
+    color:#b8b2a4;font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;
+    padding-bottom:6px;border-bottom:1px solid #4a473f
+  }
+  .wx-pop tr.thead + tr td{padding-top:6px}
+
   /* riders */
   .riders{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
   .rider{
@@ -931,6 +968,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="d-km">73 km · 230 hm</div>
         <p data-i18n="d1-txt">Vanaf het station het Gooi in: Bussumerheide, Lage Vuursche, de bossen bij Soesterberg en Maarn, en over de Utrechtse Heuvelrug naar Leersum.</p>
         <p><a href="https://www.komoot.com/nl-nl/tour/3181300040?share_token=aILbkwYw5vZS1H8I5kaXnv2SDqmyGjjDD2Sf20IFXP444MhPq1&ref=wtd" target="_blank" rel="noopener" data-i18n="d-komoot1">Route op Komoot →</a></p>
+        <div class="wx" id="wx-d1"><span class="wx-muted" data-i18n="wx-loading">weer laden…</span></div>
         <div class="sleep"><span class="z">⏾</span><b>B&amp;B Klein Groenbergen, Leersum</b><span data-i18n="d1-sleep">Incl. ontbijt — als eerste geboekt, want een no‑brainer op 75 km van de start.</span></div>
       </div>
 
@@ -940,6 +978,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="d-km">86 km · 420 hm</div>
         <p data-i18n="d2-txt">De koninginnenrit qua klimmen: over de Amerongse Berg en de Grebbeberg, langs Oosterbeek en dwars door Arnhem‑Noord — bijna langs Igors huis — en de Veluwezoom op naar Loenen.</p>
         <p><a href="https://www.komoot.com/nl-nl/tour/3181312945?share_token=al7XoDLG7NctmRo2yPZJ6iT0xBNkrJs99hi1SxkFE0TcerfAbZ&ref=wtd" target="_blank" rel="noopener" data-i18n="d-komoot2">Route op Komoot →</a></p>
+        <div class="wx" id="wx-d2"><span class="wx-muted" data-i18n="wx-loading">weer laden…</span></div>
         <div class="sleep"><span class="z">⏾</span><b>B&amp;B De 4 Seizoenen, Loenen</b><span data-i18n="d2-sleep">Even langs de SPAR voor het lunchpakket en ergens avondeten scoren.</span></div>
       </div>
 
@@ -949,6 +988,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="d-km">58 km · 300 hm</div>
         <p data-i18n="d3-txt">Hersteldag: Loenermark, Beekbergen, Radio Kootwijk en het Speulderbos, met bevoorrading in Garderen. Kort, want het eindpunt verdient tijd.</p>
         <p><a href="https://www.komoot.com/nl-nl/tour/3181324175?share_token=aKSpCJPTMHKIt5fbQstn4k2ItzaSf6ikGudQUUzT1lPNtqY27Y&ref=wtd" target="_blank" rel="noopener" data-i18n="d-komoot3">Route op Komoot →</a></p>
+        <div class="wx" id="wx-d3"><span class="wx-muted" data-i18n="wx-loading">weer laden…</span></div>
         <div class="sleep"><span class="z">⏾</span><b data-i18n="d3-sleep-t">Natuurhuisje in het bos, Putten</b><span data-i18n="d3-sleep">Jacuzzi, trampoline, kabelbaan en een uitkijktoren ernaast. Feunen.</span></div>
       </div>
 
@@ -958,10 +998,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="d-km">100 km · 380 hm</div>
         <p data-i18n="d4-txt">De langste dag: door Elspeet en over de noordelijke Veluwe, via Heerde en Hanzestadje Hattem naar de finish in Zwolle. Je ruikt hem al.</p>
         <p><a href="https://www.komoot.com/nl-nl/tour/3181331623?share_token=aXwnUmmUtx1iO7hgrsxTuV8zhlgAnYgHQtLmTZ5VIbH3eB3djq&ref=wtd" target="_blank" rel="noopener" data-i18n="d-komoot4">Route op Komoot →</a></p>
+        <div class="wx" id="wx-d4"><span class="wx-muted" data-i18n="wx-loading">weer laden…</span></div>
         <div class="sleep"><span class="z">🏁</span><b data-i18n="d4-sleep-t">Finish: Bennie’s, Zwolle</b><span data-i18n="d4-sleep">Daarna de trein — Igor staat om 18:30 gewoon bij de BSO.</span></div>
       </div>
 
     </div>
+    <p class="wx-meta" id="wxMeta"></p>
   </section>
 
   <!-- RIDERS -->
@@ -1328,6 +1370,7 @@ function setLang(l){
   document.getElementById("btn-nl").classList.toggle("active", l==="nl");
   document.getElementById("btn-en").classList.toggle("active", l==="en");
   try { updatePlayInfo(progress); } catch(e) {} // refresh dynamic labels
+  try { renderWeather(); } catch(e) {}
   renderCountdown();
 }
 
@@ -1715,6 +1758,131 @@ playBtn.addEventListener("click",()=>{
   raf=requestAnimationFrame(step);
 });
 updatePlayInfo(0);
+
+/* --------------------------------------------------------------- weather */
+const TRIP_DATES=["2026-08-21","2026-08-22","2026-08-23","2026-08-24"];
+const WMO_NL={0:["☀️","zonnig"],1:["🌤️","vrijwel zonnig"],2:["⛅","half bewolkt"],3:["☁️","bewolkt"],
+ 45:["🌫️","mist"],48:["🌫️","mist"],51:["🌦️","motregen"],53:["🌦️","motregen"],55:["🌧️","motregen"],
+ 61:["🌦️","lichte regen"],63:["🌧️","regen"],65:["🌧️","zware regen"],66:["🌧️","ijzel"],67:["🌧️","ijzel"],
+ 80:["🌦️","buien"],81:["🌧️","buien"],82:["⛈️","zware buien"],95:["⛈️","onweer"],96:["⛈️","onweer"],99:["⛈️","onweer"]};
+const WMO_EN={0:["☀️","sunny"],1:["🌤️","mostly sunny"],2:["⛅","partly cloudy"],3:["☁️","cloudy"],
+ 45:["🌫️","fog"],48:["🌫️","fog"],51:["🌦️","drizzle"],53:["🌦️","drizzle"],55:["🌧️","drizzle"],
+ 61:["🌦️","light rain"],63:["🌧️","rain"],65:["🌧️","heavy rain"],66:["🌧️","sleet"],67:["🌧️","sleet"],
+ 80:["🌦️","showers"],81:["🌧️","showers"],82:["⛈️","heavy showers"],95:["⛈️","thunderstorms"],96:["⛈️","thunderstorms"],99:["⛈️","thunderstorms"]};
+function wmo(code){
+  const t=(LANG==="nl"?WMO_NL:WMO_EN);
+  return t[code]||["🌡️",LANG==="nl"?"wisselend":"mixed"];
+}
+function windArrow(fromDeg){
+  // arrow points where the wind blows TO
+  const arrows=["↓","↙","←","↖","↑","↗","→","↘"];
+  return arrows[Math.round(((fromDeg+180)%360)/45)%8];
+}
+function compass(deg){
+  const nl=["N","NO","O","ZO","Z","ZW","W","NW"], en=["N","NE","E","SE","S","SW","W","NW"];
+  return (LANG==="nl"?nl:en)[Math.round(deg/45)%8];
+}
+// per-day mid-route locations, derived from the actual track
+const WX_BOUNDS=[0,...NIGHT_IDX,PTS.length-1];
+const WX_LOCS=TRIP_DATES.map((_,i)=>{
+  const p=PTS[Math.floor((WX_BOUNDS[i]+WX_BOUNDS[i+1])/2)];
+  return [p[0].toFixed(3),p[1].toFixed(3)];
+});
+let wxData=null, wxFetchedAt=null;
+function hourlyPop(loc,date){
+  const h=loc&&loc.hourly;
+  if(!h||!h.time) return "";
+  const rows=[];
+  for(let hour=8;hour<=20;hour+=2){
+    const key=date+"T"+String(hour).padStart(2,"0")+":00";
+    const i=h.time.indexOf(key);
+    if(i<0) continue;
+    const [ico]=wmo(h.weather_code[i]);
+    // sum precip over this 2-hour block so the columns add up to the day total
+    const i2=h.time.indexOf(date+"T"+String(hour+1).padStart(2,"0")+":00");
+    let mm=(h.precipitation?h.precipitation[i]:0)||0;
+    if(h.precipitation&&i2>=0) mm+=h.precipitation[i2]||0;
+    const gust=h.wind_gusts_10m?Math.round(h.wind_gusts_10m[i]):null;
+    rows.push(`<tr><td class="h">${hour}:00</td><td>${ico}</td>`+
+      `<td>${Math.round(h.temperature_2m[i])}°</td>`+
+      `<td>☔ ${h.precipitation_probability[i]}%</td>`+
+      `<td>💧 ${(Math.round(mm*10)/10).toLocaleString(LANG==="nl"?"nl-NL":"en-GB")}</td>`+
+      `<td><span class="wx-arrow">${windArrow(h.wind_direction_10m[i])}</span> ${compass(h.wind_direction_10m[i])} ${Math.round(h.wind_speed_10m[i])}${gust!=null?"–"+gust:""}</td></tr>`);
+  }
+  if(!rows.length) return "";
+  const d=loc.daily||{}, di=d.time?d.time.indexOf(date):-1;
+  let foot="";
+  if(di>=0){
+    const bits=[];
+    if(d.sunrise&&d.sunrise[di]) bits.push("🌅 "+d.sunrise[di].slice(11,16));
+    if(d.sunset&&d.sunset[di]) bits.push("🌇 "+d.sunset[di].slice(11,16));
+    if(d.uv_index_max&&d.uv_index_max[di]!=null) bits.push("UV "+Math.round(d.uv_index_max[di]));
+    if(bits.length) foot=`<div class="wx-foot">${bits.join(" · ")}</div>`;
+  }
+  const title=LANG==="nl"?"Uurverwachting (08–20u)":"Hourly forecast (8am–8pm)";
+  const head=LANG==="nl"
+    ?`<tr class="thead"><td>uur</td><td></td><td>temp</td><td>regen</td><td>mm/2u</td><td>wind km/u</td></tr>`
+    :`<tr class="thead"><td>time</td><td></td><td>temp</td><td>rain</td><td>mm/2h</td><td>wind km/h</td></tr>`;
+  return `<div class="wx-pop"><h4>${title}</h4><table>${head}${rows.join("")}</table>${foot}</div>`;
+}
+function renderWeather(){
+  TRIP_DATES.forEach((date,i)=>{
+    const el=document.getElementById("wx-d"+(i+1));
+    if(!el) return;
+    if(!wxData){ el.innerHTML='<span class="wx-muted">'+(LANG==="nl"?"weersverwachting niet beschikbaar":"forecast unavailable")+'</span>'; return; }
+    const loc=wxData[Math.min(i,wxData.length-1)];
+    const di=loc&&loc.daily&&loc.daily.time?loc.daily.time.indexOf(date):-1;
+    if(di<0){ el.innerHTML='<span class="wx-muted">'+(LANG==="nl"?"nog geen voorspelling voor deze dag":"no forecast for this day yet")+'</span>'; return; }
+    const d=loc.daily;
+    const [ico,txt]=wmo(d.weather_code[di]);
+    const tmax=Math.round(d.temperature_2m_max[di]), tmin=Math.round(d.temperature_2m_min[di]);
+    const rain=d.precipitation_probability_max?d.precipitation_probability_max[di]:null;
+    const wind=Math.round(d.wind_speed_10m_max[di]);
+    const wdir=d.wind_direction_10m_dominant[di];
+    const mm=d.precipitation_sum?d.precipitation_sum[di]:null;
+    const gust=d.wind_gusts_10m_max?Math.round(d.wind_gusts_10m_max[di]):null;
+    el.innerHTML=`<span class="wx-ico" title="${txt}">${ico}</span>`+
+      `<span class="wx-t">${tmin}–${tmax}°</span>`+
+      (rain!=null?`<span class="wx-muted">☔ ${rain}%</span>`:"")+
+      (mm!=null?`<span class="wx-muted">💧 ${(Math.round(mm*10)/10).toLocaleString(LANG==="nl"?"nl-NL":"en-GB")} mm</span>`:"")+
+      `<span class="wx-muted"><span class="wx-arrow">${windArrow(wdir)}</span> ${compass(wdir)} ${wind}${gust!=null?"–"+gust:""} km/u</span>`+
+      hourlyPop(loc,date);
+    el.classList.toggle("has-pop", el.querySelector(".wx-pop")!==null);
+  });
+  const meta=document.getElementById("wxMeta");
+  if(meta){
+    meta.textContent = wxData
+      ? (LANG==="nl"
+          ? `Weersverwachting per dag-etappe (midden van de route) · bron: Open‑Meteo · bijgewerkt ${wxFetchedAt}`
+          : `Forecast per day stage (mid-route) · source: Open‑Meteo · updated ${wxFetchedAt}`)
+      : "";
+  }
+}
+async function loadWeather(){
+  try{
+    const lats=WX_LOCS.map(l=>l[0]).join(","), lons=WX_LOCS.map(l=>l[1]).join(",");
+    const url=`https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lons}`+
+      `&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant,uv_index_max,sunrise,sunset`+
+      `&hourly=weather_code,temperature_2m,precipitation_probability,precipitation,wind_speed_10m,wind_gusts_10m,wind_direction_10m`+
+      `&timezone=Europe%2FAmsterdam&forecast_days=16&wind_speed_unit=kmh`;
+    const res=await fetch(url);
+    if(!res.ok) throw new Error("HTTP "+res.status);
+    const data=await res.json();
+    wxData=Array.isArray(data)?data:[data];
+    wxFetchedAt=new Date().toLocaleTimeString("nl-NL",{hour:"2-digit",minute:"2-digit"});
+  }catch(e){
+    wxData=null;
+  }
+  renderWeather();
+}
+loadWeather();
+setInterval(loadWeather, 30*60*1000); // refresh every 30 min while open
+// tap-to-toggle for touch devices (hover handles desktop via CSS)
+document.addEventListener("click",(ev)=>{
+  const chip=ev.target.closest(".wx.has-pop");
+  document.querySelectorAll(".wx.open").forEach(el=>{ if(el!==chip) el.classList.remove("open"); });
+  if(chip) chip.classList.toggle("open");
+});
 </script>
 </body>
 </html>
