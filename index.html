@@ -787,6 +787,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .day-card h3{font-size:1.15rem;line-height:1.3}
   .day-card .d-km{font-size:1.5rem;font-family:ui-serif,Georgia,serif;color:var(--gold-deep)}
   .day-card p{font-size:.92rem;color:var(--ink-soft)}
+  ul.pk{list-style:none;font-size:.9rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:6px}
+  ul.pk li{padding-left:22px;position:relative}
+  ul.pk li::before{content:"✓";position:absolute;left:0;color:var(--gold-deep);font-weight:700}
   .sleep{
     margin-top:auto;background:var(--bg-soft);border-radius:10px;padding:10px 12px;font-size:.85rem
   }
@@ -922,7 +925,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <div class="cd-cell"><b id="cd-m">–</b><span data-i18n="cd-min">minuten</span></div>
       <div class="cd-cell"><b id="cd-s">–</b><span data-i18n="cd-sec">seconden</span></div>
     </div>
-    <div class="cd-note" id="cd-note" data-i18n="cd-note">…tot we wegrijden bij station Naarden‑Bussum</div>
+    <div class="cd-note" id="cd-note" data-i18n="cd-note">…tot vertrek — verzamelen om 10:30 bij station Naarden‑Bussum</div>
 
     <div class="stats">
       <div class="stat"><b>317</b><span data-i18n="st-km">kilometer</span></div>
@@ -966,7 +969,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="d-label" data-i18n="d1-date">Vrijdag 21 augustus</div>
         <h3>Naarden‑Bussum → Leersum</h3>
         <div class="d-km">73 km · 230 hm</div>
-        <p data-i18n="d1-txt">Vanaf het station het Gooi in: Bussumerheide, Lage Vuursche, de bossen bij Soesterberg en Maarn, en over de Utrechtse Heuvelrug naar Leersum.</p>
+        <p data-i18n="d1-txt">Verzamelen om 10:30 op het station. Dan het Gooi in: Bussumerheide, Lage Vuursche, de bossen bij Soesterberg en Maarn, en over de Utrechtse Heuvelrug naar Leersum.</p>
         <p><a href="https://www.komoot.com/nl-nl/tour/3181300040?share_token=aILbkwYw5vZS1H8I5kaXnv2SDqmyGjjDD2Sf20IFXP444MhPq1&ref=wtd" target="_blank" rel="noopener" data-i18n="d-komoot1">Route op Komoot →</a></p>
         <div class="wx" id="wx-d1"><span class="wx-muted" data-i18n="wx-loading">weer laden…</span></div>
         <div class="sleep"><span class="z">⏾</span><b>B&amp;B Klein Groenbergen, Leersum</b><span data-i18n="d1-sleep">Incl. ontbijt — als eerste geboekt, want een no‑brainer op 75 km van de start.</span></div>
@@ -1151,10 +1154,68 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
       <div class="t-item">
         <div class="t-date" data-i18n="t15-d">8 augustus</div>
-        <h3 data-i18n="t15-t">T‑13 dagen</h3>
-        <p><span class="q" data-i18n="t15-p">Aftellen maar. De aero‑helmen (vijf stuks, à la de tijdrithelmen van de profs) zijn besteld, de route staat offline, de benen zijn hyped.</span></p>
+        <h3 data-i18n="t15-t">T‑13: pengpeng.nl is live</h3>
+        <p><span class="q" data-i18n="t15-p">Pascal koopt het domein en zet deze site online. De aero‑helmen zijn besteld, de route staat offline, de benen zijn hyped.</span></p>
       </div>
 
+      <div class="t-item">
+        <div class="t-date" data-i18n="t16-d">12 augustus</div>
+        <h3 data-i18n="t16-t">Inge koopt mountainbikes voor het hele gezin</h3>
+        <p><span class="q" data-i18n="t16-p">Danny: “Ik heb hier niets mee te maken gehad.” Blij én teleurgesteld tegelijk — hij ziet het als een investering.</span></p>
+      </div>
+
+      <div class="t-item">
+        <div class="t-date" data-i18n="t17-d">14 augustus</div>
+        <h3 data-i18n="t17-t">T‑7: de site krijgt een weerbericht</h3>
+        <p><span class="q" data-i18n="t17-p">Live verwachting per etappe op pengpeng.nl, en de groep verandert per direct in een panel amateur‑meteorologen. Danny: “Ik vertrouw het weerbericht pas vanaf 24 uur eerder.”</span></p>
+      </div>
+
+      <div class="t-item">
+        <div class="t-date" data-i18n="t18-d">17–18 augustus</div>
+        <h3 data-i18n="t18-t">Het regenplan</h3>
+        <p><span class="q" data-i18n="t18-p">Vrijdag belooft nat te worden. Het beleid: regenjackie mee, droge set in de tas, eventueel vroeg vertrekken. Danny: “We doen niets aan een beetje regen, enkel aan onze perceptie ervan.”</span></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PACKING LIST -->
+  <section id="packlist">
+    <div class="sec-head">
+      <h2 data-i18n="pk-title">De paklijst</h2>
+      <p data-i18n="pk-sub">Eén fietspakkie, meedouchen, uitwringen, volgende dag droog. Meer dan dit heeft niemand nodig — we hebben huisjes.</p>
+    </div>
+    <div class="days">
+      <div class="day-card d1">
+        <div class="d-label" data-i18n="pk1-t">Techniek</div>
+        <ul class="pk" data-i18n="pk1">
+          <li>Binnenband (1 p.p.)</li>
+          <li>Handpompje + 2× CO₂‑patroon</li>
+          <li>Multitool &amp; bandenlichters</li>
+          <li>Kabelslotje (voor gelegenheidsdieven)</li>
+          <li>Lichtjes &amp; telefoonhouder voor de route</li>
+        </ul>
+      </div>
+      <div class="day-card d3">
+        <div class="d-label" data-i18n="pk2-t">Kleding</div>
+        <ul class="pk" data-i18n="pk2">
+          <li>1 fietspakkie (’s avonds uitwringen)</li>
+          <li>Dun regenjackie — vrijdag wordt nat</li>
+          <li>Droge set voor ’s avonds + extra sokken</li>
+          <li>Sandalen of Vans voor na de rit</li>
+          <li>Helm (voor de Puky‑zijwieltjes was geen meerderheid)</li>
+        </ul>
+      </div>
+      <div class="day-card d4">
+        <div class="d-label" data-i18n="pk3-t">Overig</div>
+        <ul class="pk" data-i18n="pk3">
+          <li>Tandenborstel &amp; oplader</li>
+          <li>Snelle jelles, gelletjes &amp; reepjes</li>
+          <li>Zonnebrand (check de UV in het weerbericht)</li>
+          <li>Bidons — minimaal twee</li>
+          <li>AirTag aan het zadel (Pascal‑methode)</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -1256,7 +1317,7 @@ const I18N = {
     "kicker":"Bikepacking adventure • 21–24 August 2026",
     "hero-sub":"of gravel across the Heuvelrug & the Veluwe",
     "cd-days":"days","cd-hours":"hours","cd-min":"minutes","cd-sec":"seconds",
-    "cd-note":"…until we roll out from Naarden‑Bussum station",
+    "cd-note":"…until roll-out — meeting 10:30 at Naarden‑Bussum station",
     "st-km":"kilometres","st-hm":"metres climbed","st-days":"days","st-riders":"riders","st-nights":"nights",
     "t10-d":"17–18 July","t10-t":"Danny’s trial bivouac",
     "t10-p":"60 km to a hikers’ field near Drie, one badly slept night, and proof that the entire packing list fits in half a frame bag and a small saddle bag.",
@@ -1268,8 +1329,22 @@ const I18N = {
     "t13-p":"The Canyon Grand Canyon AL 9 — pearlescent paint, power meter, instant PRs across the board. Plus € 100 compensation negotiated for the first scratches.",
     "t14-d":"4–5 August","t14-t":"Dress rehearsal",
     "t14-p":"Pascal’s bike back from the shop (“She’s back 💖”) and a successful systems check with bags mounted. Danny scouts 40 km of Veluwe by tandem: “No blockers.” Wildlife target: at least 1 wolf, 1 deer and 1 boar.",
-    "t15-d":"8 August","t15-t":"T‑minus 13 days",
-    "t15-p":"The countdown is on. The aero helmets (five of them, pro time-trial style) are ordered, the route is saved offline, the legs are hyped.",
+    "t15-d":"8 August","t15-t":"T‑13: pengpeng.nl goes live",
+    "t15-p":"Pascal buys the domain and puts this site online. The aero helmets are ordered, the route is saved offline, the legs are hyped.",
+    "t16-d":"12 August","t16-t":"Inge buys mountain bikes for the whole family",
+    "t16-p":"Danny: “I had nothing to do with this.” Happy and disappointed at the same time — he calls it an investment.",
+    "t17-d":"14 August","t17-t":"T‑7: the site gets a weather forecast",
+    "t17-p":"Live per-stage forecast on pengpeng.nl, and the group instantly turns into a panel of amateur meteorologists. Danny: “I only trust the forecast from 24 hours out.”",
+    "t18-d":"17–18 August","t18-t":"The rain plan",
+    "t18-p":"Friday looks wet. The policy: rain jacket along, dry kit in the bag, maybe an early start. Danny: “We can't do anything about a bit of rain — only about our perception of it.”",
+    "pk-title":"The packing list",
+    "pk-sub":"One cycling kit, shower in it, wring it out, dry by morning. Nobody needs more than this — we have cabins.",
+    "pk1-t":"Mechanicals",
+    "pk1":"<li>Inner tube (1 p.p.)</li><li>Hand pump + 2× CO₂ cartridge</li><li>Multitool & tyre levers</li><li>Cable lock (for opportunist thieves)</li><li>Lights & phone mount for the route</li>",
+    "pk2-t":"Clothing",
+    "pk2":"<li>1 cycling kit (wring out at night)</li><li>Thin rain jacket — Friday will be wet</li><li>Dry set for the evenings + spare socks</li><li>Sandals or Vans for after the ride</li><li>Helmet (the training-wheels motion did not carry)</li>",
+    "pk3-t":"Other",
+    "pk3":"<li>Toothbrush & charger</li><li>Energy bars & gels</li><li>Sunscreen (check the UV in the forecast)</li><li>Bidons — at least two</li><li>AirTag on the saddle (the Pascal method)</li>",
     "plan-title":"The multi-year plan",
     "plan-sub":"Don’t say no right away — leave the door ajar. Years negotiable; possibly a decade or two later.",
     "p26":"309 km of Heuvelrug & Veluwe. This one.",
@@ -1286,7 +1361,7 @@ const I18N = {
     "days-title":"Day by day",
     "days-sub":"The granny edition: max ± 4 hours of riding per day, generously padded with café stops. Per route general Danny.",
     "d1-date":"Friday 21 August",
-    "d1-txt":"From the station into the Gooi: Bussum heath, Lage Vuursche, the woods around Soesterberg and Maarn, then across the Utrechtse Heuvelrug to Leersum.",
+    "d1-txt":"Meet at the station at 10:30. Then into the Gooi: Bussum heath, Lage Vuursche, the woods around Soesterberg and Maarn, then across the Utrechtse Heuvelrug to Leersum.",
     "d1-sleep":"Breakfast included — booked first, a no-brainer at 75 km from the start.",
     "d2-date":"Saturday 22 August",
     "d2-txt":"The queen stage of climbing: over the Amerongse Berg and the Grebbeberg, past Oosterbeek and straight through northern Arnhem — almost past Igor’s house — then up the Veluwezoom to Loenen.",
@@ -1375,7 +1450,7 @@ function setLang(l){
 }
 
 /* ------------------------------------------------------------- countdown */
-const START = new Date("2026-08-21T09:00:00+02:00").getTime();
+const START = new Date("2026-08-21T10:30:00+02:00").getTime();
 const END   = new Date("2026-08-24T18:00:00+02:00").getTime();
 function renderCountdown(){
   const now = Date.now();
@@ -1668,6 +1743,24 @@ NIGHT_IDX.forEach((idx,i)=>{
  [1027,"⛪ Elspeet","Het beroemde SGP‑dorp"],
  [1180,"🌉 Hattem","Hanzestadje — de finish ruikt"]].forEach(([i,t,s])=>{
   L.marker(latlngs[i],{icon:dotIcon("#8aa24a",12)}).addTo(map).bindPopup(`<b>${t}</b><br>${s}`);
+});
+// lunch spots (binnen zitten = droog zitten)
+function forkIcon(){
+  return L.divIcon({className:"",iconSize:[24,24],iconAnchor:[12,12],
+    html:'<div style="width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid #a3542b;box-shadow:0 1px 5px rgba(0,0,0,.3);font-size:13px;line-height:20px;text-align:center">🍴</div>'});
+}
+const LUNCH=[
+[52.1827,5.2128,"De Vuursche Boer","Lage Vuursche · dag 1 · ± km 32","Pannenkoekenhuis in hét pannenkoekendorp — ruim binnen zitten, perfect om de vrijdagregen uit te zitten.","https://devuurscheboer.nl/"],
+[51.9528,5.5935,"Brasserie GrebbeOord","Grebbeberg, Rhenen · dag 2 · ± km 21 (vroege stop)","Brasserie boven op de Grebbeberg, vrijwel óp de route.","https://villagrebbeoord.nl/"],
+[51.9857,5.8420,"Grand Café Oosterbeek","Oosterbeek · dag 2 · ± km 53","Grand café in het centrum — ruime binnenzaal, betaalbaar, ideaal als latere lunch.","https://www.grandcafeoosterbeek.com/"],
+[52.1716,5.8163,"De Garage — Radio Kootwijk","Radio Kootwijk · dag 3 · ± km 28","Koffie & lunch naast het zendgebouw. Meestal alleen in het weekend open — wij zijn er op zondag, maar check vooraf even.","https://www.garage-radiokootwijk.nl/"],
+[52.2331,5.7122,"De Bonte Koe","Garderen · dag 3 · ± km 51","Veluws restaurant met pannenkoeken — backup/koffiestop vlak voor het boshuisje.","https://restaurantdebontekoe.nl/"],
+[52.2887,5.7887,"Restaurant op de Brink","Elspeet · dag 4 · ± km 37","Lunch vanaf 10:00, óók op maandag (Apeldoornseweg 6). Onze beste optie op de langste dag.","https://restaurantopdebrink.nl/"],
+[52.4758,6.0645,"Grand Café Banka","Hattem · dag 4 · ± km 93","Grand café aan de Markt in historisch Hattem, maandag open — laatste opwarmstop, 24 km voor de finish (klein ommetje het stadje in).","https://bankahattem.nl/"]
+];
+LUNCH.forEach(([la,lo,n,meta,txt,url])=>{
+  L.marker([la,lo],{icon:forkIcon()}).addTo(map)
+    .bindPopup(`<span class="pop-tag" style="background:#a3542b">🍴 LUNCH</span><br><b>${n}</b><br>${meta}<br>${txt}<br><a href="${url}" target="_blank" rel="noopener">website</a>`);
 });
 // riding dot
 const rider = L.marker(latlngs[0],{icon:dotIcon("#c69a2d",20),zIndexOffset:999}).addTo(map);
