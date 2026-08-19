@@ -2184,7 +2184,8 @@ const FUEL_SEQ={
 };
 const NIGHT_NAMES=["B&B Klein Groenbergen, Leersum","B&B De 4 Seizoenen, Loenen","Natuurhuisje Putten (jacuzzi!)","🏁 Bennie's, Zwolle"];
 const EAT_MIN=30, BIDON_MIN=75;
-const RM={on:false,day:1,eatIdx:0,eatT0:null,drinkT0:null,lock:null,watch:null,km:null,off:false,timer:null};
+const RM={on:false,day:1,eatIdx:0,eatT0:null,drinkT0:null,lock:null,watch:null,km:null,offKm:null,timer:null};
+const ON_ROUTE_KM=0.5; // snap only when within 500 m of the route
 
 function rmAutoDay(){
   const t=new Date().toISOString().slice(0,10);
@@ -2228,8 +2229,11 @@ function rmRender(){
   const kmEl=document.getElementById("rmKm"), bar=document.getElementById("rmBar");
   if(RM.km!=null){
     const done=Math.max(0,RM.km-s), togo=Math.max(0,e-RM.km);
-    kmEl.innerHTML=`<b>${done.toFixed(1)}</b> km gedaan · <b>${togo.toFixed(1)}</b> km te gaan`+(RM.off?" · ⚠️ ver van route":"");
+    kmEl.innerHTML=`<b>${done.toFixed(1)}</b> km gedaan · <b>${togo.toFixed(1)}</b> km te gaan`;
     bar.style.width=Math.min(100,100*done/(e-s))+"%";
+  } else if(RM.offKm!=null){
+    kmEl.textContent="⚠️ "+RM.offKm.toFixed(1)+" km van de route — km-teller start zodra je op de route zit";
+    bar.style.width="0%";
   } else {
     kmEl.textContent="wacht op GPS… (werkt ook zonder: timers lopen door)";
   }
@@ -2259,7 +2263,7 @@ function rmRender(){
     subEl.textContent="over "+Math.max(0,nxt[0]-RM.km).toFixed(1)+" km";
   } else {
     stopEl.textContent=stops.map(x=>x[1]).join(" → ");
-    subEl.textContent="afstanden verschijnen zodra GPS er is";
+    subEl.textContent=RM.offKm!=null?"afstanden verschijnen zodra je op de route zit":"afstanden verschijnen zodra GPS er is";
   }
   // weather mini
   try{
@@ -2292,7 +2296,8 @@ function openRide(){
   if(navigator.geolocation){
     RM.watch=navigator.geolocation.watchPosition(p=>{
       const n=rmNearest(p.coords.latitude,p.coords.longitude);
-      RM.km=KM[n.idx]; RM.off=n.off>2;
+      if(n.off<=ON_ROUTE_KM){ RM.km=KM[n.idx]; RM.offKm=null; }
+      else { RM.km=null; RM.offKm=n.off; }
       document.getElementById("rmGps").classList.add("ok");
       rmRender();
     },()=>{ document.getElementById("rmGps").classList.remove("ok"); },
