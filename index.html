@@ -861,6 +861,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     font-size:1rem;border-radius:14px;padding:16px 8px;cursor:pointer
   }
   #rideMode .rm-btns button:active{background:#2a2822}
+  #rideMode .rm-btns button:disabled{opacity:.35;cursor:default}
   #rideMode .rm-foot{font-size:.72rem;color:#6d685c;margin-top:12px;text-align:center}
   .sleep{
     margin-top:auto;background:var(--bg-soft);border-radius:10px;padding:10px 12px;font-size:.85rem
@@ -1448,8 +1449,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
       </div>
     </div>
     <div class="rm-btns">
-      <button onclick="rmAte()">Gegeten ✓</button>
-      <button onclick="rmDrank()">Bidon leeg ✓</button>
+      <button id="rmBtnAte" onclick="rmAte()">Gegeten ✓</button>
+      <button id="rmBtnDrank" onclick="rmDrank()">Bidon leeg ✓</button>
     </div>
     <div class="rm-foot" id="rmFoot">scherm blijft aan · zet je helderheid laag om accu te sparen</div>
   </div>
@@ -2184,7 +2185,7 @@ const FUEL_SEQ={
 };
 const NIGHT_NAMES=["B&B Klein Groenbergen, Leersum","B&B De 4 Seizoenen, Loenen","Natuurhuisje Putten (jacuzzi!)","🏁 Bennie's, Zwolle"];
 const EAT_MIN=30, BIDON_MIN=75;
-const RM={on:false,day:1,eatIdx:0,eatT0:null,drinkT0:null,lock:null,watch:null,km:null,offKm:null,timer:null};
+const RM={on:false,day:1,eatIdx:0,eatT0:null,drinkT0:null,lock:null,watch:null,km:null,offKm:null,timer:null,lastTick:null};
 const ON_ROUTE_KM=0.5; // snap only when within 500 m of the route
 
 function rmAutoDay(){
@@ -2192,6 +2193,10 @@ function rmAutoDay(){
   const i=TRIP_DAY_DATES.indexOf(t);
   return i>=0?i+1:1;
 }
+function rmIsTripDay(){
+  return TRIP_DAY_DATES.indexOf(new Date().toISOString().slice(0,10))>=0;
+}
+function rmRiding(){ return rmIsTripDay() && RM.km!=null; }
 function rmDayStops(){
   // along-route stops for current day: lunch spots inside day bounds + night stop
   const d=RM.day, s=KM[DAY_START_IDX[d-1]], e=KM[DAY_END_IDX[d-1]];
@@ -2221,9 +2226,19 @@ function fmtT(ms){
 }
 function rmRender(){
   if(!RM.on) return;
-  const now=new Date();
+  const now=new Date(), nowMs=now.getTime();
   document.getElementById("rmClock").textContent=now.toLocaleTimeString("nl-NL",{hour:"2-digit",minute:"2-digit"});
   document.getElementById("rmDay").textContent="Dag "+RM.day;
+  // timers run only while actually riding: trip day + on route.
+  // off route (or outside the trip) they freeze by shifting their start forward.
+  const riding=rmRiding();
+  if(RM.lastTick!=null && !riding){
+    const dt=nowMs-RM.lastTick;
+    if(RM.eatT0) RM.eatT0+=dt;
+    if(RM.drinkT0) RM.drinkT0+=dt;
+  }
+  RM.lastTick=nowMs;
+  if(riding && !RM.eatT0){ RM.eatT0=nowMs; RM.drinkT0=nowMs; }
   // km / progress
   const s=KM[DAY_START_IDX[RM.day-1]], e=KM[DAY_END_IDX[RM.day-1]];
   const kmEl=document.getElementById("rmKm"), bar=document.getElementById("rmBar");
@@ -2235,25 +2250,32 @@ function rmRender(){
     kmEl.textContent="⚠️ "+RM.offKm.toFixed(1)+" km van de route — km-teller start zodra je op de route zit";
     bar.style.width="0%";
   } else {
-    kmEl.textContent="wacht op GPS… (werkt ook zonder: timers lopen door)";
+    kmEl.textContent="wacht op GPS… — timers starten op de route";
   }
   // eat timer
   const eatEl=document.getElementById("rmEat"), eatCard=document.getElementById("rmEatCard");
   const seq=FUEL_SEQ[RM.day]||FUEL_SEQ[1];
   const item=seq[Math.min(RM.eatIdx,seq.length-1)];
+  const waitMsg=rmIsTripDay()?"start zodra je op de route fietst":"start tijdens de tocht, op de route";
   if(RM.eatT0){
-    const left=EAT_MIN*60000-(Date.now()-RM.eatT0);
-    if(left<=0){ eatEl.textContent="NU: "+item; eatCard.classList.add("alert"); }
-    else { eatEl.textContent="over "+fmtT(left); eatCard.classList.remove("alert"); }
+    const left=EAT_MIN*60000-(nowMs-RM.eatT0);
+    if(left<=0 && riding){ eatEl.textContent="NU: "+item; eatCard.classList.add("alert"); }
+    else { eatEl.textContent=(riding?"over ":"⏸ ")+fmtT(left); eatCard.classList.remove("alert"); }
     document.getElementById("rmEatNext").textContent="volgende: "+item;
+  } else {
+    eatEl.textContent=waitMsg; eatCard.classList.remove("alert");
+    document.getElementById("rmEatNext").textContent="eerste: "+item;
   }
   // drink timer
   const dEl=document.getElementById("rmDrink"), dCard=document.getElementById("rmDrinkCard");
   if(RM.drinkT0){
-    const left=BIDON_MIN*60000-(Date.now()-RM.drinkT0);
-    if(left<=0){ dEl.textContent="NU: bidon zou leeg moeten zijn"; dCard.classList.add("alert"); }
-    else { dEl.textContent="bidon leeg over "+fmtT(left); dCard.classList.remove("alert"); }
+    const left=BIDON_MIN*60000-(nowMs-RM.drinkT0);
+    if(left<=0 && riding){ dEl.textContent="NU: bidon zou leeg moeten zijn"; dCard.classList.add("alert"); }
+    else { dEl.textContent=(riding?"bidon leeg over ":"⏸ ")+fmtT(left); dCard.classList.remove("alert"); }
+  } else {
+    dEl.textContent=waitMsg; dCard.classList.remove("alert");
   }
+  document.getElementById("rmBtnAte").disabled=document.getElementById("rmBtnDrank").disabled=!RM.eatT0;
   // next stop
   const stopEl=document.getElementById("rmStop"), subEl=document.getElementById("rmStopSub");
   const stops=rmDayStops();
@@ -2285,9 +2307,7 @@ async function rmWake(){
 }
 document.addEventListener("visibilitychange",()=>{ if(RM.on&&document.visibilityState==="visible") rmWake(); });
 function openRide(){
-  RM.on=true; RM.day=rmAutoDay();
-  if(!RM.eatT0) RM.eatT0=Date.now();
-  if(!RM.drinkT0) RM.drinkT0=Date.now();
+  RM.on=true; RM.day=rmAutoDay(); RM.lastTick=null;
   const el=document.getElementById("rideMode");
   el.classList.add("on"); el.setAttribute("aria-hidden","false");
   document.body.style.overflow="hidden";
@@ -2317,8 +2337,8 @@ function closeRide(){
   document.body.style.overflow="";
 }
 function rmCycleDay(){ RM.day=RM.day%4+1; rmRender(); }
-function rmAte(){ RM.eatIdx++; RM.eatT0=Date.now(); rmRender(); }
-function rmDrank(){ RM.drinkT0=Date.now(); rmRender(); }
+function rmAte(){ if(!RM.eatT0) return; RM.eatIdx++; RM.eatT0=Date.now(); rmRender(); }
+function rmDrank(){ if(!RM.drinkT0) return; RM.drinkT0=Date.now(); rmRender(); }
 </script>
 </body>
 </html>
