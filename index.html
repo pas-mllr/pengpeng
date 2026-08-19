@@ -826,6 +826,42 @@ svg.leaflet-image-layer.leaflet-interactive path {
   details.fuel-day .fd-body{padding:0 16px 14px}
   details.fuel-day .fuel-table{box-shadow:none;border-radius:8px}
   .fuel-note{font-size:.8rem;color:var(--ink-soft);margin-top:14px}
+  /* ride mode */
+  #rideBtn{
+    border:0;cursor:pointer;font:inherit;font-weight:700;font-size:.95rem;
+    background:var(--ink);color:#fff;border-radius:99px;padding:12px 22px;box-shadow:var(--shadow)
+  }
+  #rideBtn:hover{background:#000}
+  #rideMode{
+    display:none;position:fixed;inset:0;z-index:5000;background:#000;color:#e8e4da;
+    flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 14px) 18px calc(env(safe-area-inset-bottom,0px) + 14px);
+    font-variant-numeric:tabular-nums;user-select:none;overflow-y:auto
+  }
+  #rideMode.on{display:flex}
+  #rideMode .rm-top{display:flex;align-items:center;gap:10px;font-size:.85rem;color:#8f8a7d}
+  #rideMode .rm-day{background:#1c1b17;border:1px solid #333;color:#e8c968;font-weight:700;border-radius:99px;padding:3px 12px;cursor:pointer}
+  #rideMode .rm-gps{width:10px;height:10px;border-radius:50%;background:#c33;flex:0 0 auto}
+  #rideMode .rm-gps.ok{background:#5a9b4c}
+  #rideMode .rm-x{margin-left:auto;background:none;border:1px solid #333;color:#8f8a7d;border-radius:99px;width:34px;height:34px;font-size:1rem;cursor:pointer}
+  #rideMode .rm-clock{font-size:2.4rem;font-weight:700;color:#fff;line-height:1.1;margin-top:6px}
+  #rideMode .rm-km{font-size:1.1rem;color:#b7b1a2;margin-top:2px}
+  #rideMode .rm-km b{color:#e8c968;font-size:1.5rem}
+  #rideMode .rm-bar{height:6px;background:#1c1b17;border-radius:3px;margin:10px 0 4px;overflow:hidden}
+  #rideMode .rm-bar div{height:100%;background:#e8c968;width:0%}
+  #rideMode .rm-cards{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+  #rideMode .rm-card{background:#141310;border:1px solid #2a2822;border-radius:14px;padding:14px 16px}
+  #rideMode .rm-card h5{font-size:.68rem;text-transform:uppercase;letter-spacing:.16em;color:#8f8a7d;margin:0 0 6px;font-family:inherit}
+  #rideMode .rm-card .big{font-size:1.35rem;font-weight:700;color:#fff;line-height:1.25}
+  #rideMode .rm-card .sub{font-size:.85rem;color:#b7b1a2;margin-top:3px}
+  #rideMode .rm-card.alert{border-color:#e8c968;background:#211d10}
+  #rideMode .rm-card.alert .big{color:#e8c968}
+  #rideMode .rm-btns{display:flex;gap:10px;margin-top:14px}
+  #rideMode .rm-btns button{
+    flex:1;border:1px solid #3a382f;background:#1c1b17;color:#e8e4da;font:inherit;font-weight:700;
+    font-size:1rem;border-radius:14px;padding:16px 8px;cursor:pointer
+  }
+  #rideMode .rm-btns button:active{background:#2a2822}
+  #rideMode .rm-foot{font-size:.72rem;color:#6d685c;margin-top:12px;text-align:center}
   .sleep{
     margin-top:auto;background:var(--bg-soft);border-radius:10px;padding:10px 12px;font-size:.85rem
   }
@@ -965,6 +1001,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <div class="cd-cell"><b id="cd-s">–</b><span data-i18n="cd-sec">seconden</span></div>
     </div>
     <div class="cd-note" id="cd-note" data-i18n="cd-note">…tot vertrek — verzamelen om 10:30 bij station Naarden‑Bussum</div>
+    <div style="margin-top:18px"><button id="rideBtn" onclick="openRide()">🚴 <span data-i18n="rm-open">Ride‑modus — voor op het stuur</span></button></div>
 
     <div class="stats">
       <div class="stat"><b>317</b><span data-i18n="st-km">kilometer</span></div>
@@ -1382,6 +1419,41 @@ svg.leaflet-image-layer.leaflet-interactive path {
     </div>
   </section>
 
+  <!-- RIDE MODE OVERLAY -->
+  <div id="rideMode" aria-hidden="true">
+    <div class="rm-top">
+      <span class="rm-day" id="rmDay" onclick="rmCycleDay()">Dag 1</span>
+      <span class="rm-gps" id="rmGps" title="GPS"></span>
+      <span id="rmWx"></span>
+      <button class="rm-x" onclick="closeRide()">✕</button>
+    </div>
+    <div class="rm-clock" id="rmClock">–:–</div>
+    <div class="rm-km" id="rmKm">wacht op GPS…</div>
+    <div class="rm-bar"><div id="rmBar"></div></div>
+    <div class="rm-cards">
+      <div class="rm-card" id="rmEatCard">
+        <h5>🍌 Eten</h5>
+        <div class="big" id="rmEat">–</div>
+        <div class="sub" id="rmEatNext"></div>
+      </div>
+      <div class="rm-card" id="rmDrinkCard">
+        <h5>💧 Drinken</h5>
+        <div class="big" id="rmDrink">–</div>
+        <div class="sub">± 300 ml per 30 min · bidon leeg per ~75 min</div>
+      </div>
+      <div class="rm-card">
+        <h5>📍 Volgende stop</h5>
+        <div class="big" id="rmStop">–</div>
+        <div class="sub" id="rmStopSub"></div>
+      </div>
+    </div>
+    <div class="rm-btns">
+      <button onclick="rmAte()">Gegeten ✓</button>
+      <button onclick="rmDrank()">Bidon leeg ✓</button>
+    </div>
+    <div class="rm-foot" id="rmFoot">scherm blijft aan · zet je helderheid laag om accu te sparen</div>
+  </div>
+
   <footer>
     <div class="cols">
       <div>
@@ -1453,6 +1525,7 @@ const I18N = {
     "l2":"± km 53 · spacious indoor hall. Early option: <a href=\"https://villagrebbeoord.nl/\" target=\"_blank\" rel=\"noopener\">Brasserie GrebbeOord</a> on top of the Grebbeberg (± km 21).",
     "l3":"± km 28 · coffee & lunch next to the transmitter building (open on weekends — check ahead). Backup: <a href=\"https://restaurantdebontekoe.nl/\" target=\"_blank\" rel=\"noopener\">De Bonte Koe</a> in Garderen (± km 51).",
     "l4":"± km 37 · open Mondays from 10:00. Warm-up stop: <a href=\"https://bankahattem.nl/\" target=\"_blank\" rel=\"noopener\">Grand Café Banka</a> in Hattem (± km 93).",
+    "rm-open":"Ride mode — for the handlebar",
     "fu-title":"The fuel plan",
     "fu-sub":"Eat something every 30 minutes (by the clock, not by feel), drink 550–650 ml per hour, and the pancakes count. Friday is calibration day. Assumptions: ±80 kg, ±18 km/h — scale ±10% if you differ. (Details below in Dutch.)",
     "fu-rules-t":"The eight rules",
@@ -2097,6 +2170,150 @@ document.addEventListener("click",(ev)=>{
   document.querySelectorAll(".wx.open").forEach(el=>{ if(el!==chip) el.classList.remove("open"); });
   if(chip) chip.classList.toggle("open");
 });
+
+/* ------------------------------------------------------------- ride mode */
+const TRIP_DAY_DATES=["2026-08-21","2026-08-22","2026-08-23","2026-08-24"];
+const DAY_START_IDX=[0, NIGHT_IDX[0], NIGHT_IDX[1], NIGHT_IDX[2]];
+const DAY_END_IDX=[NIGHT_IDX[0], NIGHT_IDX[1], NIGHT_IDX[2], PTS.length-1];
+// eat sequence per day, from the fuel plan (30-min cadence)
+const FUEL_SEQ={
+ 1:["Eierkoek (20 g)","Snelle Jelle (38 g)","🍴 Lunch: De Vuursche Boer — pannenkoeken","eerst 30 min niks, dan 5 winegums","Banaan (27 g)","Stroopwafel — alleen als het kraakt"],
+ 2:["Eierkoek — vóór de Amerongse Berg","☕ GrebbeOord: appelgebak","Snelle Jelle (38 g)","Banaan + 5 winegums","🍴 Lunch: Grand Café Oosterbeek","Stroopwafel + zoute stengels","Eierkoek + 5 winegums","Gel of 4 Dextro als het kraakt"],
+ 3:["Eierkoek (20 g)","Banaan (27 g)","🍴 Lunch: De Garage, Radio Kootwijk","Stroopwafel (25 g)","5 winegums — indien nodig"],
+ 4:["Eierkoek (20 g)","Snelle Jelle (38 g)","☕ Elspeet: appelgebak + PLUS-boodschappen","Banaan + 5 winegums","Stroopwafel + zoute stengels","🍴 Picknick rond km 65 (broodjes PLUS)","Eierkoek + 4 Dextro","Gel + blikje cola (cafeïne!)"]
+};
+const NIGHT_NAMES=["B&B Klein Groenbergen, Leersum","B&B De 4 Seizoenen, Loenen","Natuurhuisje Putten (jacuzzi!)","🏁 Bennie's, Zwolle"];
+const EAT_MIN=30, BIDON_MIN=75;
+const RM={on:false,day:1,eatIdx:0,eatT0:null,drinkT0:null,lock:null,watch:null,km:null,off:false,timer:null};
+
+function rmAutoDay(){
+  const t=new Date().toISOString().slice(0,10);
+  const i=TRIP_DAY_DATES.indexOf(t);
+  return i>=0?i+1:1;
+}
+function rmDayStops(){
+  // along-route stops for current day: lunch spots inside day bounds + night stop
+  const d=RM.day, s=KM[DAY_START_IDX[d-1]], e=KM[DAY_END_IDX[d-1]];
+  const stops=[];
+  LUNCH.forEach(([la,lo,name])=>{
+    let bi=0,best=1e18;
+    for(let i=DAY_START_IDX[d-1];i<=DAY_END_IDX[d-1];i++){
+      const dx=(PTS[i][0]-la)*110.5, dy=(PTS[i][1]-lo)*68;
+      const q=dx*dx+dy*dy; if(q<best){best=q;bi=i;}
+    }
+    if(Math.sqrt(best)<2.5) stops.push([KM[bi],"🍴 "+name]);
+  });
+  stops.push([e,"⏾ "+NIGHT_NAMES[d-1]]);
+  return stops.sort((a,b)=>a[0]-b[0]);
+}
+function rmNearest(lat,lng){
+  let bi=0,best=1e18;
+  for(let i=0;i<PTS.length;i++){
+    const dx=(PTS[i][0]-lat)*110.5, dy=(PTS[i][1]-lng)*68;
+    const q=dx*dx+dy*dy; if(q<best){best=q;bi=i;}
+  }
+  return {idx:bi, off:Math.sqrt(best)}; // off in ~km
+}
+function fmtT(ms){
+  const s=Math.max(0,Math.round(ms/1000));
+  return Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
+}
+function rmRender(){
+  if(!RM.on) return;
+  const now=new Date();
+  document.getElementById("rmClock").textContent=now.toLocaleTimeString("nl-NL",{hour:"2-digit",minute:"2-digit"});
+  document.getElementById("rmDay").textContent="Dag "+RM.day;
+  // km / progress
+  const s=KM[DAY_START_IDX[RM.day-1]], e=KM[DAY_END_IDX[RM.day-1]];
+  const kmEl=document.getElementById("rmKm"), bar=document.getElementById("rmBar");
+  if(RM.km!=null){
+    const done=Math.max(0,RM.km-s), togo=Math.max(0,e-RM.km);
+    kmEl.innerHTML=`<b>${done.toFixed(1)}</b> km gedaan · <b>${togo.toFixed(1)}</b> km te gaan`+(RM.off?" · ⚠️ ver van route":"");
+    bar.style.width=Math.min(100,100*done/(e-s))+"%";
+  } else {
+    kmEl.textContent="wacht op GPS… (werkt ook zonder: timers lopen door)";
+  }
+  // eat timer
+  const eatEl=document.getElementById("rmEat"), eatCard=document.getElementById("rmEatCard");
+  const seq=FUEL_SEQ[RM.day]||FUEL_SEQ[1];
+  const item=seq[Math.min(RM.eatIdx,seq.length-1)];
+  if(RM.eatT0){
+    const left=EAT_MIN*60000-(Date.now()-RM.eatT0);
+    if(left<=0){ eatEl.textContent="NU: "+item; eatCard.classList.add("alert"); }
+    else { eatEl.textContent="over "+fmtT(left); eatCard.classList.remove("alert"); }
+    document.getElementById("rmEatNext").textContent="volgende: "+item;
+  }
+  // drink timer
+  const dEl=document.getElementById("rmDrink"), dCard=document.getElementById("rmDrinkCard");
+  if(RM.drinkT0){
+    const left=BIDON_MIN*60000-(Date.now()-RM.drinkT0);
+    if(left<=0){ dEl.textContent="NU: bidon zou leeg moeten zijn"; dCard.classList.add("alert"); }
+    else { dEl.textContent="bidon leeg over "+fmtT(left); dCard.classList.remove("alert"); }
+  }
+  // next stop
+  const stopEl=document.getElementById("rmStop"), subEl=document.getElementById("rmStopSub");
+  const stops=rmDayStops();
+  if(RM.km!=null){
+    const nxt=stops.find(([k])=>k>RM.km+0.2)||stops[stops.length-1];
+    stopEl.textContent=nxt[1];
+    subEl.textContent="over "+Math.max(0,nxt[0]-RM.km).toFixed(1)+" km";
+  } else {
+    stopEl.textContent=stops.map(x=>x[1]).join(" → ");
+    subEl.textContent="afstanden verschijnen zodra GPS er is";
+  }
+  // weather mini
+  try{
+    if(wxData){
+      const loc=wxData[Math.min(RM.day-1,wxData.length-1)], di=loc.daily.time.indexOf(TRIP_DAY_DATES[RM.day-1]);
+      if(di>=0){
+        const [ico]=wmo(loc.daily.weather_code[di]);
+        document.getElementById("rmWx").textContent=`${ico} ${Math.round(loc.daily.temperature_2m_max[di])}° ☔${loc.daily.precipitation_probability_max?loc.daily.precipitation_probability_max[di]:"–"}%`;
+      }
+    }
+  }catch(e){}
+}
+async function rmWake(){
+  try{ RM.lock=await navigator.wakeLock.request("screen");
+    document.getElementById("rmFoot").textContent="✓ scherm blijft aan · zet je helderheid laag om accu te sparen";
+  }catch(e){
+    document.getElementById("rmFoot").textContent="wake lock niet beschikbaar — zet schermvergrendeling zelf uit";
+  }
+}
+document.addEventListener("visibilitychange",()=>{ if(RM.on&&document.visibilityState==="visible") rmWake(); });
+function openRide(){
+  RM.on=true; RM.day=rmAutoDay();
+  if(!RM.eatT0) RM.eatT0=Date.now();
+  if(!RM.drinkT0) RM.drinkT0=Date.now();
+  const el=document.getElementById("rideMode");
+  el.classList.add("on"); el.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+  if(el.requestFullscreen) el.requestFullscreen().catch(()=>{});
+  rmWake();
+  if(navigator.geolocation){
+    RM.watch=navigator.geolocation.watchPosition(p=>{
+      const n=rmNearest(p.coords.latitude,p.coords.longitude);
+      RM.km=KM[n.idx]; RM.off=n.off>2;
+      document.getElementById("rmGps").classList.add("ok");
+      rmRender();
+    },()=>{ document.getElementById("rmGps").classList.remove("ok"); },
+    {enableHighAccuracy:true,maximumAge:10000,timeout:20000});
+  }
+  rmRender();
+  RM.timer=setInterval(rmRender,1000);
+}
+function closeRide(){
+  RM.on=false;
+  clearInterval(RM.timer);
+  if(RM.watch!=null){ navigator.geolocation.clearWatch(RM.watch); RM.watch=null; }
+  if(RM.lock){ try{RM.lock.release();}catch(e){} RM.lock=null; }
+  if(document.fullscreenElement) document.exitFullscreen().catch(()=>{});
+  const el=document.getElementById("rideMode");
+  el.classList.remove("on"); el.setAttribute("aria-hidden","true");
+  document.body.style.overflow="";
+}
+function rmCycleDay(){ RM.day=RM.day%4+1; rmRender(); }
+function rmAte(){ RM.eatIdx++; RM.eatT0=Date.now(); rmRender(); }
+function rmDrank(){ RM.drinkT0=Date.now(); rmRender(); }
 </script>
 </body>
 </html>
