@@ -790,6 +790,42 @@ svg.leaflet-image-layer.leaflet-interactive path {
   ul.pk{list-style:none;font-size:.9rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:6px}
   ul.pk li{padding-left:22px;position:relative}
   ul.pk li::before{content:"✓";position:absolute;left:0;color:var(--gold-deep);font-weight:700}
+  /* fuel plan */
+  .fuel-table{width:100%;border-collapse:collapse;font-size:.85rem;background:var(--card);
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  .fuel-table th,.fuel-table td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  .fuel-table th{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft);background:var(--bg-soft)}
+  .fuel-table tr:last-child td{border-bottom:0}
+  .fuel-table td:first-child{white-space:nowrap;font-weight:600}
+  .fuel-wrap{overflow-x:auto;border-radius:var(--radius)}
+  ol.rules{counter-reset:r;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px;margin:18px 0}
+  ol.rules li{
+    counter-increment:r;background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:10px 14px 10px 44px;font-size:.88rem;color:var(--ink-soft);position:relative
+  }
+  ol.rules li::before{
+    content:counter(r);position:absolute;left:12px;top:10px;width:22px;height:22px;border-radius:50%;
+    background:var(--gold);color:#fff;font-weight:700;font-size:.75rem;display:flex;align-items:center;justify-content:center
+  }
+  ol.rules li b{color:var(--ink)}
+  .callout{
+    background:#f8ecdb;border:1px solid #e2c99a;border-left:5px solid var(--gold-deep);
+    border-radius:10px;padding:14px 16px;font-size:.9rem;margin:18px 0
+  }
+  .callout b{display:block;margin-bottom:4px}
+  details.fuel-day{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    margin-bottom:10px;box-shadow:var(--shadow);overflow:hidden
+  }
+  details.fuel-day summary{
+    cursor:pointer;padding:13px 16px;font-weight:700;font-size:.95rem;list-style:none;display:flex;gap:10px;align-items:center
+  }
+  details.fuel-day summary::before{content:"▸";color:var(--gold-deep);transition:transform .15s}
+  details.fuel-day[open] summary::before{transform:rotate(90deg)}
+  details.fuel-day summary .fd-meta{font-weight:400;font-size:.8rem;color:var(--ink-soft);margin-left:auto;text-align:right}
+  details.fuel-day .fd-body{padding:0 16px 14px}
+  details.fuel-day .fuel-table{box-shadow:none;border-radius:8px}
+  .fuel-note{font-size:.8rem;color:var(--ink-soft);margin-top:14px}
   .sleep{
     margin-top:auto;background:var(--bg-soft);border-radius:10px;padding:10px 12px;font-size:.85rem
   }
@@ -1226,6 +1262,75 @@ svg.leaflet-image-layer.leaflet-interactive path {
     </div>
   </section>
 
+  <!-- FUEL PLAN -->
+  <section id="fuel">
+    <div class="sec-head">
+      <h2 data-i18n="fu-title">Het fuelplan</h2>
+      <p data-i18n="fu-sub">Elke 30 minuten iets eten (op de klok, niet op gevoel), 550–650 ml drinken per uur, en de pannenkoeken tellen gewoon mee. Vrijdag is de kalibratiedag. Uitgangspunten: ±80 kg, ±18 km/u — zit je er ver naast, schaal ±10%.</p>
+    </div>
+    <div class="fuel-wrap"><table class="fuel-table"><tr><th>Dag</th><th>Fietstijd</th><th>Koolhydraten op de fiets</th><th>Vocht</th><th>Dagtotaal</th></tr><tr><td>Vr · 73 km / 230 hm</td><td>~4 u</td><td>45–55 g/u + pannenkoeklunch</td><td>550–600 ml/u</td><td>≈ 600 g KH · 130 g eiwit · 4,7 L</td></tr><tr><td>Za · 86 km / 420 hm</td><td>~5 u</td><td>55–65 g/u + 2 caféstops</td><td>600 ml/u</td><td>≈ 680 g · 140 g · 5,5 L</td></tr><tr><td>Zo · 58 km / 300 hm</td><td>~3¼ u</td><td>40–50 g/u + lunch</td><td>550–600 ml/u</td><td>≈ 500 g · 125 g · 4,2 L</td></tr><tr><td>Ma · 100 km / 380 hm</td><td>~5½ u</td><td>55–65 g/u + 2 stops</td><td>600–650 ml/u</td><td>≈ 720 g · 135 g · 6 L</td></tr></table></div>
+
+    <h3 style="margin:26px 0 4px;font-size:1.15rem" data-i18n="fu-rules-t">De acht regels</h3>
+    <ol class="rules">
+      <li><b>Eet binnen de eerste 30 minuten</b>, daarna elke 30 minuten iets — op de klok.</li>
+      <li><b>Drink 550–650 ml/u:</b> elke ±75 min een bidon leeg, bijvullen bij elke stop. Minimaal 1× plassen per 3–4 uur, lichtgeel.</li>
+      <li><b>Natrium 300–450 mg/u</b> uit de bidonmix + zoute snacks; meer bij zoutranden op je kleding.</li>
+      <li><b>Caféstops tellen als brandstof</b> — bestel koolhydraten (pannenkoek, appelgebak, broodje, cola), niet alleen koffie.</li>
+      <li><b>De 30‑minutenregel bij aankomst:</b> koolhydraten + 20–30 g eiwit + 0,5–0,75 L water met een snuf zout — vóór de douche, jacuzzi of het bier.</li>
+      <li><b>Diner:</b> eerst koolhydraten (pasta/rijst/brood), ≥ 40 g eiwit; bier 1:1 met water, max 2.</li>
+      <li><b>Niets nieuws op zaterdag of maandag.</b> Onbekende gels/mix test je vrijdag.</li>
+      <li><b>Ochtendcheck:</b> wakker met dorst, donkere plas of een hol gevoel? Die dag elk uur één item extra. Een tekort bijt op dag 3–4, niet op dag 1.</li>
+    </ol>
+
+    <div class="callout"><b>⚠️ De zondagval</b>Zondag is een bevoorradingswoestijn: SPAR Garderen dicht, supermarkten in Putten dicht, Beekbergen pas vanaf 12:00. Alles voor zondagavond én maandagochtend koop je <b>zaterdag vóór ±18:00 bij de SPAR Loenen</b> (Eerbeekseweg 24) — meteen na aankomst gaan. Maandag weer normaal: Jumbo Putten v.a. 08:00, PLUS Elspeet 08:00–18:00.</div>
+
+    <div class="days" style="margin-bottom:18px">
+      <div class="day-card d1">
+        <div class="d-label">🚲 Op de fiets (Jumbo‑plank)</div>
+        <ul class="pk">
+          <li>Eierkoek — 20 g KH, het werkpaard</li>
+          <li>Snelle Jelle — 38 g, één per klimuur</li>
+          <li>Stroopwafel — 25 g (niet in het laatste uur)</li>
+          <li>Banaan — 27 g, dagelijks vers</li>
+          <li>Winegums, voorverpakt 25 g — 18 g, gel‑vervanger</li>
+          <li>Zoute stengels 30 g — 22 g + 400 mg Na</li>
+          <li>Gel — 22–25 g, bewaren voor de laatste 90 min za/ma</li>
+          <li>Chocomel‑pakje — 22 g + 6,6 g eiwit, herstel zonder koelkast</li>
+        </ul>
+      </div>
+      <div class="day-card d3">
+        <div class="d-label">☕ Terras‑spiekbriefje (KH / eiwit)</div>
+        <ul class="pk">
+          <li>Appelgebak ≈ 50 g</li>
+          <li>Pannenkoek naturel ≈ 45 g (+15 g met stroop; spek‑kaas +15 g eiwit)</li>
+          <li>Uitsmijter ≈ 45 g / 30 g eiwit</li>
+          <li>Tosti ≈ 30 g / 15 g · broodje kroket ≈ 40 g</li>
+          <li>Broodje gezond ≈ 45 g / 15 g</li>
+          <li>Cola 330 ml ≈ 35 g + cafeïne (laatste 90 min)</li>
+          <li>Friet medium ≈ 60 g · verse jus ≈ 25 g</li>
+        </ul>
+      </div>
+      <div class="day-card d4">
+        <div class="d-label">🧪 Bidonrecept &amp; noodrem</div>
+        <ul class="pk">
+          <li>DIY-isotoon: 750 ml water + 40 g suiker (2 volle el) + ⅛ tl zout + kneepje citroen ≈ 5%, 300 mg Na</li>
+          <li>Isostar: volgens etiket; &lt; 300 mg Na per bidon → snuf zout erbij</li>
+          <li>Hongerklop: 2 gels of 8 Dextro of cola, 15 min rustig, terug op schema</li>
+          <li>Misselijk: 30 min geen vast voedsel, mix nippen, hartig i.p.v. zoet</li>
+          <li>Kramp: vocht + zout, lichter verzet</li>
+          <li>Hoofdpijn na aankomst: 750 ml + ¼ tl zout vóór het bier</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin:8px 0 10px;font-size:1.15rem" data-i18n="fu-days-t">Draaiboek per dag</h3>
+    <details class="fuel-day"><summary>Dag 1 · vr — Naarden‑Bussum → Leersum<span class="fd-meta">73 km · ~4 u · buien</span></summary><div class="fd-body"><div class="fuel-wrap"><table class="fuel-table"><tr><th>Tijd</th><th>Wat & waar</th><th>Drinken</th></tr><tr><td>07:30</td><td>Ontbijt thuis: 80 g havermout + melk + banaan + honing, 2 eieren of skyr (≈ 95 g KH / 28 g eiwit)</td><td>500 ml + koffie</td></tr><tr><td>09:30</td><td>Trein: 1 krentenbol</td><td>500 ml</td></tr><tr><td>10:45</td><td>Start — bidon A = mix (40 g / 300 mg Na), bidon B = water</td><td></td></tr><tr><td>10:45–12:45</td><td>Gooi & Lage Vuursche: 1 eierkoek, daarna 1 Snelle Jelle</td><td>± 500 ml/u</td></tr><tr><td>~12:45</td><td>De Vuursche Boer (km 32): pannenkoek spek‑kaas + naturel met stroop (≈ 120 g / 25 g eiwit)</td><td>500 ml; bidons bijvullen</td></tr><tr><td>13:45–16:15</td><td>Heuvelrug: eerste 30 min niets, dan winegums → banaan → evt. stroopwafel</td><td>± 500 ml/u</td></tr><tr><td>16:15</td><td>B&amp;B — <b>binnen 30 min:</b> 2× Chocomel 200 ml + banaan + eiwitreep</td><td>500 ml + snuf zout</td></tr><tr><td>19:00</td><td>Diner Leersum: pasta/rijst/pizza + ≥ 150 g vlees/vis + toetje</td><td>1 L; bier 1:1 met water</td></tr></table></div><p class="fuel-note">Dag ≈ 600 g KH · 130 g eiwit · ~3.900 kcal · 4,7 L. Regenkoud = weinig dorst — drink op schema, niet op gevoel.</p></div></details>
+    <details class="fuel-day"><summary>Dag 2 · za — Leersum → Loenen<span class="fd-meta">86 km · ~5 u · klimdag</span></summary><div class="fd-body"><div class="fuel-wrap"><table class="fuel-table"><tr><th>Tijd</th><th>Wat & waar</th><th>Drinken</th></tr><tr><td>08:00</td><td>B&amp;B‑ontbijt: brood met jam + pindakaas, yoghurt + muesli, 2 eieren (≈ 120 g / 30 g). Steek een krentenbol in je zak</td><td></td></tr><tr><td>09:15–10:15</td><td>Amerongse Berg: 1 eierkoek — eet vóór de klimmen, niet erop</td><td>± 550 ml/u</td></tr><tr><td>~10:30</td><td>Brasserie GrebbeOord (km 21): koffie + appelgebak (≈ 50 g), 20 min</td><td>bidons bijvullen</td></tr><tr><td>10:45–12:45</td><td>Rhenen–Oosterbeek: Snelle Jelle → banaan + winegums</td><td>± 550 ml/u</td></tr><tr><td>~12:45</td><td>Grand Café Oosterbeek (km 53): 2 broodjes + soep of uitsmijter (≈ 90–100 g / 30 g)</td><td>500 ml; bijvullen</td></tr><tr><td>13:30–16:15</td><td>Veluwezoom: stroopwafel + zoute stengels → eierkoek + winegums → gel/Dextro als het kraakt</td><td>± 550 ml/u</td></tr><tr><td>16:15</td><td>B&amp;B — <b>binnen 30 min:</b> Chocomel 500 ml (SPAR) + banaan + skyr/reep</td><td>750 ml + snuf zout</td></tr><tr><td>~17:00</td><td><b>SPAR Loenen (Eerbeekseweg 24)</b> — direct doen, za sluit ±18:00. Boodschappenlijst voor zo + ma!</td><td></td></tr><tr><td>19:00</td><td>Diner Loenen: groot koolhydraatbord + ≥ 40 g eiwit</td><td>1 L; bier 1:1</td></tr></table></div><p class="fuel-note">Dag ≈ 680 g KH · 140 g eiwit · ~4.500 kcal · 5,5 L.</p></div></details>
+    <details class="fuel-day"><summary>Dag 3 · zo — Loenen → Putten<span class="fd-meta">58 km · ~3¼ u · hersteldag</span></summary><div class="fd-body"><div class="fuel-wrap"><table class="fuel-table"><tr><th>Tijd</th><th>Wat & waar</th><th>Drinken</th></tr><tr><td>08:30</td><td>B&amp;B‑ontbijtbuffet: normaal groot ontbijt incl. eieren (≈ 110 g / 30 g)</td><td>500 ml + koffie</td></tr><tr><td>09:45–11:45</td><td>Loenermark → Radio Kootwijk: eierkoek → banaan</td><td>± 550 ml/u</td></tr><tr><td>~11:45</td><td>De Garage, Radio Kootwijk (km 28) — <b>vooraf checken of open</b>: tosti/broodje + soep of appelgebak</td><td>500 ml; bijvullen</td></tr><tr><td>12:30–14:15</td><td>Speulderbos → Putten: stroopwafel, evt. winegums. Reken zondag níet op een winkel in Garderen</td><td>uitdrinken</td></tr><tr><td>~14:15</td><td>Natuurhuisje — <b>binnen 30 min:</b> 2× Chocomel + banaan + reep</td><td>750 ml + zout; fles naast de jacuzzi</td></tr><tr><td>18:30</td><td>Zelf koken (zaterdag meegenomen): pasta pesto met tonijn, cherrytomaat, kaas + stokbrood (≈ 130 g / 40 g). Toetje: ontbijtkoek + fruit</td><td>1 L</td></tr></table></div><p class="fuel-note">Dag ≈ 500 g KH · 125 g eiwit · ~3.600 kcal · 4,2 L. Geen kookplaat? Couscous (alleen waterkoker) + tonijn + kaas.</p></div></details>
+    <details class="fuel-day"><summary>Dag 4 · ma — Putten → Zwolle<span class="fd-meta">100 km · ~5½ u · langste dag</span></summary><div class="fd-body"><div class="fuel-wrap"><table class="fuel-table"><tr><th>Tijd</th><th>Wat & waar</th><th>Drinken</th></tr><tr><td>07:15</td><td>Ontbijt in het huisje (za gekocht): 100 g havermout + houdbare melk + banaan + 2 krentenbollen met pindakaas (≈ 140 g / 30 g)</td><td>500 ml + oploskoffie</td></tr><tr><td>08:30–10:30</td><td>Start → Noord‑Veluwe: eierkoek → Snelle Jelle. Vanaf de start elke 30 min iets</td><td>± 550 ml/u</td></tr><tr><td>~10:40</td><td>Elspeet (km 37): PLUS Van der Horst (Apeldoornseweg 25, ma 08–18) + Op de Brink (v.a. 10:00): koffie + appelgebak én lunch + blikje cola kopen</td><td>500 ml; bijvullen</td></tr><tr><td>11:10–13:10</td><td>banaan + winegums → stroopwafel + zoute stengels</td><td>± 550 ml/u</td></tr><tr><td>~13:10</td><td>Picknicklunch rond km 65 (uit de PLUS): 2 belegde broodjes + banaan (≈ 80 g / 30 g)</td><td>500 ml; bijvullen</td></tr><tr><td>13:40–15:40</td><td>Heerde → Hattem: eierkoek + Dextro → gel + de cola rond 15:00 (cafeïne voor het laatste uur)</td><td>± 550 ml/u</td></tr><tr><td>~16:00</td><td>Bennie's Zwolle 🏁: eerst Chocomel/cola, dan burger/pasta + friet (≈ 150 g / 45 g)</td><td>1 L met zout in het eerste uur; bier 1:1</td></tr></table></div><p class="fuel-note">Dag ≈ 720 g KH · 135 g eiwit · ~4.900 kcal · 6 L. Front‑loaden: groot ontbijt en direct beginnen met eten.</p></div></details>
+    <p class="fuel-note" data-i18n="fu-note">Algemene sportvoedingsrichtlijnen op maat van deze tocht, geen individueel medisch advies. Gewicht, zweetverlies en tempo verschuiven de getallen — vrijdag is de kalibratiedag. Boodschappenlijsten: donderdag Jumbo thuis (fiets‑snacks vr+za), zaterdag SPAR Loenen (zo‑diner + ma‑ontbijt, ≈ 400 g per fiets), maandag PLUS Elspeet (lunch + cola).</p>
+  </section>
+
   <!-- MULTI-YEAR PLAN -->
   <section id="plan">
     <div class="sec-head">
@@ -1348,6 +1453,11 @@ const I18N = {
     "l2":"± km 53 · spacious indoor hall. Early option: <a href=\"https://villagrebbeoord.nl/\" target=\"_blank\" rel=\"noopener\">Brasserie GrebbeOord</a> on top of the Grebbeberg (± km 21).",
     "l3":"± km 28 · coffee & lunch next to the transmitter building (open on weekends — check ahead). Backup: <a href=\"https://restaurantdebontekoe.nl/\" target=\"_blank\" rel=\"noopener\">De Bonte Koe</a> in Garderen (± km 51).",
     "l4":"± km 37 · open Mondays from 10:00. Warm-up stop: <a href=\"https://bankahattem.nl/\" target=\"_blank\" rel=\"noopener\">Grand Café Banka</a> in Hattem (± km 93).",
+    "fu-title":"The fuel plan",
+    "fu-sub":"Eat something every 30 minutes (by the clock, not by feel), drink 550–650 ml per hour, and the pancakes count. Friday is calibration day. Assumptions: ±80 kg, ±18 km/h — scale ±10% if you differ. (Details below in Dutch.)",
+    "fu-rules-t":"The eight rules",
+    "fu-days-t":"Day-by-day schedule",
+    "fu-note":"General sports-nutrition guidance scaled to this trip, not individual medical advice. Weight, sweat rate and pace move the numbers — Friday is your calibration day. Shopping lists: Thursday Jumbo at home (bike snacks Fri+Sat), Saturday SPAR Loenen (Sunday dinner + Monday breakfast, ≈ 400 g per bike), Monday PLUS Elspeet (lunch + cola).",
     "pk-title":"The packing list",
     "pk-sub":"One cycling kit, shower in it, wring it out, dry by morning. Nobody needs more than this — we have cabins.",
     "pk1-t":"Mechanicals",
