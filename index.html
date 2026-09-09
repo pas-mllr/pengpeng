@@ -224,7 +224,7 @@
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track" id="ticker">
-    <span>317 km gravel</span><span>1.330 hm</span><span>4 dagen</span><span>0 jacuzzi's</span><span>1 oorlogswond</span><span>∞ pannenkoeken</span><span>1 achillespees</span><span>Sölden 4–8 feb 2027: geboekt</span><span>Peng Peng</span>
+    <span>317 km gravel</span><span>1.330 hm</span><span>4 dagen</span><span>0 jacuzzi's</span><span>1 oorlogswond</span><span>∞ pannenkoeken</span><span>1 achillespees</span><span>1 tand</span><span>Sölden 4–8 feb 2027: geboekt</span><span>Peng Peng</span>
   </div>
 </div>
 
@@ -239,7 +239,7 @@
 
     <article class="trip done">
       <div class="year">2026 <span class="tag" data-i18n="tag-done">Volbracht</span></div>
-      <div class="card plain">
+      <a class="card plain" href="saalbach-2026/">
         <div class="body">
           <h3>Saalbach</h3>
           <p class="sub" data-i18n="sb-sub">Wintersport 2026 · 5–9 februari · Residence Saalbach. Stijns brekkie, Bauer's Schi-Alm, een verkeerd geboekte nacht, één tand en één achillespees. Pilgrimage into the Abyss.</p>
@@ -249,9 +249,9 @@
             <div class="stat"><b>5</b><span data-i18n="st-men">man</span></div>
             <div class="stat"><b>1</b><span data-i18n="st-achilles">pees</span></div>
           </div>
-          <span class="more" style="color:var(--ink-soft)" data-i18n="sb-more">Pagina volgt zodra de foto's uit de groepsapp gered zijn</span>
+          <span class="more" data-i18n="sb-more">Logboek, de vijf geboden, de schade &amp; de geng →</span>
         </div>
-      </div>
+      </a>
     </article>
 
     <article class="trip done">
@@ -326,7 +326,7 @@
 <footer>
   <div class="wrap">
     <a class="big" href="/">PENG<b>PENG</b>GENG</a>
-    <span data-i18n="foot">pengpeng.nl · gemaakt door de geng, voor de geng · <a href="green-divide-2026/">Green Divide 2026</a></span>
+    <span data-i18n="foot">pengpeng.nl · gemaakt door de geng, voor de geng · <a href="saalbach-2026/">Saalbach 2026</a> · <a href="green-divide-2026/">Green Divide 2026</a></span>
   </div>
 </footer>
 
@@ -352,13 +352,13 @@ var I18N={nl:{},en:{
   "st-hm":"m climb","st-days":"days","st-riders":"riders",
   "gd-more":"Route, weather, stories &amp; 20 photos →",
   "ws-sub":"Wintersport 2027 · 4–8 February · Ötztal, Tyrol. Two glaciers, 144 km of piste and a cabin with a sauna. Higher, colder, more snow-sure.",
-  "ws-more":"Cabin, piste maps, detective work &amp; countdown →","sb-sub":"Wintersport 2026 · 5–9 February · Residence Saalbach. Stijn's brekkie, Bauer's Schi-Alm, one wrongly booked night, one tooth and one Achilles tendon. Pilgrimage into the Abyss.","sb-more":"Page follows once the photos are rescued from the group chat","st-km":"km of piste","st-alt":"m","st-nights":"nights","st-men":"guys","st-skidays":"ski days","st-achilles":"tendon",
+  "ws-more":"Cabin, piste maps, detective work &amp; countdown →","sb-sub":"Wintersport 2026 · 5–9 February · Residence Saalbach. Stijn's brekkie, Bauer's Schi-Alm, one wrongly booked night, one tooth and one Achilles tendon. Pilgrimage into the Abyss.","sb-more":"Logbook, the five commandments, the damage &amp; the gang →","st-km":"km of piste","st-alt":"m","st-nights":"nights","st-men":"guys","st-skidays":"ski days","st-achilles":"tendon",
   "next-h":"The next trip","next-sub":"Kamperland weekend part two? Cycling to the Alps? Ideas welcome in the group chat — the timeline runs until we're 80.",
   "h-geng":"The <b>gang</b>","p-geng":"Present since the group chat. Opting out is possible, but it gets noted.",
   "m-danny":"Route builder · crashed in turn one","m-daan":"Founder of the group chat","m-igor":"Long-distance debut · own MIPS helmet",
   "m-pascal":"Fuel plan &amp; this website","m-stijn":"Had to work during the bike trip · chef on ski trips",
   "motto":"Rule one of the granny edition: max four hours a day on the bike, nicely spread out. Rule two: the pancake is the calorie anchor. Rule three: there is no jacuzzi.",
-  "foot":"pengpeng.nl · made by the gang, for the gang · <a href=\"green-divide-2026/\">Green Divide 2026</a>"
+  "foot":"pengpeng.nl · made by the gang, for the gang · <a href=\"saalbach-2026/\">Saalbach 2026</a> · <a href=\"green-divide-2026/\">Green Divide 2026</a>"
 }};
 document.querySelectorAll('[data-i18n]').forEach(function(el){ I18N.nl[el.dataset.i18n]=el.innerHTML; });
 function setLang(l){

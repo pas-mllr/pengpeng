@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saalbach 2026 — Peng Peng Geng</title>
+<meta name="description" content="Wintersport 2026 van de Peng Peng Geng: Saalbach Hinterglemm, 5 t/m 9 februari 2026. Het logboek, de vijf geboden, de schade en de geng. Pilgrimage into the Abyss.">
+<meta property="og:title" content="Saalbach 2026 — Peng Peng Geng">
+<meta property="og:description" content="Vijf man, 270 km piste, één tand en één achillespees. Pilgrimage into the Abyss.">
+<meta name="theme-color" content="#ece6d8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ece6d8;
+    --paper-2:#e2dbc9;
+    --paper-3:#d7cfba;
+    --snow:#faf8f2;
+    --ink:#15130f;
+    --ink-2:#3a362f;
+    --ink-soft:#6b655a;
+    --line:#b9b09a;
+    --red:#d63a1f;
+    --red-deep:#a52a15;
+    --blue:#1f5ea8;
+    --blue-soft:#cfe0f2;
+    --display:"Big Shoulders Display","Arial Narrow","Helvetica Neue",Impact,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --shadow:5px 5px 0 var(--ink);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;background:var(--paper)}
+  body{
+    background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55;
+    -webkit-font-smoothing:antialiased;padding:0 16px;overflow-x:hidden;position:relative;
+  }
+  /* paper grain */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.07;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  body > *{position:relative;z-index:1}
+  a{color:inherit}
+  ::selection{background:var(--red);color:var(--snow)}
+  .wrap{max-width:1120px;margin:0 auto;width:100%}
+  .display{font-family:var(--display);font-weight:900;letter-spacing:-.01em;line-height:.86;text-transform:uppercase}
+  .mono{font-family:var(--mono)}
+  .label{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  em{font-style:normal;color:var(--ink-soft)}
+  q{quotes:"“" "”";font-style:italic;color:var(--ink)}
+
+  /* header */
+  header.top{
+    position:sticky;top:0;z-index:30;padding:12px 16px;margin:0 -16px;
+    background:rgba(236,230,216,.9);backdrop-filter:blur(8px);border-bottom:2px solid var(--ink);
+  }
+  header.top .inner{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .brand{font-family:var(--display);font-weight:900;font-size:1.35rem;letter-spacing:.02em;text-decoration:none;line-height:1;white-space:nowrap;text-transform:uppercase}
+  .brand b{color:var(--red);font-weight:900}
+  nav.main{display:none;gap:18px;font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+  nav.main a{text-decoration:none;border-bottom:2px solid transparent;padding-bottom:2px}
+  nav.main a:hover{border-color:var(--red)}
+  @media(min-width:900px){nav.main{display:flex}}
+  .langs{display:flex;gap:0;border:2px solid var(--ink);background:var(--snow)}
+  .langs button{border:0;background:transparent;font:inherit;font-family:var(--mono);font-size:.72rem;font-weight:600;padding:5px 11px;cursor:pointer;color:var(--ink-soft);letter-spacing:.08em}
+  .langs button.active{background:var(--ink);color:var(--snow)}
+
+  /* hero */
+  .hero{position:relative;padding:38px 0 10px}
+  .hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  .kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);border:2px solid var(--ink);padding:6px 10px;background:var(--snow);box-shadow:3px 3px 0 var(--ink)}
+  .kicker i{width:9px;height:9px;background:var(--red);display:inline-block}
+  .stamp{
+    font-family:var(--mono);font-weight:600;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--red);
+    border:3px double var(--red);padding:8px 12px;transform:rotate(-6deg);display:inline-block;
+    mix-blend-mode:multiply;opacity:.92;line-height:1.25;text-align:center;white-space:nowrap;
+    mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.6' numOctaves='2'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.2 1.6'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    -webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.6' numOctaves='2'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.2 1.6'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .stamp small{display:block;font-size:.62rem;letter-spacing:.2em;color:var(--red-deep)}
+  h1.display{font-size:clamp(5.4rem,22vw,17rem);line-height:.78;margin:26px 0 8px -.04em;letter-spacing:-.03em}
+  h1.display .yr{display:block;font-size:.34em;letter-spacing:.02em;color:transparent;-webkit-text-stroke:2px var(--ink);line-height:1;margin-top:.08em}
+  .lead{font-size:clamp(1.05rem,2.2vw,1.35rem);max-width:58ch;text-wrap:balance;margin-top:18px}
+  .lead strong{font-weight:700}
+
+  /* ticket stubs */
+  .stubs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:30px 0 8px}
+  .stub{
+    background:var(--snow);border:2px solid var(--ink);box-shadow:var(--shadow);padding:14px 14px 12px 18px;position:relative;
+  }
+  .stub::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;border-left:2px dashed var(--line)}
+  .stub b{display:block;font-family:var(--display);font-weight:900;font-size:2.4rem;line-height:.9;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .stub b.red{color:var(--red)}
+  .stub span{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-top:6px}
+  .stub small{display:block;color:var(--ink-2);font-size:.78rem;margin-top:4px;line-height:1.35}
+
+  /* mountain profile */
+  .profile{margin:34px -16px 0;padding:0 16px;overflow-x:auto}
+  .profile svg{display:block;width:100%;min-width:620px;height:auto;color:var(--ink)}
+  .profile .cap{font-family:var(--mono);font-size:.7rem;color:var(--ink-soft);margin-top:8px;letter-spacing:.06em}
+
+  /* sections */
+  section{padding:60px 0 6px}
+  .sec-head{display:grid;grid-template-columns:auto 1fr;align-items:end;gap:14px 18px;margin-bottom:26px;border-bottom:3px solid var(--ink);padding-bottom:14px}
+  .sec-head .num{font-family:var(--mono);font-size:.78rem;font-weight:600;letter-spacing:.14em;color:var(--red);align-self:start;padding-top:8px}
+  h2.display{font-size:clamp(3rem,9vw,5.6rem);line-height:.84}
+  h2.display b{color:var(--red);font-weight:900}
+  .sec-head p{grid-column:2;color:var(--ink-soft);max-width:56ch;margin-top:4px}
+  @media(max-width:560px){.sec-head{grid-template-columns:1fr}.sec-head p{grid-column:1}}
+
+  /* logbook */
+  .day{display:grid;grid-template-columns:1fr;gap:12px 28px;padding:26px 0;border-bottom:2px dashed var(--line)}
+  .day:last-of-type{border-bottom:0}
+  @media(min-width:820px){.day{grid-template-columns:220px 1fr}}
+  .day .head{position:sticky;top:74px;align-self:start}
+  .day .dn{font-family:var(--display);font-weight:900;font-size:clamp(3.4rem,8vw,5rem);line-height:.8;letter-spacing:-.02em}
+  .day .dn small{display:block;font-size:.3em;letter-spacing:.06em;color:var(--red);margin-top:6px}
+  .day .gn{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);margin-top:12px;line-height:1.45}
+  .day .gn b{color:var(--ink);font-weight:600}
+  .log{list-style:none}
+  .log li{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+  .log li:first-child{border-top:0}
+  .log time{font-family:var(--mono);font-size:.74rem;font-weight:600;color:var(--red);letter-spacing:.04em;padding-top:4px;font-variant-numeric:tabular-nums}
+  .log time.soft{color:var(--ink-soft)}
+  .log p{color:var(--ink-2);font-size:.95rem}
+  .log p b{color:var(--ink);font-weight:700}
+  .log p q{quotes:"“" "”";font-style:italic;color:var(--ink)}
+  .log li.hi p{background:var(--snow);border:2px solid var(--ink);padding:10px 12px;box-shadow:3px 3px 0 var(--ink)}
+
+  /* commandments */
+  .cmd{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:760px){.cmd{grid-template-columns:repeat(2,1fr)}}
+  .cmd article{background:var(--snow);border:2px solid var(--ink);box-shadow:var(--shadow);padding:16px 16px 14px;display:grid;grid-template-columns:56px 1fr;gap:12px;position:relative;overflow:hidden}
+  .cmd .n{font-family:var(--display);font-weight:900;font-size:3.2rem;line-height:.8;color:var(--ink);letter-spacing:-.02em}
+  .cmd h3{font-family:var(--display);font-weight:900;font-size:1.65rem;line-height:.95;text-transform:uppercase;letter-spacing:.01em;margin-bottom:6px}
+  .cmd p{color:var(--ink-2);font-size:.92rem}
+  .cmd .verdict{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:4px 8px;border:2px solid var(--ink)}
+  .cmd .verdict.ok{background:var(--ink);color:var(--snow)}
+  .cmd .verdict.no{border-color:var(--red);color:var(--red)}
+  .cmd .verdict.meh{border-style:dashed;color:var(--ink-soft)}
+  .cmd article.total{grid-column:1/-1;background:var(--ink);color:var(--snow);grid-template-columns:1fr}
+  .cmd article.total p{color:var(--paper-2)}
+  .cmd article.total b{color:var(--snow)}
+
+  /* damage */
+  .dmg{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:760px){.dmg{grid-template-columns:1.15fr .85fr}}
+  .dmg .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;align-content:start}
+  .card{background:var(--snow);border:2px solid var(--ink);box-shadow:var(--shadow);padding:16px 16px 14px}
+  .card h3{font-family:var(--display);font-weight:900;font-size:1.8rem;line-height:.9;text-transform:uppercase;margin-bottom:8px}
+  .card h3 small{display:block;font-family:var(--mono);font-size:.64rem;font-weight:600;letter-spacing:.14em;color:var(--red);margin-bottom:8px}
+  .card p{color:var(--ink-2);font-size:.92rem}
+  .card p + p{margin-top:8px}
+  .card p b{color:var(--ink)}
+  /* receipt */
+  .receipt{background:var(--snow);border:2px solid var(--ink);box-shadow:var(--shadow);padding:20px 18px 26px;font-family:var(--mono);font-size:.8rem;align-self:start;position:relative}
+  .receipt::after{content:"";position:absolute;left:-2px;right:-2px;bottom:-12px;height:12px;background:linear-gradient(135deg,transparent 6px,var(--snow) 0) 0 0/16px 12px,linear-gradient(-135deg,transparent 6px,var(--snow) 0) 8px 0/16px 12px;background-repeat:repeat-x}
+  .receipt h3{font-family:var(--display);font-weight:900;font-size:2rem;line-height:.9;text-transform:uppercase;text-align:center;margin-bottom:4px}
+  .receipt .sub{text-align:center;color:var(--ink-soft);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+  .receipt table{width:100%;border-collapse:collapse}
+  .receipt td{padding:6px 0;vertical-align:top;border-bottom:1px dashed var(--line)}
+  .receipt td:last-child{text-align:right;white-space:nowrap;font-weight:600}
+  .receipt td small{display:block;color:var(--ink-soft);font-size:.68rem;margin-top:2px}
+  .receipt tr.total td{border-bottom:0;border-top:2px solid var(--ink);padding-top:10px;font-weight:600;font-size:.95rem}
+  .receipt tr.total td:last-child{font-family:var(--display);font-size:1.9rem;line-height:1;font-weight:900}
+  .receipt .foot{margin-top:14px;color:var(--ink-soft);font-size:.7rem;line-height:1.5}
+  .receipt .foot q{quotes:"“" "”";color:var(--ink)}
+
+  /* planning timeline */
+  .tl{position:relative;padding-left:26px;max-width:820px}
+  .tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:3px;background:var(--ink)}
+  .tl .ev{position:relative;margin-bottom:22px}
+  .tl .ev::before{content:"";position:absolute;left:-26px;top:6px;width:13px;height:13px;background:var(--paper);border:3px solid var(--ink)}
+  .tl .ev.hi::before{background:var(--red);border-color:var(--red)}
+  .tl .d{font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.12em;color:var(--red);text-transform:uppercase}
+  .tl .t{font-family:var(--display);font-weight:900;font-size:1.6rem;line-height:.95;text-transform:uppercase;margin:2px 0 4px}
+  .tl .s{color:var(--ink-2);font-size:.93rem;max-width:66ch}
+  .tl .s q{quotes:"“" "”";font-style:italic;color:var(--ink)}
+
+  /* roster */
+  .roster{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+  .member{background:var(--snow);border:2px solid var(--ink);box-shadow:var(--shadow);padding:16px 16px 14px;position:relative}
+  .member .nm{font-family:var(--display);font-weight:900;font-size:clamp(2.4rem,5vw,3.2rem);line-height:.85;text-transform:uppercase;letter-spacing:-.01em}
+  .member .disc{position:absolute;right:12px;top:10px;font-family:var(--mono);font-size:.64rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border:2px solid var(--ink);padding:2px 6px;background:var(--paper)}
+  .member .disc.red{border-color:var(--red);color:var(--red)}
+  .member p{color:var(--ink-2);font-size:.9rem;margin-top:10px}
+  .member p q{quotes:"“" "”";font-style:italic;color:var(--ink)}
+  .member.reserve{background:transparent;border-style:dashed;box-shadow:none}
+  .member.reserve .nm{color:var(--ink-soft)}
+
+  /* photos */
+  .photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+  .photos figure{border:2px solid var(--ink);background:var(--snow);box-shadow:var(--shadow);overflow:hidden}
+  .photos img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+  .photos figcaption{font-family:var(--mono);font-size:.68rem;padding:6px 8px;color:var(--ink-soft);border-top:2px solid var(--ink)}
+  .empty{border:2px dashed var(--ink);padding:26px 20px;background:transparent;max-width:760px}
+  .empty h3{font-family:var(--display);font-weight:900;font-size:2.2rem;line-height:.9;text-transform:uppercase;margin-bottom:8px}
+  .empty p{color:var(--ink-2);font-size:.93rem}
+  .empty .counts{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px}
+  .empty .counts div b{display:block;font-family:var(--display);font-weight:900;font-size:2.2rem;line-height:.9}
+  .empty .counts div span{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+
+  /* quotes */
+  .quotes{columns:1;column-gap:12px}
+  @media(min-width:640px){.quotes{columns:2}}
+  @media(min-width:980px){.quotes{columns:3}}
+  .quote{break-inside:avoid;background:var(--snow);border:2px solid var(--ink);padding:14px 14px 12px;margin-bottom:12px;box-shadow:3px 3px 0 var(--ink)}
+  .quote p{font-family:var(--display);font-weight:700;font-size:1.45rem;line-height:1;text-transform:uppercase;letter-spacing:.005em}
+  .quote p::before{content:"“";color:var(--red)}
+  .quote p::after{content:"”";color:var(--red)}
+  .quote cite{display:block;font-style:normal;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-top:8px;font-weight:600}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--mono);font-weight:600;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:12px 16px;border:2px solid var(--ink);background:var(--snow);box-shadow:var(--shadow);transition:transform .12s ease,box-shadow .12s ease}
+  .btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}
+  footer{margin:70px -16px 0;padding:26px 16px 44px;border-top:3px solid var(--ink);color:var(--ink-soft);font-size:.82rem;font-family:var(--mono)}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center}
+  footer .big{font-family:var(--display);font-weight:900;font-size:1.4rem;letter-spacing:.02em;color:var(--ink);text-decoration:none;text-transform:uppercase}
+  footer .big b{color:var(--red)}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+<header class="top">
+ <div class="wrap inner">
+  <a class="brand" href="/">← Peng<b>Peng</b>Geng</a>
+  <nav class="main">
+    <a href="#logboek" data-i18n="nav-log">Logboek</a>
+    <a href="#geboden" data-i18n="nav-cmd">De vijf geboden</a>
+    <a href="#schade" data-i18n="nav-dmg">De schade</a>
+    <a href="#aanloop" data-i18n="nav-tl">De aanloop</a>
+    <a href="#geng" data-i18n="nav-geng">De geng</a>
+    <a href="#beeld" data-i18n="nav-ph">Beeld</a>
+  </nav>
+  <div class="langs" role="group" aria-label="Taal / Language">
+    <button id="btn-nl" class="active" onclick="setLang('nl')">NL</button>
+    <button id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+ </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-top">
+      <div class="kicker"><i></i><span data-i18n="kicker">Logboek nº 1 · Wintersport 2026 · Skicircus Saalbach Hinterglemm Leogang Fieberbrunn</span></div>
+      <div class="stamp" data-i18n="stamp">Volbracht<small>do 5 – ma 9 feb 2026</small></div>
+    </div>
+    <h1 class="display">Saal<br>bach<span class="yr">Pilgrimage into the Abyss</span></h1>
+    <p class="lead" data-i18n="lead">Vijf man, één Peugeot 5008 met een 1.2 liter motortje, 925 kilometer enkele reis en 270 kilometer piste. Terug met één tand minder, één achillespees minder en een groepsapp die 36 keer van naam veranderde. <em>Reincarnation day. Revalidation day. Peng peng.</em></p>
+
+    <div class="stubs">
+      <div class="stub"><b>270</b><span data-i18n="st1">km piste</span><small data-i18n="st1n">Skicircus · 70 liften · de helft blauw</small></div>
+      <div class="stub"><b>3</b><span data-i18n="st2">skidagen</span><small data-i18n="st2n">vr 6 t/m zo 8 feb · skipas via Sunweb</small></div>
+      <div class="stub"><b>5</b><span data-i18n="st3">man</span><small data-i18n="st3n">2 op ski, 3 op board · Jorg thuis</small></div>
+      <div class="stub"><b>1.850</b><span data-i18n="st4">km rijden</span><small data-i18n="st4n">Dukenburg → Oberdorf 771 → Dukenburg</small></div>
+      <div class="stub"><b>171</b><span data-i18n="st5">dagen voorpret</span><small data-i18n="st5n">van 18 aug 2025 tot vertrek</small></div>
+      <div class="stub"><b class="red">1+1</b><span data-i18n="st6">tand + pees</span><small data-i18n="st6n">beide van Pascal · zie de schade</small></div>
+    </div>
+
+    <div class="profile" aria-label="Hoogteprofiel van de bergen rond Saalbach met de liften die de geng nam">
+      <svg viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg" role="img">
+        <defs>
+          <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="currentColor" stroke-width="1" opacity=".28"/></pattern>
+        </defs>
+        <!-- valley baseline: Saalbach 1.003 m -->
+        <line x1="0" y1="250" x2="1200" y2="250" stroke="currentColor" stroke-width="2"/>
+        <line x1="0" y1="250" x2="1200" y2="250" stroke="currentColor" stroke-width="1" stroke-dasharray="2 6" transform="translate(0,-22)" opacity=".5"/>
+        <!-- ridge line -->
+        <path d="M0 240 L60 205 L120 150 L170 112 L215 92 L250 118 L300 96 L345 62 L390 48 L430 76 L470 104 L520 122 L560 98 L610 70 L650 84 L700 120 L740 110 L780 84 L820 66 L860 82 L900 128 L950 150 L1000 132 L1040 108 L1090 92 L1140 122 L1200 160 L1200 250 L0 250 Z" fill="url(#hatch)" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+        <!-- peaks -->
+        <g font-family="IBM Plex Mono,monospace" font-size="12" fill="currentColor">
+          <text x="215" y="80" text-anchor="middle">Bernkogel · 1.740</text>
+          <text x="390" y="36" text-anchor="middle" font-weight="600">Schattberg · 2.096</text>
+          <text x="610" y="58" text-anchor="middle">Kohlmais · 1.794</text>
+          <text x="820" y="54" text-anchor="middle">Asitz · 1.914</text>
+          <text x="1090" y="80" text-anchor="middle">Wildenkar</text>
+          <text x="8" y="272">Saalbach · 1.003 m</text>
+          <text x="1192" y="272" text-anchor="end">Hinterglemm · 1.060 m</text>
+        </g>
+        <!-- lifts / spots -->
+        <g stroke="currentColor" stroke-width="2" fill="#faf8f2">
+          <line x1="230" y1="250" x2="215" y2="94" stroke-dasharray="4 4"/>
+          <line x1="420" y1="250" x2="390" y2="50" stroke-dasharray="4 4"/>
+          <line x1="640" y1="250" x2="610" y2="72" stroke-dasharray="4 4"/>
+          <circle cx="215" cy="94" r="6"/><circle cx="390" cy="50" r="6"/><circle cx="610" cy="72" r="6"/>
+          <circle cx="230" cy="250" r="6"/><circle cx="420" cy="250" r="6"/><circle cx="640" cy="250" r="6"/>
+        </g>
+        <g fill="#d63a1f"><circle cx="390" cy="50" r="3"/><circle cx="215" cy="94" r="3"/><circle cx="610" cy="72" r="3"/></g>
+        <g font-family="IBM Plex Mono,monospace" font-size="11" fill="#6b655a">
+          <text x="240" y="200">G1+G2 Bernkogelbahn · vr</text>
+          <text x="430" y="170">Schattberg X-press · za · "beneden bij de striptent"</text>
+          <text x="650" y="200">route 2 → 2a → 156 (Danny) · Almstuberl · zo</text>
+          <text x="960" y="215">Bauer's Schi-Alm · za 16:06</text>
+        </g>
+      </svg>
+      <p class="cap" data-i18n="profile-cap">Hoogteprofiel op gevoel, niet op schaal. Wel echt: de liften, de tijden, en dat Danny bij 156 uitkwam.</p>
+    </div>
+  </section>
+
+  <!-- LOGBOEK -->
+  <section id="logboek">
+    <div class="sec-head">
+      <div class="num">01</div>
+      <h2 class="display" data-i18n="h-log">Het <b>logboek</b></h2>
+      <p data-i18n="p-log">Vijf dagen, gereconstrueerd uit 4.520 berichten, 208 foto's en 110 video's die de export als "omitted" markeert. De tijden zijn echt. De rest ook, helaas.</p>
+    </div>
+
+    <div class="day">
+      <div class="head">
+        <div class="dn">Do<br>05<small data-i18n="d1-tag">Reincarnation day</small></div>
+        <div class="gn" data-i18n="d1-gn"><b>Groepsnaam:</b> 🍕🍇 SAALBACH Reincarnation day<br>Nijmegen → Oberaudorf → Saalbach</div>
+      </div>
+      <ul class="log">
+        <li><time>05:37</time><p data-i18n="d1-1">Danny: <q>Kut. Te hyped.</q> Niemand heeft geslapen. Pascal sliep om twee uur, werd om 4:50 wakker en nam een dubbele dosis oploslaxeer met koffiesmaak. Stijn: <q>Nu ff laatste ruzie maken met de vrouw en dan kan ik weg.</q></p></li>
+        <li class="hi"><time>08:32</time><p data-i18n="d1-2">Oscar Autoverhuur, Wijchen. Stijn: <q>Pascal Muller heeft de verificatie nog niet gedaan. We krijgen de auto niet mee.</q> Daan koopt meneer Muller vrij voor vijftig euro. Danny: <q>Hondelulle. Ik lig voor op schema.</q></p></li>
+        <li><time>09:00</time><p data-i18n="d1-3">Station Dukenburg. Danny op de fiets, Pascal uit het hotel naast Nijmegen CS, Igor uit de trein. In de kofferbak: Stijns gehaktballen zonder paneer, broodjes, blikjes energie, en Danny's thermoskan pour-over plus 1 kilo koffie, 100 filters en een trechter.</p></li>
+        <li><time>10:15</time><p data-i18n="d1-4">Adres in de groep: <b>Oberdorf 771, 5753 Saalbach</b>. Grens over bij Oberaudorf, binnendoor, geen vignet nodig. Stijn had het uitgerekend: tien uur en tien minuten, <q>maximaal één stop</q>. Peugeot 5008, TN-192-S, 1.2 liter, 131 pk, Apple CarPlay.</p></li>
+        <li><time class="soft" data-i18n="t-avond">avond</time><p data-i18n="d1-5">Residence Saalbach by VAYA, drie kamers, één slaapbank. Parkeren in de Zentrum-garage, zes minuten lopen, <q>wat een armoede</q>. Eten bij Eva Alm, de 199 euro die Pascal later per ongeluk als lunch in de Groepie zet. 21:27, Danny: <q>Deze tent is zo ziek.</q></p></li>
+        <li><time class="soft" data-i18n="t-nacht">nacht</time><p data-i18n="d1-6">Ergens tussen aankomst en ontbijt raakt Pascal een tand kwijt. Hoe precies staat niet in de app. Dat is bewust.</p></li>
+      </ul>
+    </div>
+
+    <div class="day">
+      <div class="head">
+        <div class="dn">Vr<br>06<small data-i18n="d2-tag">Dag één op de latten</small></div>
+        <div class="gn" data-i18n="d2-gn"><b>Skipas:</b> dag 1 van 3<br>Bernkogelbahn · Saalbach-kant</div>
+      </div>
+      <ul class="log">
+        <li><time>08:47</time><p data-i18n="d2-1">Pascal: <q>Wel chill, tandarts is 7 min wandelen.</q> Danny: <q>Zo'n dorpje ingericht op ongevallen. Succes!</q> Zijn skipas ligt op tafel in het appartement.</p></li>
+        <li><time>09:00</time><p data-i18n="d2-2">Stijns full English breakfast met bloedworst, meegesjouwd uit Nijmegen. <q>Bloedworst als ontbijt om je bloedworst te doorbloeden.</q> Igor zegt in de skiverhuur wat iedereen al wist: online reserveren was goedkoper geweest.</p></li>
+        <li><time>10:52</time><p data-i18n="d2-3">Bernkogelbahn G1 + G2, tegenover het hotel. Pascal komt na de tandarts naar boven. Igor staat op een board, Daan op een board, Stijn op een board. Danny en Stijn rijden op hun ene uur les uit Landgraaf.</p></li>
+        <li><time>13:47</time><p data-i18n="d2-4">Danny en Stijn pakken <q>die andere lift, richting Saalbach</q>. Igor: <q>Wij ook nu.</q> Iedereen z'n eigen journey, al vanaf dag één.</p></li>
+        <li class="hi"><time>16:57</time><p data-i18n="d2-5">Stijn: <q>We zijn ziek aan het carven. Hoewel ik mijn rechterbovenbeen niet meer voel.</q> Jorg vanuit Nederland: drinken en skiën is onverzekerd. Pascal: <q>Als je niet drinkt kijken ze je gek aan.</q></p></li>
+        <li><time>16:18</time><p data-i18n="d2-6">Boodschappenlijst: melk, sinaasappels, olie, banaan, bier, vuilniszakken.</p></li>
+        <li><time>18:59</time><p data-i18n="d2-7">Pascal dropt een volledig blauwe dagroute: Saalbach Runde plus Leogang Runde, 45 km, 7.900 hoogtemeters, door ChatGPT vertaald <q>met een Nijmeegse tongval</q> (<q>nie mauwe</q>, <q>goe bezig</q>). Danny krijgt hem apart nog een keer. Niemand rijdt hem.</p></li>
+        <li><time>21:02</time><p data-i18n="d2-8">Stijn vindt <q>de beste Kaiserschmarrn</q> van het gebied. Lunchplan voor morgen. Daan: <q>Top.</q> Pascal: <q>Lekkel.</q></p></li>
+      </ul>
+    </div>
+
+    <div class="day">
+      <div class="head">
+        <div class="dn">Za<br>07<small data-i18n="d3-tag">Revalidation day</small></div>
+        <div class="gn" data-i18n="d3-gn"><b>Groepsnaam:</b> 🍕🍇 SAALBACH Revalidation day<br>Schattberg · Wildenkar · funpark · Bauer's</div>
+      </div>
+      <ul class="log">
+        <li><time>07:56</time><p data-i18n="d3-1">Igor: <q>Opstaan? Het weer is beter geworden 😎</q></p></li>
+        <li><time>10:14</time><p data-i18n="d3-2">Schattberg X-press, <q>beneden bij de striptent, en dan helemaal omhoog, route 2</q>. Pascal komt acht minuten later aangelopen. <q>Tozzo.</q></p></li>
+        <li><time>10:42</time><p data-i18n="d3-3">Igor is het pistekaartje vergeten. 2/2a naar beneden, Schönleiten weer omhoog, dan naar de Wildenkarhütte.</p></li>
+        <li><time>12:01</time><p data-i18n="d3-4">Danny: <q>Ik heb denk ik een verkeerde afslag genomen. Zit opeens bij 156.</q></p></li>
+        <li><time>14:38</time><p data-i18n="d3-5">Daan zit in de strandstoelen. <q>Pascal is kwijt.</q> Pascal: <q>Ik zit achter jou, boven in de schaduw. Beetje een kut plek dus ik kom zo.</q></p></li>
+        <li><time>15:09</time><p data-i18n="d3-6">Danny en Stijn pakken G2 naar het funpark. Igor komt eraan, via nog een afdaling en nog een lift. Iedereen wacht bovenaan G1, <q>dus halverwege de afdaling</q>.</p></li>
+        <li class="hi"><time>15:46</time><p data-i18n="d3-7">Pascal: <q>Ik heb er 25 trage minuten over gedaan om m'n schoen uit te krijgen. Zoals verwacht is m'n range of motion 0 maar verder geen pijn dus oké.</q> Het is niet oké. Het is een achillespees. Dat weet op dit moment nog niemand.</p></li>
+        <li><time>16:06</time><p data-i18n="d3-8">Bauer's Schi-Alm, locatie gedeeld. Igor: <q>Nu bij de lift in het dorp. En nog naar boven, te verleidelijk. Laatste x.</q> Op een snowboard. Pascal: <q>Lekker boys. Iedereen z'n eigen journey 😂</q></p></li>
+        <li class="hi"><time>16:57</time><p data-i18n="d3-9">Daan aan Pascal: <q>Zou jij het in je hart kunnen vinden om ff brekkie te halen bij de supermarkt?</q> Ei en een klein pintermanneke. Pascal, op één been, drie kwartier voor sluitingstijd: <q>Ik zal het proberen.</q> Daan: ❤️❤️❤️</p></li>
+        <li><time>18:17</time><p data-i18n="d3-10">Willem Dafoe zit ook in de kroeg, volgens Pascal. <q>Het wapen Wolthoorn komt jullie kant op</q>: Igors platvink. Igor drinkt eerst een glaasje water en haalt daarna de rest op. Danny: <q>Kom ons alsjeblieft ophalen. Ik weet de weg niet eens meer.</q> Daan: <q>Er staat hier nog een jägerbom voor jou.</q></p></li>
+        <li><time>21:59</time><p data-i18n="d3-11">Nieuwe groepsnaam: 🍕🍇 SAALBACH Revalidation day. Pascal zit buiten met z'n been <q>net een icepack</q>.</p></li>
+      </ul>
+    </div>
+
+    <div class="day">
+      <div class="head">
+        <div class="dn">Zo<br>08<small data-i18n="d4-tag">De verkeerd geboekte nacht</small></div>
+        <div class="gn" data-i18n="d4-gn"><b>Verhuizing:</b> appartement → hotel<br>Kamer 109 (2p) en 202 (3p) · halfpension · zwembad</div>
+      </div>
+      <ul class="log">
+        <li class="hi"><time>08:37</time><p data-i18n="d4-1">Verhuisdag. Danny had drie nachten geboekt in plaats van vier (ontdekt op 4 feb, zie <a href="#schade">de schade</a>). Twee kamers in het hotel verderop, halfpension, binnen- en buitenzwembad, badjas en slippers inbegrepen. Parkeren 8 euro per dag. Verdeling volgens Pascal: <q>stinkende mensen vs niet stinkende mensen.</q> Jorg: <q>Rich and poor.</q></p></li>
+        <li><time>09:41</time><p data-i18n="d4-2">Danny: <q>Daan, ik heb jouw helm al en heb jouw hotelpas nodig. De kamer was klaar.</q> Pascal doet de self check-in en boekt een parkeerplaats bij.</p></li>
+        <li><time>11:02</time><p data-i18n="d4-3">Pascal: <q>Ik heb gisteren bijna m'n pootje gebroken dus ik kan de laatste dag niet mee. Ik zit in een wellness hotel dus had erger gekund. Loop alleen als een manke.</q></p></li>
+        <li><time>13:02</time><p data-i18n="d4-4">Danny: <q>Leven jullie nog? Ik wacht bij Almstuberl.</q> Locatie gedeeld. <q>Oh ik zie Daan.</q></p></li>
+        <li><time>13:58</time><p data-i18n="d4-5">Pascal vanaf het terras: <q>Not great, not terrible. Shred ze nog ff jungs.</q> Daan: ❤️❤️. Twintig foto's van Danny en Stijn vanaf de berg.</p></li>
+        <li><time>14:44</time><p data-i18n="d4-6">Igor: <q>Waar zijn jullie? Ik onderaan 152, waar je de weg over moet.</q></p></li>
+        <li><time>16:07</time><p data-i18n="d4-7">Gear inleveren bij de verhuur tegenover het oude hotel. Pascal wordt bij de receptie verwacht, <q>want jouw gegevens missen door die knullige web app</q>. Daan: <q>Geef ff een seintje als we naar het zwembad gaan. Ik ben helemaal ready.</q></p></li>
+        <li><time>16:21</time><p data-i18n="d4-8">Kamer 202, prepping for pool. Avondeten is alvast gekozen: pork chop. Wie liever gnocchi wil heeft een half uur om het bij de receptie te zeggen.</p></li>
+        <li><time>18:45</time><p data-i18n="d4-9">Diner in badjas-hotel. Twee video's van Danny als bewijs.</p></li>
+      </ul>
+    </div>
+
+    <div class="day">
+      <div class="head">
+        <div class="dn">Ma<br>09<small data-i18n="d5-tag">Naar beneden</small></div>
+        <div class="gn" data-i18n="d5-gn"><b>Terugreis:</b> Saalbach → Nijmegen<br>De auto gaat dinsdag terug naar Wijchen</div>
+      </div>
+      <ul class="log">
+        <li><time>07:23</time><p data-i18n="d5-1">Daan: <q>Zo naar beneden?</q> Danny: <q>Wij zijn ready to go. Hoeven niet meer terug naar de kamer.</q></p></li>
+        <li><time>08:16</time><p data-i18n="d5-2">Daan: <q>Gogogo to the car.</q> Igors spullen zitten bij Danny. Jorg: <q>Goede reis heren.</q> Danny: <q>Volgend jaar moet je mee.</q></p></li>
+        <li><time>18:19</time><p data-i18n="d5-3">Nijmegen. Daan: <q>Wat een chaos.</q> De chauffeur heeft onderweg iemand gesommeerd z'n telefoonherrie uit te zetten en op de Keizer Karel naar een auto getoeterd. Danny: <q>Life on the burgerrups.</q></p></li>
+        <li class="hi"><time>18:22</time><p data-i18n="d5-4">Danny: <q>Ik ben al thuis. Helemaal top. Thx bruvskis.</q> Igor: <q>Was nice heren! ❤️</q> Pascal: <q>Mooie trip jongens. Bedankt.</q></p></li>
+        <li><time>18:31</time><p data-i18n="d5-5">Stijn gaat meteen door naar de huisartsenpost: kinderen met te lang te hoge koorts. De griepepidemie is officieel.</p></li>
+        <li><time>20:09</time><p data-i18n="d5-6">Igor dumpt 130 foto's en video's in de app, Daan 70. Danny om 21:16: <q>Wow ik ben best dik. Oei.</q></p></li>
+        <li><time class="soft" data-i18n="t-dinsdag">di 07:59</time><p data-i18n="d5-7">Pascal: <q>Jullie hebben mij gehealed.</q> Stijn: <q>Geen probleem.</q> Anderhalf uur later zit Pascal in de wachtkamer van de tandarts.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- GEBODEN -->
+  <section id="geboden">
+    <div class="sec-head">
+      <div class="num">02</div>
+      <h2 class="display" data-i18n="h-cmd">De vijf <b>geboden</b></h2>
+      <p data-i18n="p-cmd">Op 3 oktober publiceerde Pascal het Gonzo Manifesto: vijf geboden, een uur-tot-uur itinerary en een zesde man in de auto die niemand herkende. Vier maanden later leggen we het naast de werkelijkheid.</p>
+    </div>
+    <div class="cmd">
+      <article>
+        <div class="n">1</div>
+        <div>
+          <h3 data-i18n="c1-h">Samen een zwarte piste, of sterven</h3>
+          <p data-i18n="c1-p">Geen bewijs in de groepsapp. Wel: Danny die bij 156 uitkwam, Igor die z'n kaartje vergat, en Pascals blauwe route van 45 km die niemand reed.</p>
+          <span class="verdict meh" data-i18n="v-meh">Niet gedocumenteerd</span>
+        </div>
+      </article>
+      <article>
+        <div class="n">2</div>
+        <div>
+          <h3 data-i18n="c2-h">Goaßstall overleven</h3>
+          <p data-i18n="c2-p">Bauer's Schi-Alm om 16:06: ja, met locatie. De geitenstal met geiten achter glas die een schoolpleinmoeder aan Danny had aangeraden: geen spoor. Voor de rechtbank telt dat als nee.</p>
+          <span class="verdict no" data-i18n="v-no">Niet gehaald</span>
+        </div>
+      </article>
+      <article>
+        <div class="n">3</div>
+        <div>
+          <h3 data-i18n="c3-h">Nachtrodelen, 3,5 km verlicht</h3>
+          <p data-i18n="c3-p">Nee. Op de geplande avond kon één van de vijf niet meer lopen en wist een ander de weg naar huis niet meer.</p>
+          <span class="verdict no" data-i18n="v-no">Niet gehaald</span>
+        </div>
+      </article>
+      <article>
+        <div class="n">4</div>
+        <div>
+          <h3 data-i18n="c4-h">Schnitzel ter grootte van een snowboard</h3>
+          <p data-i18n="c4-p">Eva Alm op de avond van aankomst voor 199 euro, de beste Kaiserschmarrn van het gebied volgens Stijn, Gröstl, schiwasser. Pork chop in het hotel als toetje.</p>
+          <span class="verdict ok" data-i18n="v-ok">Volbracht</span>
+        </div>
+      </article>
+      <article>
+        <div class="n">5</div>
+        <div>
+          <h3 data-i18n="c5-h">Alle ochtenden ontbijt</h3>
+          <p data-i18n="c5-p">Full English met bloedworst op dag één, eieren van de supermarkt op dag drie (gehaald door Pascal op één been), halfpension op dag vier. Het manifesto noemde dit <q>harder dan het klinkt</q>. Viel mee.</p>
+          <span class="verdict ok" data-i18n="v-ok">Volbracht</span>
+        </div>
+      </article>
+      <article class="total">
+        <div>
+          <h3 data-i18n="ct-h">Eindstand: 2 van 5</h3>
+          <p data-i18n="ct-p">Het manifesto voorspelde ook: <b>"3:00 p.m. First fall. It's Pascal."</b> Dat klopte, alleen een dag later en harder. En: <b>"Someone, probably Danny, will smoke a cigar on the balcony at midnight."</b> Daarover zwijgt de app. Danny werd voor het laatst dronken in 2016.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SCHADE -->
+  <section id="schade">
+    <div class="sec-head">
+      <div class="num">03</div>
+      <h2 class="display" data-i18n="h-dmg">De <b>schade</b></h2>
+      <p data-i18n="p-dmg">Danny op 12 februari: "Behalve Pascal zijn blessure was deze trip een big success." De borg kwam terug. De rest niet helemaal.</p>
+    </div>
+    <div class="dmg">
+      <div class="cards">
+        <div class="card">
+          <h3><small data-i18n="dm1-s">Pascal · do/vr</small><span data-i18n="dm1-h">De tand</span></h3>
+          <p data-i18n="dm1-p">Kwijt op de eerste avond, tandarts op zeven minuten lopen op de eerste ochtend. Thuis nog een keer: <q>Zit nu in de wachtkamer bij de tandarts. Wat een aftermath van zo'n weekendje.</q> Tandarts Ali begon over z'n AI-cursus.</p>
+        </div>
+        <div class="card">
+          <h3><small data-i18n="dm2-s">Pascal · za</small><span data-i18n="dm2-h">De achillespees</span></h3>
+          <p data-i18n="dm2-p">Zaterdag 25 minuten om een schoen uit te krijgen, zondag <q>als een manke</q> langs het zwembad, woensdag 11 februari bij de huisarts: <b>helemaal afgescheurd</b>, gips, vier tot zes weken. <q>Best wel lijp dat ik daar nog mee geskied heb.</q> Igor heeft nog krukken liggen.</p>
+        </div>
+        <div class="card">
+          <h3><small data-i18n="dm3-s">Iedereen · vanaf 29 jan</small><span data-i18n="dm3-h">De griep</span></h3>
+          <p data-i18n="dm3-p">Een week voor vertrek was iedereen alvast ziek: <q>perfecte timing</q>. Na afloop opnieuw: Stijn kotst alles uit, drie kinderen met koorts, Inge rillend in bed. De officiële griepepidemie van Nederland. Danny: <q>Weet je onderdeel van een groter geheel Stijn ❤️</q></p>
+        </div>
+        <div class="card">
+          <h3><small data-i18n="dm4-s">TN-192-S · 5 t/m 10 feb</small><span data-i18n="dm4-h">De auto</span></h3>
+          <p data-i18n="dm4-p">Peugeot 5008 van Oscar, 1.2 PureTech, 131 pk. Drie dagen voor vertrek stuurde Igor een Kassa-artikel over de distributieriem. Daan: <q>Don't be gentle, it's a rental.</q> Ingeleverd zonder schade, borg terug op 12 februari. Danny: <q>Klein wonder.</q></p>
+        </div>
+        <div class="card">
+          <h3><small data-i18n="dm5-s">Danny · ontdekt 4 feb 09:43</small><span data-i18n="dm5-h">De verkeerde nacht</span></h3>
+          <p data-i18n="dm5-p">Op de Sunweb-voucher stond <q>4 dagen</q> bovenin en <q>3 nachten</q> eronder. Pascal zag het één dag voor vertrek. Om 10:04 had Danny na <q>best wel doordrukken</q> twee hotelkamers voor de laatste nacht: <q>Mijn welgemeende excuses voor deze hiccup.</q></p>
+          <p data-i18n="dm5-q">Stijn, zes weken later: <q>Ik heb ondervonden dat Danny goed kan boeken. Zelfs met misverstanden is het uitmuntend opgelost.</q> Danny: <q>Ik maak die fout niet nog eens. Anders ättestupa.</q></p>
+        </div>
+      </div>
+
+      <div class="receipt">
+        <h3 data-i18n="rc-h">Kassabon</h3>
+        <div class="sub" data-i18n="rc-sub">per neus · afgerond · geen btw</div>
+        <table>
+          <tr><td data-i18n="rc1">Residence Saalbach, 3 nachten + skipas 6–8 feb<small data-i18n="rc1n">Sunweb, geboekt 5 sep. Tikkie-max 750, rest "een biertje in Saalbach"</small></td><td>€ 827</td></tr>
+          <tr><td data-i18n="rc2">Hotelnacht zo → ma, halfpension, zwembad<small data-i18n="rc2n">De nacht die niet in de boeking zat</small></td><td>≈ € 200</td></tr>
+          <tr><td data-i18n="rc3">Peugeot 5008, Oscar Wijchen, 2.100 km<small data-i18n="rc3n">Incl. 50 euro losgeld voor meneer Muller</small></td><td>€ 145</td></tr>
+          <tr><td data-i18n="rc4">Benzine, eten, drank, "diverse belastingen"<small data-i18n="rc4n">Volgens Danny's Groepie-afrekening: 70 euro per dag</small></td><td>€ 340</td></tr>
+          <tr><td data-i18n="rc5">SnowWorld Landgraaf, 16 jan, entree + les<small data-i18n="rc5n">Alleen Danny en Stijn. Daan lachte van een afstandje</small></td><td>€ 99</td></tr>
+          <tr><td data-i18n="rc6">Bottrop, 9 dec, all inclusive<small data-i18n="rc6n">Eten, zuipen en bewegen bij min vier graden</small></td><td>€ 75</td></tr>
+          <tr class="total"><td data-i18n="rc-t">Totaal, ongeveer</td><td>€ 1.690</td></tr>
+        </table>
+        <p class="foot" data-i18n="rc-f">Stijn: <q>Reken op 300 ekkies per dag. Voor die swag was het wel waard.</q> Daan, nog in augustus: <q>Als dit mij in totaal geen 2k kost word ik woedend.</q> Net niet, Daan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AANLOOP -->
+  <section id="aanloop">
+    <div class="sec-head">
+      <div class="num">04</div>
+      <h2 class="display" data-i18n="h-tl">De <b>aanloop</b></h2>
+      <p data-i18n="p-tl">Van "We kunnen het!!!" tot "Reincarnation day" in 171 dagen. De belangrijkste zetten, in de volgorde waarin de groepsapp ze deed.</p>
+    </div>
+    <div class="tl">
+      <div class="ev hi">
+        <div class="d">ma 18 aug 2025 · 11:10</div>
+        <div class="t" data-i18n="tl1-t">Daan maakt de groep</div>
+        <div class="s" data-i18n="tl1-s"><q>2026 wintersportt. We kunnen het!!!</q> Om 11:16 staat 5–9 februari vast, om 11:17 valt het woord Saalbach Hinterglemm, om 11:51 heeft Danny een go van thuis. Pascal blokt februari en zegt een privétour langs de quantumcomputer van IBM af.</div>
+      </div>
+      <div class="ev">
+        <div class="d">do 21 – vr 22 aug</div>
+        <div class="t" data-i18n="tl2-t">De pitch van Stijn</div>
+        <div class="s" data-i18n="tl2-s">Stijn stuurt <b>wintersport_pitch_stijn.pptx</b> en dropt 's avonds <q>de wintersportbom</q>. Advies van de groep: anchoring, begin met een volle week. Pascal: <q>Laat je naam eruit en schrijf alles op met focus op Mor.</q> Vrijdag 08:51: <q>Yes we have a go. Lets book.</q></div>
+      </div>
+      <div class="ev">
+        <div class="d">vr 22 – ma 25 aug</div>
+        <div class="t" data-i18n="tl3-t">HUISKE opties 1 t/m 5</div>
+        <div class="s" data-i18n="tl3-s">Danny tagt vijf opties, van een hotel voor 800 tot een huisje in Zell am See voor 377. Igor maakt een poll, optie 2 wint, Danny mailt de host. Maandag: <q>Kink in de kabel</q>, ze heeft alleen nog 4 tot 7 februari. Engelberg, Brixental en Landal komen even langs. Danny: <q>Laat het internetten aub aan mij over, enige wat ik kan.</q></div>
+      </div>
+      <div class="ev hi">
+        <div class="d">vr 5 sep · 13:28</div>
+        <div class="t" data-i18n="tl4-t">Danny boekt</div>
+        <div class="s" data-i18n="tl4-s">Residence Saalbach via Sunweb, 4.137,67 euro voor vijf man, skipas inbegrepen. <q>200 euro verdiend door het een week uit te stellen.</q> Paspoortnamen worden opgevraagd (Igor Milan, Pascalis Henricus Johannes Gerardus). Tikkie van 750, <q>geef maar een biertje in Saalbach voor de rest</q>. 1 oktober: iedereen heeft betaald.</div>
+      </div>
+      <div class="ev">
+        <div class="d">vr 3 okt · 07:41</div>
+        <div class="t" data-i18n="tl5-t">Het Gonzo Manifesto</div>
+        <div class="s" data-i18n="tl5-s">Pascal publiceert vijf geboden, een itinerary per uur en een AI-plaatje met zes man in de auto. Danny: <q>Wie is die enge 6e gast?</q> Groepsnaam: <q>2026 pilgrimage into the absurd</q>. Stijn maakt er Abyss van. Dat blijft.</div>
+      </div>
+      <div class="ev">
+        <div class="d">do 27 nov</div>
+        <div class="t" data-i18n="tl6-t">T-70</div>
+        <div class="s" data-i18n="tl6-s">Danny zet de aftelklok in de groepsnaam en past hem elke ochtend aan. Daan: <q>Wat is T-70?</q> Stijn: <q>Geen idee, maar the abyss wil ik wel in.</q> Zelfde dag: de kamer blijkt 2 tweepersoonsbedden en 1 slaapbank te hebben.</div>
+      </div>
+      <div class="ev">
+        <div class="d">ma 8 – di 9 dec</div>
+        <div class="t" data-i18n="tl7-t">Kleding en Bottrop</div>
+        <div class="s" data-i18n="tl7-s">De outlet in Bemmel (<q>Dan loop ik erbij als iemand van Accenture, dat weiger ik</q>), daarna toch een Protest-pak van skiwebshop.nl, <q>echt maximaal korting gepakt</q>. Dinsdag Bottrop met Jorg. Stijn: <q>Mijn rib is fukt maar wel waard allemaal.</q></div>
+      </div>
+      <div class="ev">
+        <div class="d">wo 24 dec · 06:29</div>
+        <div class="t" data-i18n="tl8-t">De Dodge</div>
+        <div class="s" data-i18n="tl8-s">Pascal vindt op kerstochtend een camper met V8 op LPG, 624 euro voor acht dagen. Daan: <q>Een Amerikaanse auto (slecht gebouwd) op hoge leeftijd.</q> Igor stuurt een Ford Galaxy. Danny: <q>Het is maar blik met een motor.</q> De Dodge sterft in de chat.</div>
+      </div>
+      <div class="ev">
+        <div class="d">ma 29 dec</div>
+        <div class="t" data-i18n="tl9-t">Het trainingsschema</div>
+        <div class="s" data-i18n="tl9-s">Pascal bouwt een 8-weeks ski-trainingsprogramma als web-app. Daan: <q>Vormgeving is dood als beroep zie ik. Wat zijn body weight rows?</q> Stijn wil een 6-weeks versie vanwege een sneetje tussen z'n tenen.</div>
+      </div>
+      <div class="ev">
+        <div class="d">vr 16 jan 2026</div>
+        <div class="t" data-i18n="tl10-t">SnowWorld Landgraaf</div>
+        <div class="s" data-i18n="tl10-s">Daan, Danny en Stijn. Om 12:00 een uur privéles voor Danny en Stijn, <q>terwijl Daan ons van een afstandje uitlacht</q>. Stijns broek faalt. Nieuwe groepsnaam: <q>Leven op de edge</q>. Tikkies voor bitterballen, raclette en 17,95 boardhuur.</div>
+      </div>
+      <div class="ev">
+        <div class="d">ma 19 jan · 13:56</div>
+        <div class="t" data-i18n="tl11-t">It is done</div>
+        <div class="s" data-i18n="tl11-s">Daan zet de Peugeot 5008 vast bij Oscar in Wijchen, 135 euro per man, 2.100 kilometer. Pascal: <q>Duurder en lelijker dan die Doge die ik had. Maar prima.</q> Twee dagen later wordt de groep <q>SLB Money Gang</q> en nomineert Danny Ski Leraar Bruin deel 3 als theme song.</div>
+      </div>
+      <div class="ev">
+        <div class="d">do 29 jan</div>
+        <div class="t" data-i18n="tl12-t">Iedereen ziek</div>
+        <div class="s" data-i18n="tl12-s">Pascal kotst 's nachts (<q>bedorven chipolata</q>), Daan gaat ziek naar huis, Stijns kind is ziek, Danny is verkouden. Daan: <q>Mooi. Perfecte timing.</q> Zelfde dag hoort de groep over de knobbel in Inge's hals. <q>Even tussen ons houden.</q> Dat deed iedereen.</div>
+      </div>
+      <div class="ev hi">
+        <div class="d">wo 4 feb · 09:43</div>
+        <div class="t" data-i18n="tl13-t">"Er staat check-out zondag"</div>
+        <div class="s" data-i18n="tl13-s">Pascal leest de voucher. Danny: <q>Heh. On it.</q> Om 10:04 zijn er twee hotelkamers voor de laatste nacht. Stijn heeft intussen een Groepie aangemaakt, gehaktballen gedraaid en de groepsnaam op <q>1 day until Reincarnation</q> gezet. Pascal reist alvast naar Nijmegen. Danny om 05:37 de volgende ochtend: <q>Kut. Te hyped.</q></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GENG -->
+  <section id="geng">
+    <div class="sec-head">
+      <div class="num">05</div>
+      <h2 class="display" data-i18n="h-geng">De <b>geng</b></h2>
+      <p data-i18n="p-geng">Twee op ski, drie op board, één op de bank thuis. Daan in augustus: "5 van die brakke boomers die gaan proberen een skilift te nemen."</p>
+    </div>
+    <div class="roster">
+      <div class="member"><span class="disc">Ski</span><div class="nm">Danny</div><p data-i18n="m-danny">Boekte alles, inclusief één nacht te weinig, en loste dat in twintig minuten op. Nam een kilo koffie mee. Verdwaalde bij 156. Om 18:22 thuis: <q>Wow ik ben best dik.</q></p></div>
+      <div class="member"><span class="disc">Board</span><div class="nm">Daan</div><p data-i18n="m-daan">Haalde de auto op en kocht meneer Muller vrij voor vijftig euro. Zat in de strandstoelen. Kreeg de borg terug. <q>Kutzooi, ik had meer risico's moeten nemen.</q></p></div>
+      <div class="member"><span class="disc">Board</span><div class="nm">Igor</div><p data-i18n="m-igor">Geen les, kaartje vergeten, nog één keer naar boven <q>want te verleidelijk</q>. Het wapen Wolthoorn. Haalde de rest op uit de kroeg. Dumpte 130 foto's.</p></div>
+      <div class="member"><span class="disc red">Ski · gips</span><div class="nm">Pascal</div><p data-i18n="m-pascal">Eigen schoenen, eigen ski-app, eigen tand kwijt op dag één, achillespees op dag drie. Haalde op één been de eieren voor het ontbijt. <q>Jullie hebben mij gehealed.</q></p></div>
+      <div class="member"><span class="disc">Board</span><div class="nm">Stijn</div><p data-i18n="m-stijn">Brekkie-chef, gehaktballen, playlist, groepsnamen. Voelde z'n rechterbovenbeen niet meer. Vanaf de A73 rechtstreeks naar de huisartsenpost. <q>Jullie zijn mijn hobby.</q></p></div>
+      <div class="member reserve"><span class="disc">Thuis</span><div class="nm">Jorg</div><p data-i18n="m-jorg">Ging niet mee, stuurde wel elke dag een filmpje. <q>Ik ben wel jaloers heren.</q> Danny op de terugweg: <q>Volgend jaar moet je mee.</q></p></div>
+    </div>
+  </section>
+
+  <!-- BEELD -->
+  <section id="beeld">
+    <div class="sec-head">
+      <div class="num">06</div>
+      <h2 class="display" data-i18n="h-ph">Het <b>beeld</b></h2>
+      <p data-i18n="p-ph">De chat-export markeert elke foto als "image omitted". De originelen staan nog in de telefoons.</p>
+    </div>
+    <div id="photo-grid" class="photos" hidden></div>
+    <div id="photo-empty" class="empty">
+      <h3 data-i18n="ph-h">Nog te redden uit de groepsapp</h3>
+      <p data-i18n="ph-p">Op maandagavond 9 februari dumpten Igor en Daan samen 200 bestanden in de groep. Zodra ze in de map <span class="mono">saalbach-2026/img/</span> staan verschijnen ze hier.</p>
+      <div class="counts">
+        <div><b>208</b><span data-i18n="ph-c1">foto's · 5–9 feb</span></div>
+        <div><b>110</b><span data-i18n="ph-c2">video's · 5–9 feb</span></div>
+        <div><b>130</b><span data-i18n="ph-c3">van Igor in 6 minuten</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CITATEN -->
+  <section id="citaten">
+    <div class="sec-head">
+      <div class="num">07</div>
+      <h2 class="display" data-i18n="h-q">Voor de <b>notulen</b></h2>
+      <p data-i18n="p-q">Uitspraken die het waard zijn om over 30 jaar nog eens terug te lezen, als we "blije gezapige mannetjes" zijn.</p>
+    </div>
+    <div class="quotes">
+      <div class="quote"><p data-i18n="q1">Het moet wel een beetje duur zijn hè jongens. Anders is het kut.</p><cite data-i18n="q1c">Daan · 20 aug</cite></div>
+      <div class="quote"><p data-i18n="q2">Laten we gewoon ownen dat we mensenschuwe nerds zijn.</p><cite data-i18n="q2c">Daan · 22 aug</cite></div>
+      <div class="quote"><p data-i18n="q3">Ik word heel autoritair van groepsinspraak.</p><cite data-i18n="q3c">Danny · 22 aug</cite></div>
+      <div class="quote"><p data-i18n="q4">Nu hebben we allemaal skin in de game en kunnen we niet meer terug.</p><cite data-i18n="q4c">Danny · 5 sep, na de Tikkie</cite></div>
+      <div class="quote"><p data-i18n="q5">Skiën of boarden is bijzaak.</p><cite data-i18n="q5c">Igor · 5 sep</cite></div>
+      <div class="quote"><p data-i18n="q6">Het is maar blik met een motor.</p><cite data-i18n="q6c">Danny · 24 dec, over de Dodge</cite></div>
+      <div class="quote"><p data-i18n="q7">Jullie zijn mijn hobby.</p><cite data-i18n="q7c">Stijn · 25 jan</cite></div>
+      <div class="quote"><p data-i18n="q8">Don't be gentle, it's a rental.</p><cite data-i18n="q8c">Daan · 2 feb</cite></div>
+      <div class="quote"><p data-i18n="q9">Deze tent is zo ziek.</p><cite data-i18n="q9c">Danny · 5 feb, 21:27</cite></div>
+      <div class="quote"><p data-i18n="q10">Range of motion 0 maar verder geen pijn dus oké.</p><cite data-i18n="q10c">Pascal · 7 feb, achillespees</cite></div>
+      <div class="quote"><p data-i18n="q11">Iedereen z'n eigen journey.</p><cite data-i18n="q11c">Pascal · 7 feb</cite></div>
+      <div class="quote"><p data-i18n="q12">Kom ons alsjeblieft ophalen. Ik weet de weg niet eens meer.</p><cite data-i18n="q12c">Danny · 7 feb, Bauer's Schi-Alm</cite></div>
+      <div class="quote"><p data-i18n="q13">Stinkende mensen vs niet stinkende mensen.</p><cite data-i18n="q13c">Pascal · 8 feb, kamerverdeling</cite></div>
+      <div class="quote"><p data-i18n="q14">Jullie hebben mij gehealed.</p><cite data-i18n="q14c">Pascal · 10 feb, 07:59</cite></div>
+      <div class="quote"><p data-i18n="q15">Behalve Pascal zijn blessure was deze trip een big success.</p><cite data-i18n="q15c">Danny · 12 feb</cite></div>
+    </div>
+    <p style="margin-top:34px;display:flex;gap:12px;flex-wrap:wrap">
+      <a class="btn" href="/" data-i18n="back">← Terug naar de tijdlijn</a>
+      <a class="btn" href="/wintersport-2027/" data-i18n="next">Volgende: Sölden 2027 →</a>
+    </p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="big" href="/">Peng<b>Peng</b>Geng</a>
+    <span data-i18n="foot">pengpeng.nl · logboek nº 1 · gereconstrueerd uit de groepsapp · <a href="/green-divide-2026/">Green Divide 2026</a> · <a href="/wintersport-2027/">Sölden 2027</a></span>
+  </div>
+</footer>
+
+<script>
+// Photos: drop files in saalbach-2026/img/ and list them here as {src, cap}. Empty list keeps the placeholder.
+var PHOTOS=[];
+(function(){
+  if(!PHOTOS.length) return;
+  var g=document.getElementById('photo-grid'),e=document.getElementById('photo-empty');
+  g.innerHTML=PHOTOS.map(function(p){return '<figure><img src="img/'+p.src+'" alt="'+(p.cap||'')+'" loading="lazy"><figcaption>'+(p.cap||'')+'</figcaption></figure>';}).join('');
+  g.hidden=false; e.hidden=true;
+})();
+
+// i18n: Dutch is captured from the markup, English lives here.
+var I18N={nl:{},en:{
+  "nav-log":"Logbook","nav-cmd":"The five commandments","nav-dmg":"The damage","nav-tl":"The run-up","nav-geng":"The gang","nav-ph":"Pictures",
+  "kicker":"Logbook no. 1 · Ski trip 2026 · Skicircus Saalbach Hinterglemm Leogang Fieberbrunn",
+  "stamp":"Completed<small>Thu 5 – Mon 9 Feb 2026</small>",
+  "lead":"Five guys, one Peugeot 5008 with a 1.2 litre engine, 925 kilometres each way and 270 kilometres of piste. Back with one tooth fewer, one Achilles tendon fewer and a group chat that changed its name 36 times. <em>Reincarnation day. Revalidation day. Peng peng.</em>",
+  "st1":"km of piste","st1n":"Skicircus · 70 lifts · half of it blue","st2":"ski days","st2n":"Fri 6 to Sun 8 Feb · lift pass via Sunweb","st3":"guys","st3n":"2 on skis, 3 on boards · Jorg at home",
+  "st4":"km driven","st4n":"Dukenburg → Oberdorf 771 → Dukenburg","st5":"days of build-up","st5n":"from 18 Aug 2025 to departure","st6":"tooth + tendon","st6n":"both Pascal's · see the damage",
+  "profile-cap":"Elevation profile by feel, not to scale. Real, though: the lifts, the times, and Danny ending up at 156.",
+  "h-log":"The <b>logbook</b>","p-log":"Five days, reconstructed from 4,520 messages, 208 photos and 110 videos the export marks as \"omitted\". The times are real. So is the rest, unfortunately.",
+  "t-avond":"evening","t-nacht":"night","t-dinsdag":"Tue 07:59",
+  "d1-tag":"Reincarnation day","d1-gn":"<b>Group name:</b> 🍕🍇 SAALBACH Reincarnation day<br>Nijmegen → Oberaudorf → Saalbach",
+  "d1-1":"Danny: <q>Damn. Too hyped.</q> Nobody slept. Pascal went to bed at two, woke at 4:50 and took a double dose of coffee-flavoured laxative. Stijn: <q>One last row with the wife and then I can leave.</q>",
+  "d1-2":"Oscar car rental, Wijchen. Stijn: <q>Pascal Muller hasn't done his licence verification. They won't give us the car.</q> Daan buys Mr Muller out for fifty euros. Danny: <q>Ha. I'm ahead of schedule.</q>",
+  "d1-3":"Dukenburg station. Danny by bike, Pascal from the hotel next to Nijmegen Central, Igor off the train. In the boot: Stijn's unbreaded meatballs, sandwiches, energy drinks, and Danny's thermos of pour-over plus a kilo of coffee, 100 filters and a funnel.",
+  "d1-4":"Address dropped in the group: <b>Oberdorf 771, 5753 Saalbach</b>. Border at Oberaudorf, back roads, no vignette needed. Stijn had done the maths: ten hours and ten minutes, <q>one stop maximum</q>. Peugeot 5008, TN-192-S, 1.2 litre, 131 hp, Apple CarPlay.",
+  "d1-5":"Residence Saalbach by VAYA, three rooms, one sofa bed. Parking in the Zentrum garage, six minutes' walk, <q>what a hardship</q>. Dinner at Eva Alm, the 199 euros Pascal later files as lunch by mistake. 21:27, Danny: <q>This place is so sick.</q>",
+  "d1-6":"Somewhere between arrival and breakfast Pascal loses a tooth. How exactly is not in the chat. That's deliberate.",
+  "d2-tag":"Day one on the planks","d2-gn":"<b>Lift pass:</b> day 1 of 3<br>Bernkogelbahn · Saalbach side",
+  "d2-1":"Pascal: <q>Handy, the dentist is a 7 minute walk.</q> Danny: <q>A village built around accidents. Good luck!</q> His lift pass is on the table in the apartment.",
+  "d2-2":"Stijn's full English breakfast with black pudding, hauled in from Nijmegen. <q>Black pudding for breakfast to get your blood pudding flowing.</q> At the rental shop Igor says what everyone already knew: booking online would have been cheaper.",
+  "d2-3":"Bernkogelbahn G1 + G2, opposite the hotel. Pascal comes up after the dentist. Igor is on a board, Daan on a board, Stijn on a board. Danny and Stijn ride on their one hour of lessons from Landgraaf.",
+  "d2-4":"Danny and Stijn take <q>the other lift, towards Saalbach</q>. Igor: <q>So are we now.</q> Everyone their own journey, from day one.",
+  "d2-5":"Stijn: <q>We're carving like mad. Although I can't feel my right thigh anymore.</q> Jorg from the Netherlands: drinking and skiing is uninsured. Pascal: <q>If you don't drink they look at you funny.</q>",
+  "d2-6":"Shopping list: milk, oranges, oil, banana, beer, bin bags.",
+  "d2-7":"Pascal drops an all-blue day route: Saalbach Runde plus Leogang Runde, 45 km, 7,900 vertical metres, translated by ChatGPT <q>with a Nijmegen accent</q>. Danny gets it a second time, privately. Nobody rides it.",
+  "d2-8":"Stijn finds <q>the best Kaiserschmarrn</q> in the area. Lunch plan for tomorrow. Daan: <q>Top.</q> Pascal: <q>Yum.</q>",
+  "d3-tag":"Revalidation day","d3-gn":"<b>Group name:</b> 🍕🍇 SAALBACH Revalidation day<br>Schattberg · Wildenkar · fun park · Bauer's",
+  "d3-1":"Igor: <q>Up? The weather's improved 😎</q>",
+  "d3-2":"Schattberg X-press, <q>down by the strip club, then all the way up, route 2</q>. Pascal walks over eight minutes later. <q>Tozzo.</q>",
+  "d3-3":"Igor has forgotten the piste map. 2/2a down, Schönleiten back up, then on to the Wildenkarhütte.",
+  "d3-4":"Danny: <q>I think I took a wrong turn. Suddenly at 156.</q>",
+  "d3-5":"Daan is in the deck chairs. <q>Pascal is lost.</q> Pascal: <q>I'm behind you, up in the shade. Bit of a crap spot so I'll come over.</q>",
+  "d3-6":"Danny and Stijn take G2 to the fun park. Igor is on his way, via one more run and one more lift. Everyone waits at the top of G1, <q>so halfway down the run</q>.",
+  "d3-7":"Pascal: <q>Took me 25 slow minutes to get my boot off. As expected my range of motion is 0 but no pain otherwise so it's fine.</q> It is not fine. It's an Achilles tendon. Nobody knows that yet.",
+  "d3-8":"Bauer's Schi-Alm, location shared. Igor: <q>At the lift in the village now. And going up once more, too tempting. Last time.</q> On a snowboard. Pascal: <q>Nice boys. Everyone their own journey 😂</q>",
+  "d3-9":"Daan to Pascal: <q>Could you find it in your heart to grab breakfast from the supermarket?</q> Eggs and a small beer. Pascal, on one leg, 45 minutes before closing: <q>I'll try.</q> Daan: ❤️❤️❤️",
+  "d3-10":"Willem Dafoe is in the bar too, according to Pascal. <q>The Wolthoorn weapon is heading your way</q>: Igor's hip flask. Igor has a glass of water first, then fetches the rest. Danny: <q>Please come and get us. I don't even know the way anymore.</q> Daan: <q>There's still a Jägerbomb here for you.</q>",
+  "d3-11":"New group name: 🍕🍇 SAALBACH Revalidation day. Pascal sits outside with his leg, <q>like an ice pack</q>.",
+  "d4-tag":"The wrongly booked night","d4-gn":"<b>The move:</b> apartment → hotel<br>Rooms 109 (2p) and 202 (3p) · half board · pool",
+  "d4-1":"Moving day. Danny had booked three nights instead of four (spotted on 4 Feb, see <a href=\"#schade\">the damage</a>). Two rooms in the hotel down the road, half board, indoor and outdoor pool, bathrobe and slippers included. Parking 8 euros a day. Room split according to Pascal: <q>smelly people vs non-smelly people.</q> Jorg: <q>Rich and poor.</q>",
+  "d4-2":"Danny: <q>Daan, I've already got your helmet and I need your hotel card. The room was ready.</q> Pascal does the self check-in and adds a parking spot.",
+  "d4-3":"Pascal: <q>I nearly broke my leg yesterday so I can't join the last day. I'm in a wellness hotel so could be worse. Just walking like a cripple.</q>",
+  "d4-4":"Danny: <q>You lot still alive? Waiting at Almstuberl.</q> Location shared. <q>Oh I see Daan.</q>",
+  "d4-5":"Pascal from the terrace: <q>Not great, not terrible. Shred some more, jungs.</q> Daan: ❤️❤️. Twenty photos from Danny and Stijn up the mountain.",
+  "d4-6":"Igor: <q>Where are you? I'm at the bottom of 152, where you cross the road.</q>",
+  "d4-7":"Returning the gear at the rental opposite the old hotel. Pascal is wanted at reception, <q>because your details are missing thanks to that clumsy web app</q>. Daan: <q>Give me a shout when we go to the pool. I'm fully ready.</q>",
+  "d4-8":"Room 202, prepping for pool. Dinner has been chosen for everyone: pork chop. Anyone who prefers gnocchi has half an hour to tell reception.",
+  "d4-9":"Dinner at the bathrobe hotel. Two videos from Danny as evidence.",
+  "d5-tag":"Going down","d5-gn":"<b>Return:</b> Saalbach → Nijmegen<br>The car goes back to Wijchen on Tuesday",
+  "d5-1":"Daan: <q>Heading down?</q> Danny: <q>We're ready to go. No need to go back to the room.</q>",
+  "d5-2":"Daan: <q>Gogogo to the car.</q> Igor's stuff is with Danny. Jorg: <q>Safe travels gents.</q> Danny: <q>Next year you're coming.</q>",
+  "d5-3":"Nijmegen. Daan: <q>What chaos.</q> On the way the driver ordered someone to turn off his phone noise and honked at a car on the Keizer Karel roundabout. Danny: <q>Life on the burgerrups.</q>",
+  "d5-4":"Danny: <q>I'm home already. Absolutely top. Thx bruvskis.</q> Igor: <q>That was nice gents! ❤️</q> Pascal: <q>Great trip guys. Thanks.</q>",
+  "d5-5":"Stijn goes straight on to the out-of-hours GP: kids with a fever that's been too high for too long. The flu epidemic is official.",
+  "d5-6":"Igor dumps 130 photos and videos into the chat, Daan 70. Danny at 21:16: <q>Wow I'm quite fat. Oops.</q>",
+  "d5-7":"Pascal: <q>You lot healed me.</q> Stijn: <q>No problem.</q> Ninety minutes later Pascal is in the dentist's waiting room.",
+  "h-cmd":"The five <b>commandments</b>","p-cmd":"On 3 October Pascal published the Gonzo Manifesto: five commandments, an hour-by-hour itinerary and a sixth man in the car nobody recognised. Four months later we hold it up against reality.",
+  "c1-h":"Conquer a black run together, or die trying","c1-p":"No evidence in the group chat. What there is: Danny ending up at 156, Igor forgetting his map, and Pascal's 45 km blue route nobody rode.",
+  "c2-h":"Survive Goaßstall","c2-p":"Bauer's Schi-Alm at 16:06: yes, with location. The goat barn with goats behind glass that a schoolyard mum recommended to Danny: no trace. In court that counts as a no.",
+  "c3-h":"Night tobogganing, 3.5 km lit","c3-p":"No. On the planned evening one of the five could no longer walk and another no longer knew the way home.",
+  "c4-h":"Schnitzel the size of a snowboard","c4-p":"Eva Alm on arrival night for 199 euros, the best Kaiserschmarrn in the area according to Stijn, Gröstl, schiwasser. Pork chop at the hotel for dessert.",
+  "c5-h":"Breakfast every morning","c5-p":"Full English with black pudding on day one, supermarket eggs on day three (fetched by Pascal on one leg), half board on day four. The manifesto called this <q>harder than it sounds</q>. It wasn't.",
+  "v-meh":"Undocumented","v-no":"Failed","v-ok":"Completed",
+  "ct-h":"Final score: 2 out of 5","ct-p":"The manifesto also predicted: <b>\"3:00 p.m. First fall. It's Pascal.\"</b> Correct, just a day later and harder. And: <b>\"Someone, probably Danny, will smoke a cigar on the balcony at midnight.\"</b> The chat is silent on that. Danny was last drunk in 2016.",
+  "h-dmg":"The <b>damage</b>","p-dmg":"Danny on 12 February: \"Apart from Pascal's injury this trip was a big success.\" The deposit came back. The rest not entirely.",
+  "dm1-s":"Pascal · Thu/Fri","dm1-h":"The tooth","dm1-p":"Lost on the first evening, dentist seven minutes' walk away on the first morning. Again at home: <q>In the dentist's waiting room now. What an aftermath for a weekend away.</q> Dentist Ali started talking about his AI course.",
+  "dm2-s":"Pascal · Sat","dm2-h":"The Achilles tendon","dm2-p":"Saturday 25 minutes to get a boot off, Sunday <q>like a cripple</q> past the pool, Wednesday 11 February at the GP: <b>completely torn</b>, cast, four to six weeks. <q>Pretty wild that I still skied on it.</q> Igor still has crutches lying around.",
+  "dm3-s":"Everyone · from 29 Jan","dm3-h":"The flu","dm3-p":"A week before departure everyone got ill in advance: <q>perfect timing</q>. Afterwards, again: Stijn throws everything up, three kids with fevers, Inge shivering in bed. The Netherlands' official flu epidemic. Danny: <q>Know you're part of something bigger Stijn ❤️</q>",
+  "dm4-s":"TN-192-S · 5 to 10 Feb","dm4-h":"The car","dm4-p":"Peugeot 5008 from Oscar, 1.2 PureTech, 131 hp. Three days before departure Igor sent a consumer-show article about the timing belt. Daan: <q>Don't be gentle, it's a rental.</q> Returned without damage, deposit back on 12 February. Danny: <q>Small miracle.</q>",
+  "dm5-s":"Danny · spotted 4 Feb 09:43","dm5-h":"The wrong night","dm5-p":"The Sunweb voucher said <q>4 days</q> at the top and <q>3 nights</q> underneath. Pascal noticed one day before departure. By 10:04 Danny, after <q>quite a bit of pushing</q>, had two hotel rooms for the last night: <q>My sincere apologies for this hiccup.</q>",
+  "dm5-q":"Stijn, six weeks later: <q>I've found that Danny books well. Even with misunderstandings it got sorted superbly.</q> Danny: <q>I won't make that mistake again. Otherwise ättestupa.</q>",
+  "rc-h":"Receipt","rc-sub":"per head · rounded · no VAT",
+  "rc1":"Residence Saalbach, 3 nights + lift pass 6–8 Feb","rc1n":"Sunweb, booked 5 Sep. Tikkie max 750, rest \"a beer in Saalbach\"",
+  "rc2":"Hotel night Sun → Mon, half board, pool","rc2n":"The night that wasn't in the booking",
+  "rc3":"Peugeot 5008, Oscar Wijchen, 2,100 km","rc3n":"Incl. 50 euro ransom for Mr Muller",
+  "rc4":"Fuel, food, drink, \"assorted taxes\"","rc4n":"Per Danny's Groepie settlement: 70 euros a day",
+  "rc5":"SnowWorld Landgraaf, 16 Jan, entry + lesson","rc5n":"Danny and Stijn only. Daan laughed from a distance",
+  "rc6":"Bottrop, 9 Dec, all inclusive","rc6n":"Eating, drinking and moving at minus four degrees",
+  "rc-t":"Total, roughly",
+  "rc-f":"Stijn: <q>Count on 300 a day. For that swag it was worth it.</q> Daan, back in August: <q>If this doesn't cost me 2k in total I'll be furious.</q> Just short, Daan.",
+  "h-tl":"The <b>run-up</b>","p-tl":"From \"We can do it!!!\" to \"Reincarnation day\" in 171 days. The key moves, in the order the group chat made them.",
+  "tl1-t":"Daan creates the group","tl1-s":"<q>2026 wintersportt. We can do it!!!</q> By 11:16 the dates 5–9 February are fixed, at 11:17 the words Saalbach Hinterglemm appear, at 11:51 Danny has a go from home. Pascal blocks February and cancels a private tour of IBM's quantum computer.",
+  "tl2-t":"Stijn's pitch","tl2-s":"Stijn sends <b>wintersport_pitch_stijn.pptx</b> and drops <q>the ski trip bomb</q> that evening. Group advice: anchoring, open with a full week. Pascal: <q>Leave your name out and write it all with the focus on Mor.</q> Friday 08:51: <q>Yes we have a go. Lets book.</q>",
+  "tl3-t":"HUISKE options 1 to 5","tl3-s":"Danny tags five options, from a hotel at 800 to a cabin in Zell am See at 377. Igor runs a poll, option 2 wins, Danny emails the host. Monday: <q>Spanner in the works</q>, she only has 4 to 7 February left. Engelberg, Brixental and Landal drift past. Danny: <q>Please leave the internetting to me, the only thing I can do.</q>",
+  "tl4-t":"Danny books","tl4-s":"Residence Saalbach via Sunweb, 4,137.67 euros for five, lift pass included. <q>Earned 200 euros by postponing a week.</q> Passport names are collected (Igor Milan, Pascalis Henricus Johannes Gerardus). Tikkie of 750, <q>buy me a beer in Saalbach for the rest</q>. 1 October: everyone has paid.",
+  "tl5-t":"The Gonzo Manifesto","tl5-s":"Pascal publishes five commandments, an hour-by-hour itinerary and an AI picture with six men in the car. Danny: <q>Who's that creepy 6th guy?</q> Group name: <q>2026 pilgrimage into the absurd</q>. Stijn makes it Abyss. That sticks.",
+  "tl6-t":"T-70","tl6-s":"Danny puts a countdown in the group name and updates it every morning. Daan: <q>What's T-70?</q> Stijn: <q>No idea, but I do want into the abyss.</q> Same day: the room turns out to have 2 double beds and 1 sofa bed.",
+  "tl7-t":"Clothes and Bottrop","tl7-s":"The outlet in Bemmel (<q>I'd look like someone from Accenture, I refuse</q>), then a Protest suit from skiwebshop.nl anyway, <q>maximum discount grabbed</q>. Tuesday Bottrop with Jorg. Stijn: <q>My rib is wrecked but all worth it.</q>",
+  "tl8-t":"The Dodge","tl8-s":"On Christmas morning Pascal finds a camper with a V8 on LPG, 624 euros for eight days. Daan: <q>An American car (badly built) of advanced age.</q> Igor sends a Ford Galaxy. Danny: <q>It's just tin with an engine.</q> The Dodge dies in the chat.",
+  "tl9-t":"The training plan","tl9-s":"Pascal builds an 8-week ski training programme as a web app. Daan: <q>Design is dead as a profession, I see. What are body weight rows?</q> Stijn wants a 6-week version because of a cut between his toes.",
+  "tl10-t":"SnowWorld Landgraaf","tl10-s":"Daan, Danny and Stijn. At 12:00 an hour of private lessons for Danny and Stijn, <q>while Daan laughs at us from a distance</q>. Stijn's trousers fail. New group name: <q>Living on the edge</q>. Tikkies for bitterballen, raclette and 17.95 board hire.",
+  "tl11-t":"It is done","tl11-s":"Daan locks in the Peugeot 5008 at Oscar in Wijchen, 135 euros a head, 2,100 kilometres. Pascal: <q>Pricier and uglier than that Doge I had. But fine.</q> Two days later the group becomes <q>SLB Money Gang</q> and Danny nominates Ski Leraar Bruin part 3 as theme song.",
+  "tl12-t":"Everyone ill","tl12-s":"Pascal throws up overnight (<q>spoiled chipolata</q>), Daan goes home sick, Stijn's kid is ill, Danny has a cold. Daan: <q>Good. Perfect timing.</q> Same day the group hears about the lump in Inge's neck. <q>Keep it between us.</q> Everyone did.",
+  "tl13-t":"\"It says check-out Sunday\"","tl13-s":"Pascal reads the voucher. Danny: <q>Huh. On it.</q> By 10:04 there are two hotel rooms for the last night. Meanwhile Stijn has set up a Groepie, rolled meatballs and set the group name to <q>1 day until Reincarnation</q>. Pascal travels to Nijmegen in advance. Danny at 05:37 the next morning: <q>Damn. Too hyped.</q>",
+  "h-geng":"The <b>gang</b>","p-geng":"Two on skis, three on boards, one on the sofa at home. Daan in August: \"5 knackered boomers trying to get on a ski lift.\"",
+  "m-danny":"Booked everything, including one night too few, and fixed that in twenty minutes. Brought a kilo of coffee. Got lost at 156. Home at 18:22: <q>Wow I'm quite fat.</q>",
+  "m-daan":"Picked up the car and bought Mr Muller out for fifty euros. Sat in the deck chairs. Got the deposit back. <q>Damn it, I should have taken more risks.</q>",
+  "m-igor":"No lessons, forgot the map, went up one more time <q>because too tempting</q>. The Wolthoorn weapon. Fetched the others from the bar. Dumped 130 photos.",
+  "m-pascal":"Own boots, own ski app, own tooth lost on day one, Achilles tendon on day three. Fetched the breakfast eggs on one leg. <q>You lot healed me.</q>",
+  "m-stijn":"Breakfast chef, meatballs, playlist, group names. Stopped feeling his right thigh. Straight from the motorway to the out-of-hours GP. <q>You lot are my hobby.</q>",
+  "m-jorg":"Didn't come, did send a video every day. <q>I am jealous, gents.</q> Danny on the way home: <q>Next year you're coming.</q>",
+  "h-ph":"The <b>pictures</b>","p-ph":"The chat export marks every photo as \"image omitted\". The originals are still on the phones.",
+  "ph-h":"Still to be rescued from the group chat","ph-p":"On Monday evening 9 February Igor and Daan dumped 200 files into the group between them. As soon as they're in the <span class=\"mono\">saalbach-2026/img/</span> folder they show up here.",
+  "ph-c1":"photos · 5–9 Feb","ph-c2":"videos · 5–9 Feb","ph-c3":"from Igor in 6 minutes",
+  "h-q":"For the <b>minutes</b>","p-q":"Lines worth re-reading in 30 years, when we're \"happy placid little men\".",
+  "q1":"It does have to be a bit expensive, lads. Otherwise it's rubbish.","q1c":"Daan · 20 Aug",
+  "q2":"Let's just own that we're people-shy nerds.","q2c":"Daan · 22 Aug",
+  "q3":"Group input makes me very authoritarian.","q3c":"Danny · 22 Aug",
+  "q4":"Now we all have skin in the game and there's no way back.","q4c":"Danny · 5 Sep, after the Tikkie",
+  "q5":"Skiing or boarding is a side issue.","q5c":"Igor · 5 Sep",
+  "q6":"It's just tin with an engine.","q6c":"Danny · 24 Dec, on the Dodge",
+  "q7":"You lot are my hobby.","q7c":"Stijn · 25 Jan",
+  "q8":"Don't be gentle, it's a rental.","q8c":"Daan · 2 Feb",
+  "q9":"This place is so sick.","q9c":"Danny · 5 Feb, 21:27",
+  "q10":"Range of motion 0 but no pain otherwise so it's fine.","q10c":"Pascal · 7 Feb, Achilles tendon",
+  "q11":"Everyone their own journey.","q11c":"Pascal · 7 Feb",
+  "q12":"Please come and get us. I don't even know the way anymore.","q12c":"Danny · 7 Feb, Bauer's Schi-Alm",
+  "q13":"Smelly people vs non-smelly people.","q13c":"Pascal · 8 Feb, room split",
+  "q14":"You lot healed me.","q14c":"Pascal · 10 Feb, 07:59",
+  "q15":"Apart from Pascal's injury this trip was a big success.","q15c":"Danny · 12 Feb",
+  "back":"← Back to the timeline","next":"Next: Sölden 2027 →",
+  "foot":"pengpeng.nl · logbook no. 1 · reconstructed from the group chat · <a href=\"/green-divide-2026/\">Green Divide 2026</a> · <a href=\"/wintersport-2027/\">Sölden 2027</a>"
+}};
+document.querySelectorAll('[data-i18n]').forEach(function(el){ I18N.nl[el.dataset.i18n]=el.innerHTML; });
+function setLang(l){
+  var d=I18N[l]||I18N.nl;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.dataset.i18n; if(d[k]!=null) el.innerHTML=d[k]; });
+  document.documentElement.lang=l;
+  document.getElementById('btn-nl').classList.toggle('active',l==='nl');
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  try{localStorage.setItem('pp-lang',l);}catch(e){}
+}
+try{ var saved=localStorage.getItem('pp-lang'); if(saved==='en') setLang('en'); }catch(e){}
+</script>
+</body>
+</html>
