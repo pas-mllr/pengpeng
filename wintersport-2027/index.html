@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wintersport 2027 — Peng Peng Geng</title>
-<meta name="description" content="Peng Peng Geng gaat op wintersport in 2027. Geboekt — details volgen.">
+<title>Sölden 2027 — Peng Peng Geng</title>
+<meta name="description" content="Wintersport 2027 van de Peng Peng Geng: Sölden, Ötztal. Donderdag 4 t/m maandag 8 februari 2027. Huisje met sauna geboekt.">
+<meta property="og:title" content="Sölden 2027 — Peng Peng Geng">
+<meta property="og:description" content="Hoger, kouder, sneeuwzekerder. 4–8 februari 2027.">
 <meta name="theme-color" content="#0f0e0c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,31 +14,40 @@
 <style>
   :root{
     --bg:#0f0e0c;--bg2:#191815;--card:#1c1b18;--line:#2d2b26;
-    --ink:#f4efe6;--ink-soft:#a8a295;--peng:#ff4a1c;--gold:#e2b64a;--ice:#8fd3ff;
+    --ink:#f4efe6;--ink-soft:#a8a295;--peng:#ff4a1c;--gold:#e2b64a;--ice:#8fd3ff;--ice-deep:#3fa9e6;
+    --radius:20px;
     --display:"Bebas Neue","Oswald","Arial Narrow",Impact,"Helvetica Neue",Arial,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{background:var(--bg)}
+  html{scroll-behavior:smooth;background:var(--bg)}
   body{
-    background:var(--bg);color:var(--ink);min-height:100svh;display:flex;flex-direction:column;
+    background:var(--bg);color:var(--ink);
     font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     line-height:1.55;-webkit-font-smoothing:antialiased;padding:0 16px;overflow-x:hidden;
   }
   a{color:inherit}
   .wrap{max-width:1100px;margin:0 auto;width:100%}
-  header.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0}
+  .display{font-family:var(--display);font-weight:400;letter-spacing:.02em;line-height:.9;text-transform:uppercase}
+
+  /* header */
+  header.top{
+    position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:14px 16px;margin:0 -16px;background:linear-gradient(var(--bg) 70%,rgba(15,14,12,0));
+  }
   .brand{font-family:var(--display);font-size:1.5rem;letter-spacing:.06em;text-decoration:none;line-height:1;white-space:nowrap}
   .brand b{color:var(--peng);font-weight:400}
+  nav.main{display:none;gap:20px;font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+  nav.main a{text-decoration:none}
+  nav.main a:hover{color:var(--ink)}
+  @media(min-width:820px){nav.main{display:flex}}
   .langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:99px;padding:3px;background:var(--bg2)}
   .langs button{border:0;background:transparent;font:inherit;font-size:.78rem;font-weight:700;padding:4px 11px;border-radius:99px;cursor:pointer;color:var(--ink-soft)}
   .langs button.active{background:var(--ink);color:var(--bg)}
 
-  main{flex:1;display:flex;align-items:center}
-  .hero{
-    position:relative;width:100%;padding:56px 0 40px;
-  }
+  /* hero */
+  .hero{position:relative;padding:34px 0 36px;overflow:hidden}
   .snow{
-    position:absolute;inset:-40px -16px 0;pointer-events:none;overflow:hidden;
+    position:absolute;inset:-60px -16px 0;pointer-events:none;
     background:
       radial-gradient(2px 2px at 12% 18%,rgba(244,239,230,.55),transparent 60%),
       radial-gradient(2px 2px at 30% 62%,rgba(244,239,230,.45),transparent 60%),
@@ -45,28 +56,130 @@
       radial-gradient(2px 2px at 84% 22%,rgba(244,239,230,.4),transparent 60%),
       radial-gradient(3px 3px at 92% 58%,rgba(244,239,230,.3),transparent 60%),
       radial-gradient(2px 2px at 40% 88%,rgba(244,239,230,.4),transparent 60%),
-      radial-gradient(600px 300px at 50% 0%,rgba(143,211,255,.10),transparent 70%);
+      radial-gradient(900px 420px at 70% 0%,rgba(143,211,255,.13),transparent 70%);
   }
+  .hero > *{position:relative}
   .kicker{
-    display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
     border:1px solid var(--gold);color:var(--gold);padding:6px 12px;border-radius:99px;margin-bottom:18px;
   }
-  h1{font-family:var(--display);font-weight:400;font-size:clamp(4.6rem,19vw,14rem);line-height:.82;letter-spacing:.02em;text-transform:uppercase;margin:0 0 20px -.03em}
-  h1 b{color:var(--ice);font-weight:400}
-  .lead{font-size:clamp(1.05rem,2.4vw,1.4rem);max-width:40ch;text-wrap:balance}
+  .kicker i{width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block;box-shadow:0 0 0 4px rgba(226,182,74,.22)}
+  h1.display{font-size:clamp(5rem,20vw,15rem);line-height:.8;margin:0 0 18px -.03em}
+  h1.display b{color:var(--ice);font-weight:400}
+  .lead{font-size:clamp(1.05rem,2.3vw,1.4rem);max-width:44ch;text-wrap:balance}
   .lead em{font-style:normal;color:var(--ink-soft)}
-  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:28px 0 30px;max-width:700px}
+
+  .countdown{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 8px}
+  .cd{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 10px 10px;min-width:74px;text-align:center;flex:1 1 74px;max-width:120px}
+  .cd b{display:block;font-family:var(--display);font-size:2.4rem;line-height:1;letter-spacing:.03em;font-variant-numeric:tabular-nums}
+  .cd span{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+  .cd-note{font-size:.82rem;color:var(--ink-soft);margin-bottom:22px}
+
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;max-width:900px}
   .fact{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px}
-  .fact b{display:block;font-family:var(--display);font-size:1.9rem;line-height:1;letter-spacing:.03em}
-  .fact span{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+  .fact b{display:block;font-family:var(--display);font-size:1.7rem;line-height:1;letter-spacing:.03em}
+  .fact b.ok{color:var(--ice)}
+  .fact span{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+  .fact small{display:block;color:var(--ink-soft);font-size:.8rem;margin-top:4px;line-height:1.35}
+
+  /* sections */
+  section{padding:58px 0 8px}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+  h2.display{font-size:clamp(2.8rem,8.5vw,5rem)}
+  h2.display b{color:var(--ice);font-weight:400}
+  .sec-head p{color:var(--ink-soft);max-width:46ch}
+  p.body{max-width:66ch;color:var(--ink);margin-bottom:14px}
+  p.body em{font-style:normal;color:var(--ink-soft)}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:0 0 22px}
+  .stat{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:14px 12px 12px;text-align:center}
+  .stat b{display:block;font-family:var(--display);font-size:2rem;line-height:1;letter-spacing:.03em;font-variant-numeric:tabular-nums}
+  .stat span{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+  .pistes{display:flex;height:12px;border-radius:99px;overflow:hidden;border:1px solid var(--line);margin:4px 0 8px;max-width:640px}
+  .pistes i{display:block;height:100%}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--ink-soft);margin-bottom:14px}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 16px}
+  .card h3{font-family:var(--display);font-size:1.9rem;line-height:1;letter-spacing:.03em;text-transform:uppercase;margin-bottom:6px}
+  .card h3 small{font-family:ui-sans-serif,system-ui,sans-serif;font-size:.68rem;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase;font-weight:700;display:block;margin-bottom:6px}
+  .card p{color:var(--ink-soft);font-size:.92rem}
+  .card p strong{color:var(--ink);font-weight:600}
+  .card .check{color:var(--ice);font-weight:800;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;margin-top:10px;display:block}
+  .quote{border-left:3px solid var(--ice);padding:6px 14px;color:var(--ink-soft);font-size:.9rem;margin-top:10px}
+  .quote b{color:var(--ink);font-weight:600}
+
+  /* huisje */
+  .house{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:760px){.house{grid-template-columns:1.1fr .9fr}}
+  .house .big{background:linear-gradient(160deg,#1c1b18,#15171c);border:1px solid var(--line);border-radius:var(--radius);padding:22px 20px 20px;position:relative;overflow:hidden}
+  .house .big::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(143,211,255,.18),transparent 70%)}
+  .house .big h3{font-family:var(--display);font-size:clamp(2.4rem,6vw,3.6rem);line-height:.95;letter-spacing:.03em;text-transform:uppercase;margin-bottom:10px}
+  .house .big h3 b{color:var(--ice);font-weight:400}
+  .house .big p{color:var(--ink-soft);max-width:52ch}
+  .house .big p + p{margin-top:10px}
+  .spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-top:18px}
+  .spec div{background:rgba(15,14,12,.5);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+  .spec b{display:block;font-family:var(--display);font-size:1.4rem;line-height:1;letter-spacing:.03em}
+  .spec span{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+  .house .side{display:flex;flex-direction:column;gap:12px}
+
+  /* lists */
+  ol.lessons{list-style:none;counter-reset:l;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+  ol.lessons li{counter-increment:l;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px 14px 56px;position:relative;font-size:.93rem;color:var(--ink-soft)}
+  ol.lessons li::before{content:counter(l,decimal-leading-zero);position:absolute;left:16px;top:12px;font-family:var(--display);font-size:1.7rem;color:var(--ice);letter-spacing:.03em}
+  ol.lessons li strong{display:block;color:var(--ink);font-weight:700;margin-bottom:2px}
+
+  ul.todo{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px}
+  ul.todo li{display:flex;gap:12px;align-items:flex-start;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:.92rem}
+  ul.todo li i{flex:0 0 18px;width:18px;height:18px;border-radius:5px;border:2px solid var(--ink-soft);margin-top:3px}
+  ul.todo li.done i{background:var(--ice);border-color:var(--ice)}
+  ul.todo li.done{color:var(--ink-soft)}
+  ul.todo li.done b{text-decoration:line-through;text-decoration-color:rgba(244,239,230,.4)}
+  ul.todo li b{display:block;color:var(--ink);font-weight:700}
+  ul.todo li span{color:var(--ink-soft)}
+  ul.todo li em{font-style:normal;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:800;margin-left:6px}
+
+  /* timeline */
+  .tl{position:relative;padding-left:24px;max-width:760px}
+  .tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
+  .tl .ev{position:relative;margin-bottom:18px}
+  .tl .ev::before{content:"";position:absolute;left:-24px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--ink-soft)}
+  .tl .ev.hi::before{background:var(--ice);border-color:var(--ice);box-shadow:0 0 0 5px rgba(143,211,255,.18)}
+  .tl .ev.next::before{border-style:dashed}
+  .tl .d{font-family:var(--display);font-size:1.25rem;letter-spacing:.06em;color:var(--ice);line-height:1}
+  .tl .ev.next .d{color:var(--ink-soft)}
+  .tl .t{color:var(--ink);font-weight:600}
+  .tl .s{color:var(--ink-soft);font-size:.9rem}
+
+  /* roster */
+  .roster{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+  .member{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 16px 12px;font-family:var(--display);font-size:clamp(1.9rem,4.5vw,2.6rem);line-height:.95;letter-spacing:.03em;text-transform:uppercase;position:relative;overflow:hidden}
+  .member small{display:block;margin-top:8px;font-family:ui-sans-serif,system-ui,sans-serif;font-size:.7rem;letter-spacing:.1em;color:var(--ink-soft);text-transform:uppercase;font-weight:700}
+  .member .disc{position:absolute;right:12px;top:10px;font-size:1.3rem}
+  .member.reserve{border-style:dashed;background:transparent;color:var(--ink-soft)}
+  .note{color:var(--ink-soft);font-size:.9rem;margin-top:14px;max-width:70ch}
+
   .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:.92rem;padding:12px 18px;border-radius:99px;border:1px solid rgba(244,239,230,.25);background:var(--bg2)}
   .btn:hover{background:rgba(244,239,230,.12)}
-  footer{padding:24px 0 34px;border-top:1px solid var(--line);color:var(--ink-soft);font-size:.86rem;margin:0 -16px;padding-left:16px;padding-right:16px}
+  footer{margin:64px -16px 0;padding:26px 16px 40px;border-top:1px solid var(--line);color:var(--ink-soft);font-size:.86rem}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center}
+  footer .big{font-family:var(--display);font-size:1.4rem;letter-spacing:.08em;color:var(--ink);text-decoration:none}
+  footer .big b{color:var(--peng);font-weight:400}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 <header class="top wrap">
   <a class="brand" href="/">← PENG<b>PENG</b>GENG</a>
+  <nav class="main">
+    <a href="#gebied" data-i18n="nav-area">Het gebied</a>
+    <a href="#huisje" data-i18n="nav-house">Het huisje</a>
+    <a href="#lessen" data-i18n="nav-lessons">Lessen van Saalbach</a>
+    <a href="#todo" data-i18n="nav-todo">Te regelen</a>
+    <a href="#geng" data-i18n="nav-geng">De geng</a>
+  </nav>
   <div class="langs" role="group" aria-label="Taal / Language">
     <button id="btn-nl" class="active" onclick="setLang('nl')">NL</button>
     <button id="btn-en" onclick="setLang('en')">EN</button>
@@ -74,32 +187,284 @@
 </header>
 
 <main class="wrap">
-  <section class="hero">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-top:34px">
     <div class="snow" aria-hidden="true"></div>
-    <div class="kicker" data-i18n="kicker">Geboekt · Peng Peng Geng trip #2</div>
-    <h1>Winter<br><b>sport</b><br>2027</h1>
-    <p class="lead" data-i18n="lead">Volgende halte: sneeuw. <em>Bestemming, data, huisje en wie er naast wie slaapt volgen zodra de groepsapp het eens is.</em></p>
-    <div class="facts">
-      <div class="fact"><b data-i18n="f1-b">Geboekt</b><span data-i18n="f1-s">Status</span></div>
-      <div class="fact"><b data-i18n="f2-b">Volgt</b><span data-i18n="f2-s">Bestemming</span></div>
-      <div class="fact"><b data-i18n="f3-b">Volgt</b><span data-i18n="f3-s">Data</span></div>
-      <div class="fact"><b>5</b><span data-i18n="f4-s">Man, als het goed is</span></div>
+    <div class="kicker"><i></i><span data-i18n="kicker">Geboekt · do 4 – ma 8 februari 2027</span></div>
+    <h1 class="display">Söl<b>den</b><br>2027</h1>
+    <p class="lead" data-i18n="lead">Hoger, kouder, sneeuwzekerder. Na Saalbach gaat de geng de Ötztal in: twee gletsjers, 144 km piste en een huisje met sauna. <em>Deze keer met alle pezen intact.</em></p>
+
+    <div class="countdown" id="countdown" aria-live="polite">
+      <div class="cd"><b id="cd-d">–</b><span data-i18n="cd-days">dagen</span></div>
+      <div class="cd"><b id="cd-h">–</b><span data-i18n="cd-hours">uur</span></div>
+      <div class="cd"><b id="cd-m">–</b><span data-i18n="cd-min">min</span></div>
+      <div class="cd"><b id="cd-s">–</b><span data-i18n="cd-sec">sec</span></div>
     </div>
-    <a class="btn" href="/" data-i18n="back">← Terug naar de tijdlijn</a>
+    <p class="cd-note" id="cd-note" data-i18n="cd-note">tot vertrek op donderdag 4 februari 2027</p>
+
+    <div class="facts">
+      <div class="fact"><b>Sölden</b><span data-i18n="f1-s">Bestemming</span><small data-i18n="f1-n">Ötztal, Tirol · 1.350–3.250 m</small></div>
+      <div class="fact"><b>4–8 feb</b><span data-i18n="f2-s">Data</span><small data-i18n="f2-n">Donderdag t/m maandag · 4 nachten</small></div>
+      <div class="fact"><b class="ok" data-i18n="f3-b">Geboekt ✓</b><span data-i18n="f3-s">Huisje</span><small data-i18n="f3-n">Chalet met sauna · gratis annuleren t/m 5 jan</small></div>
+      <div class="fact"><b>5</b><span data-i18n="f4-s">Man</span><small data-i18n="f4-n">Huisje slaapt 6 · mystery guest welkom</small></div>
+    </div>
   </section>
+
+  <!-- GEBIED -->
+  <section id="gebied">
+    <div class="sec-head">
+      <h2 class="display" data-i18n="h-area">Het <b>gebied</b></h2>
+      <p data-i18n="p-area">Sölden kwam uit Danny's wintersport.nl-filter: hoog, niet vlak, medium tot groot en relatief veel blauw. Gurgl was de andere kandidaat; Pascal koos Sölden.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>144</b><span data-i18n="s1">km piste</span></div>
+      <div class="stat"><b>70</b><span data-i18n="s2">km blauw</span></div>
+      <div class="stat"><b>3.250</b><span data-i18n="s3">m hoogste lift</span></div>
+      <div class="stat"><b>2</b><span data-i18n="s4">gletsjers</span></div>
+      <div class="stat"><b>34</b><span data-i18n="s5">liften</span></div>
+      <div class="stat"><b>1</b><span data-i18n="s6">snowpark (Area 47)</span></div>
+    </div>
+    <div class="pistes" aria-hidden="true"><i style="width:48%;background:#3fa9e6"></i><i style="width:32%;background:#e04a3a"></i><i style="width:20%;background:#f4efe6"></i></div>
+    <div class="legend"><span><i style="background:#3fa9e6"></i>70 km <span data-i18n="lg-b">blauw</span> (48%)</span><span><i style="background:#e04a3a"></i>45 km <span data-i18n="lg-r">rood</span> (32%)</span><span><i style="background:#f4efe6"></i>29 km <span data-i18n="lg-z">zwart</span> (20%)</span></div>
+    <p class="body" data-i18n="area-1">Twee gletsjers (Rettenbach en Tiefenbach), drie toppen boven de 3.000 meter en een dal op 1.350 meter. Wie boven de Giggijoch blijft, zit de hele dag op 2.000+ — precies wat Igor wilde na de papsneeuw bij de dorpsliften van Saalbach. Het snowpark Area 47 ligt bij de Giggijoch: Stijns funpark, al ligt er mos.</p>
+    <p class="body" data-i18n="area-2"><em>Op de Gaislachkogl (3.058 m) zit 007 Elements, het James Bond-museum. Stijn is er al geweest, dus dat slaan we over. Zegt Stijn.</em></p>
+  </section>
+
+  <!-- EISENPAKKET -->
+  <section id="eisen">
+    <div class="sec-head">
+      <h2 class="display" data-i18n="h-req">Het <b>eisenpakket</b></h2>
+      <p data-i18n="p-req">Iedereen had één eis. Sölden vinkt ze allemaal af.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><h3><small data-i18n="r-igor-s">Igor</small><span data-i18n="r-igor-h">Hoger</span></h3><p data-i18n="r-igor-p">Betere sneeuw. Bij de liften in het dorp was het in Saalbach snel pap. Sölden: gletsjers tot 3.250 m.</p><span class="check">✓ <span data-i18n="r-igor-c">3.250 m</span></span></div>
+      <div class="card"><h3><small data-i18n="r-stijn-s">Stijn</small><span data-i18n="r-stijn-h">Funpark</span></h3><p data-i18n="r-stijn-p">"Ik wil gewoon een funpark. Al ligt er mos." Snowpark Area 47 bij de Giggijoch, en dit keer níet op de eerste dag.</p><span class="check">✓ Area 47</span></div>
+      <div class="card"><h3><small data-i18n="r-daan-s">Daan</small><span data-i18n="r-daan-h">Breed &amp; blauw</span></h3><p data-i18n="r-daan-p">Brede blauwe pistes (fijn voor boarden), niet te ver rijden, en "goed duur". 70 km blauw, 840 km, en ja: het is duur.</p><span class="check">✓ 70 km <span data-i18n="r-daan-c">blauw</span></span></div>
+      <div class="card"><h3><small data-i18n="r-danny-s">Danny</small><span data-i18n="r-danny-h">Alles best</span></h3><p data-i18n="r-danny-p">"Zolang jullie het maar eens worden." Leverde ondertussen wel het filter dat Sölden opleverde: hoog, niet vlak, veel blauw.</p><span class="check">✓ <span data-i18n="r-danny-c">filter</span></span></div>
+      <div class="card"><h3><small data-i18n="r-pascal-s">Pascal</small><span data-i18n="r-pascal-h">Goed skiën</span></h3><p data-i18n="r-pascal-p">"Als het maar goed skiën is en geen methadonkliniek." Koos Sölden, boekte het huisje, houdt dit jaar alle pezen bij zich.</p><span class="check">✓ <span data-i18n="r-pascal-c">geboekt</span></span></div>
+    </div>
+  </section>
+
+  <!-- HUISJE -->
+  <section id="huisje">
+    <div class="sec-head">
+      <h2 class="display" data-i18n="h-house">Het <b>huisje</b></h2>
+      <p data-i18n="p-house">Op 11 juli geboekt door Pascal, nog voordat de groepsapp klaar was met stemmen. Danny: "Don't ask for permission, ask for forgiveness."</p>
+    </div>
+    <div class="house">
+      <div class="big">
+        <h3 data-i18n="hs-h">Chalet in Sölden, <b>met sauna</b></h3>
+        <p data-i18n="hs-1">Vier echte bedden (twee queensize, twee eenpersoons) plus twee grote banken op de verdieping: iedereen een bed, geen slaapbank-loterij zoals in Saalbach. Sauna erbij — "iedere dag aan na het skiën", aldus Daan.</p>
+        <p data-i18n="hs-2">De skibus stopt op 150 meter en brengt je naar de gondels; wie naar het grote gebied wil, zit dus even in de bus. Pascal: "Meestal wel gezellig op de terugweg, zingen in de bus in ski-gear." Parkeren voor de deur. Het adres staat gepind in de groepsapp.</p>
+        <div class="spec">
+          <div><b>4 + 2</b><span data-i18n="sp1">bedden + banken</span></div>
+          <div><b>€3.594</b><span data-i18n="sp2">totaal · 4 nachten</span></div>
+          <div><b>≈ €719</b><span data-i18n="sp3">p.p. bij 5 man</span></div>
+          <div><b>150 m</b><span data-i18n="sp4">naar de skibus</span></div>
+          <div><b>5 jan</b><span data-i18n="sp5">gratis annuleren t/m</span></div>
+          <div><b data-i18n="sp6-b">Glasvezel</b><span data-i18n="sp6">wifi · Danny: "Abort."</span></div>
+        </div>
+      </div>
+      <div class="side">
+        <div class="card"><h3><small data-i18n="hc1-s">Het alternatief</small><span data-i18n="hc1-h">€2.167, skatepark voor de deur</span></h3><p data-i18n="hc1-p">Goedkoper en vlak bij de lift, maar te weinig bedden. Pascal: "Wat mij betreft die cottage. Meer kamers en iedereen een bed." Danny stemde voor; Daan: "Mega romantisch 🥰. Koop het."</p></div>
+        <div class="card"><h3><small data-i18n="hc2-s">Staat het er nog?</small><span data-i18n="hc2-h">Ja</span></h3><p data-i18n="hc2-p">Eind juli kwamen er beelden uit de Ötztal voorbij. Daan: "Staat ons huisje er nog?" Het lag 16 km verderop; Pascal stuurde de host een berichtje. Antwoord: alles in orde. "Nice work detective."</p></div>
+        <div class="card"><h3><small data-i18n="hc3-s">Buurman</small><span data-i18n="hc3-h">Rotes Kreuz Ortsstelle Sölden</span></h3><p data-i18n="hc3-p">Zit om de hoek. Stijn: "Heb jij daar zeker rekening mee gehouden, Pascal?" Pascal: "Haha funny."</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REIS -->
+  <section id="reis">
+    <div class="sec-head">
+      <h2 class="display" data-i18n="h-trip">De weg <b>ernaartoe</b></h2>
+      <p data-i18n="p-trip">840 kilometer. "Zes uur met Daan achter het stuur" (Pascal) of "negen uur" (Stijn). De waarheid ligt ergens op de A3.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><h3><small data-i18n="t1-s">Vervoer</small><span data-i18n="t1-h">Twee eigen auto's</span></h3><p data-i18n="t1-p">Daan rijdt; Stijn zet winterbanden onder de Renault. Scheelt centjes én "dan hoeven we niet in een Peugeot" — de huurauto van 2026 wordt niet gemist. Igor: "Auto was prima, meeste zet mee. En dit jaar kan ik vast ook rijden."</p></div>
+      <div class="card"><h3><small data-i18n="t2-s">Vertrek</small><span data-i18n="t2-h">Do 4 feb, of de nacht ervoor</span></h3><p data-i18n="t2-p">Stijn overweegt in de nacht van 3 op 4 februari te vertrekken met wie ook eerder kan: "Ik heb 14 uur met jankende kinderen in de file in Frankrijk gereden, dus dit is peanuts." Pascal: "Akkoord."</p></div>
+      <div class="card"><h3><small data-i18n="t3-s">Aankomst</small><span data-i18n="t3-h">Halve dag shredden?</span></h3><p data-i18n="t3-p">"Als we vroeg vertrekken kunnen we nog een halve dag shredden. Maar dat is een utopie." — Stijn, realist.</p></div>
+      <div class="card"><h3><small data-i18n="t4-s">Terug</small><span data-i18n="t4-h">Ma 8 feb</span></h3><p data-i18n="t4-p">Vier nachten, drie volle skidagen. Wie een tand of pees kwijtraakt, mag voorin.</p></div>
+    </div>
+  </section>
+
+  <!-- LESSEN -->
+  <section id="lessen">
+    <div class="sec-head">
+      <h2 class="display" data-i18n="h-lessons">Lessen van <b>Saalbach</b></h2>
+      <p data-i18n="p-lessons">Wintersport 2026 was een topweek. Dit nemen we mee.</p>
+    </div>
+    <ol class="lessons">
+      <li data-i18n="l1"><strong>Boek het aantal nachten dat je ook echt blijft.</strong> Het appartement stond voor drie nachten, de trip duurde vier. Laatste nacht: wellnesshotel met zwembad. Danny: "Ik maak die fout niet nog eens." Stijn: "Zelfs met misverstanden uitmuntend opgelost."</li>
+      <li data-i18n="l2"><strong>Alle snurkers in de woonkamer.</strong> Daan ronkte al voordat hij sliep; Igor wilde in de badkamer slapen. Stijn is verrassend genoeg een hele stille slaper.</li>
+      <li data-i18n="l3"><strong>Eerste dag niet tot het gaatje.</strong> "En meer koffiepauzes." — Stijn, na een week spierpijn en een stuitje dat pas in juni geheeld was.</li>
+      <li data-i18n="l4"><strong>Materiaal online huren.</strong> Ter plekke is duurder, ontdekte Igor op dag één. Dit jaar vooraf regelen.</li>
+      <li data-i18n="l5"><strong>Hoger is beter.</strong> Bij de dorpsliften werd het snel pap. Vandaar: gletsjers.</li>
+      <li data-i18n="l6"><strong>Stijn maakt het ontbijt.</strong> Zijn brekkie was Daans top-2 moment van de hele vakantie. "Gewoon gezellie." Stijn is nu officieel chef; Daan doet de eitjes.</li>
+      <li data-i18n="l7"><strong>Zwembad op de laatste dag: zalig.</strong> "Met die vermoeide beentjes het zwembad in." Het huisje heeft een sauna, en Stijn neemt een zwembroek mee.</li>
+      <li data-i18n="l8"><strong>Tand en achillespees thuislaten.</strong> Pascal verloor op dag één een tand (tandarts op 7 minuten lopen) en scheurde op dag drie zijn achillespees — en skiede door. "Ik zal dit keer ook niet meteen m'n eigen tand verliezen of m'n achillespees doorscheuren."</li>
+      <li data-i18n="l9"><strong>Live locatie delen.</strong> "Pascal is kwijt." "Ik zit achter jou." Iedereen z'n eigen journey, maar wel met locatie aan.</li>
+      <li data-i18n="l10"><strong>Geen laptop mee.</strong> Stijn tegen Pascal: "Zal fijn zijn dat je je gewoon bij de groep houdt. En je mag ook geen laptop mee." Glasvezel-wifi of niet.</li>
+    </ol>
+  </section>
+
+  <!-- TODO -->
+  <section id="todo">
+    <div class="sec-head">
+      <h2 class="display" data-i18n="h-todo">Nog te <b>regelen</b></h2>
+      <p data-i18n="p-todo">Het grote werk is gedaan. Dit is de rest, in volgorde van paniek.</p>
+    </div>
+    <ul class="todo">
+      <li class="done"><i></i><div><b data-i18n="td1-b">Data prikken</b><span data-i18n="td1-s">Do 4 – ma 8 feb 2027. Danny heeft Inge op de hoogte gebracht.</span></div></li>
+      <li class="done"><i></i><div><b data-i18n="td2-b">Gebied kiezen</b><span data-i18n="td2-s">Ischgl → Kaprun → Serfaus → Sölden. Igor wilde hoger, Igor kreeg hoger.</span></div></li>
+      <li class="done"><i></i><div><b data-i18n="td3-b">Huisje boeken</b><span data-i18n="td3-s">Pascal, 11 juli. Gratis annuleren t/m 5 januari.</span></div></li>
+      <li><i></i><div><b data-i18n="td4-b">Skipassen</b><span data-i18n="td4-s">Drie of vier dagen Ötztal. Vorig jaar zat de pas in het pakket; nu los.</span></div></li>
+      <li><i></i><div><b data-i18n="td5-b">Materiaal huren</b><span data-i18n="td5-s">Online, vooraf — les 4. Ski: Danny, Pascal. Board: Daan, Stijn. Igor: hybride, beslist ter plekke.</span></div></li>
+      <li><i></i><div><b data-i18n="td6-b">Auto's &amp; winterbanden</b><span data-i18n="td6-s">Daan + Stijns Renault. Sneeuwkettingen? Igor: "Ketting en zijn wel handig ja."</span></div></li>
+      <li><i></i><div><b data-i18n="td7-b">Slaapindeling</b><span data-i18n="td7-s">Snurkers in de woonkamer. Wie dat zijn is bekend.</span></div></li>
+      <li><i></i><div><b data-i18n="td8-b">Boodschappen &amp; brekkie</b><span data-i18n="td8-s">Full english breakfast op dag één (Stijn). Eieren, spek, dikke sloot koffie. Zaanse mayo in de tube.</span></div></li>
+      <li><i></i><div><b data-i18n="td9-b">Oefendagen</b><span data-i18n="td9-s">Daans winterschema: Landgraaf (inkomen) → Winterberg (2 dagen) → Bottrop (oefenen en pils) → Oostenrijk.</span><em data-i18n="td9-e">Voorseizoen</em></div></li>
+      <li><i></i><div><b data-i18n="td10-b">Spaarpot</b><span data-i18n="td10-s">Daan: €100 per maand automatisch, "dan is je vakantie gratis". Danny: €400 plus 1,4% rente die compoundt. Stijn zette €500 vakantiegeld apart; een week later stond er een motor op de foto.</span><em data-i18n="td10-e">Lopend</em></div></li>
+      <li><i></i><div><b data-i18n="td11-b">Aftermovie</b><span data-i18n="td11-s">Stijn: "Ik ga helemaal niks filmen. Alleen shredden." Daan: "Akkoord." Dus: Danny filmt.</span></div></li>
+    </ul>
+  </section>
+
+  <!-- PLANNING -->
+  <section id="planning">
+    <div class="sec-head">
+      <h2 class="display" data-i18n="h-plan">Hoe het <b>zover kwam</b></h2>
+      <p data-i18n="p-plan">Van "mosterd na de maaltijd" tot een geboekt huisje in vijf maanden.</p>
+    </div>
+    <div class="tl">
+      <div class="ev"><div class="d">19 feb 2026</div><div class="t" data-i18n="e1-t">Tien dagen na Saalbach: "Wintersport 2027 planning"</div><div class="s" data-i18n="e1-s">Stijn hernoemt de groep. Daan: "Laten we volgend jaar gewoon weer naar Saalbach." Igor: "Qua sneeuwzekerheid is hoger beter." Stijn: "Ik wil gewoon een funpark."</div></div>
+      <div class="ev hi"><div class="d">21 mrt 2026</div><div class="t" data-i18n="e2-t">Data vast: donderdag 4 t/m maandag 8 februari</div><div class="s" data-i18n="e2-s">Danny: "Ik heb Inge op de hoogte gebracht van 4 tot 8 feb 2027." Pascal, met een oog op vorig jaar: "Wel de dagen even checken haha."</div></div>
+      <div class="ev"><div class="d">9 mei 2026</div><div class="t" data-i18n="e3-t">Het spaarplan</div><div class="s" data-i18n="e3-s">Daan: "Hebben jullie al een automatische overboeking van 100,- pm ingesteld? Dan is je vakantie gratis." Stijn wilde zijn vakantiegeld in ETH zetten. Daan: "Nooooo. Pls."</div></div>
+      <div class="ev"><div class="d">5–9 jul 2026</div><div class="t" data-i18n="e4-t">Gebiedskeuze</div><div class="s" data-i18n="e4-s">Ischgl, Kaprun en Serfaus passeren. Danny's filter (hoog, niet vlak, veel blauw): "Sölden of Gurgl dus." Stijn: "Gurgl klinkt al als gorgelen, perfect." Pascal: "Sölden."</div></div>
+      <div class="ev hi"><div class="d">11 jul 2026</div><div class="t" data-i18n="e5-t">Huisje geboekt</div><div class="s" data-i18n="e5-s">Pascal: "Heb alvast geboekt. Kan gratis annuleren tot 5 januari." Daan: "Ik ben trots op je." Danny: "Vanaf oktober mag je dit van mij roepen."</div></div>
+      <div class="ev"><div class="d">31 jul 2026</div><div class="t" data-i18n="e6-t">Huisje staat er nog</div><div class="s" data-i18n="e6-s">Gecheckt bij de host na beelden uit de Ötztal. "Nice work detective."</div></div>
+      <div class="ev"><div class="d">24 aug 2026</div><div class="t" data-i18n="e7-t">Vertrekplan</div><div class="s" data-i18n="e7-s">Stijn oppert nachtrit op 3 februari. Huisje is voor zes: "Zou op vijf rekenen, maar mooi als er nog iemand wil." — Pascal</div></div>
+      <div class="ev next"><div class="d">5 jan 2027</div><div class="t" data-i18n="e8-t">Point of no return</div><div class="s" data-i18n="e8-s">Laatste dag gratis annuleren. Daarna: skin in the game.</div></div>
+      <div class="ev next"><div class="d">4 feb 2027</div><div class="t" data-i18n="e9-t">Vertrek</div><div class="s" data-i18n="e9-s">Pilgrimage into the Abyss, deel twee.</div></div>
+    </div>
+  </section>
+
+  <!-- GENG -->
+  <section id="geng">
+    <div class="sec-head">
+      <h2 class="display" data-i18n="h-geng">De <b>geng</b></h2>
+      <p data-i18n="p-geng">Vijf vaste man, een huisje voor zes, en een reservebank.</p>
+    </div>
+    <div class="roster">
+      <div class="member">Danny<span class="disc" title="ski">⛷️</span><small data-i18n="m-danny">Ski · boekte 2026, filmt 2027</small></div>
+      <div class="member">Daan<span class="disc" title="snowboard">🏂</span><small data-i18n="m-daan">Board · rijdt · doet de eitjes</small></div>
+      <div class="member">Igor<span class="disc" title="hybride">⛷️🏂</span><small data-i18n="m-igor">Hybride · wilde hoger</small></div>
+      <div class="member">Pascal<span class="disc" title="ski">⛷️</span><small data-i18n="m-pascal">Ski · boekte het huisje · pezen intact</small></div>
+      <div class="member">Stijn<span class="disc" title="snowboard">🏂</span><small data-i18n="m-stijn">Board · chef · funpark, niet op dag één</small></div>
+      <div class="member reserve">Jorg<small data-i18n="m-jorg">Mystery guest #6 · kijkt hoe de dagen vallen</small></div>
+      <div class="member reserve">Roel<small data-i18n="m-roel">Kon niet in 2027 · "In 2028 moet die mee"</small></div>
+    </div>
+    <p class="note" data-i18n="geng-note">Thomas houdt van 35 graden en is dus onwaarschijnlijk, maar de slee staat klaar.</p>
+  </section>
+
+  <p style="margin-top:40px"><a class="btn" href="/" data-i18n="back">← Terug naar de tijdlijn</a></p>
 </main>
 
 <footer>
-  <div class="wrap" data-i18n="foot">pengpeng.nl · deze pagina groeit mee zodra er nieuws is in de groepsapp.</div>
+  <div class="wrap">
+    <a class="big" href="/">PENG<b>PENG</b>GENG</a>
+    <span data-i18n="foot">pengpeng.nl · deze pagina groeit mee met de groepsapp · <a href="/green-divide-2026/">Green Divide 2026</a></span>
+  </div>
 </footer>
 
 <script>
+// Countdown to departure: Thursday 4 February 2027, 06:00 Amsterdam time (CET = UTC+1).
+(function(){
+  var T=Date.parse('2027-02-04T06:00:00+01:00');
+  var el={d:document.getElementById('cd-d'),h:document.getElementById('cd-h'),m:document.getElementById('cd-m'),s:document.getElementById('cd-s')};
+  var pad=function(n){return (n<10?'0':'')+n;};
+  function tick(){
+    var diff=T-Date.now();
+    if(diff<=0){ el.d.textContent='0'; el.h.textContent='00'; el.m.textContent='00'; el.s.textContent='00'; document.getElementById('cd-note').textContent=(document.documentElement.lang==='en')?'Departure day. Peng peng.':'Vertrekdag. Peng peng.'; return; }
+    var s=Math.floor(diff/1000);
+    el.d.textContent=Math.floor(s/86400);
+    el.h.textContent=pad(Math.floor(s%86400/3600));
+    el.m.textContent=pad(Math.floor(s%3600/60));
+    el.s.textContent=pad(s%60);
+  }
+  tick(); setInterval(tick,1000);
+})();
+
+// i18n — Dutch is captured from the markup, English lives here.
 var I18N={nl:{},en:{
-  "kicker":"Booked · Peng Peng Geng trip #2",
-  "lead":"Next stop: snow. <em>Destination, dates, the cabin and who sleeps next to whom follow once the group chat agrees.</em>",
-  "f1-b":"Booked","f1-s":"Status","f2-b":"TBA","f2-s":"Destination","f3-b":"TBA","f3-s":"Dates","f4-s":"Guys, if all goes well",
+  "nav-area":"The area","nav-house":"The cabin","nav-lessons":"Lessons from Saalbach","nav-todo":"To do","nav-geng":"The gang",
+  "kicker":"Booked · Thu 4 – Mon 8 February 2027",
+  "lead":"Higher, colder, more snow-sure. After Saalbach the gang heads into the Ötztal: two glaciers, 144 km of piste and a cabin with a sauna. <em>This time with every tendon intact.</em>",
+  "cd-days":"days","cd-hours":"hours","cd-min":"min","cd-sec":"sec","cd-note":"until departure on Thursday 4 February 2027",
+  "f1-s":"Destination","f1-n":"Ötztal, Tyrol · 1,350–3,250 m","f2-s":"Dates","f2-n":"Thursday to Monday · 4 nights",
+  "f3-b":"Booked ✓","f3-s":"Cabin","f3-n":"Chalet with sauna · free cancellation until 5 Jan","f4-s":"Guys","f4-n":"Cabin sleeps 6 · mystery guest welcome",
+  "h-area":"The <b>area</b>","p-area":"Sölden came out of Danny's wintersport.nl filter: high, not flat, medium to large and relatively lots of blue. Gurgl was the other candidate; Pascal picked Sölden.",
+  "s1":"km of piste","s2":"km blue","s3":"m highest lift","s4":"glaciers","s5":"lifts","s6":"snowpark (Area 47)",
+  "lg-b":"blue","lg-r":"red","lg-z":"black",
+  "area-1":"Two glaciers (Rettenbach and Tiefenbach), three peaks above 3,000 metres and a valley at 1,350. Stay above the Giggijoch and you spend the whole day at 2,000+ — exactly what Igor wanted after the slush at Saalbach's village lifts. Snowpark Area 47 sits at the Giggijoch: Stijn's funpark, moss or no moss.",
+  "area-2":"<em>On the Gaislachkogl (3,058 m) is 007 Elements, the James Bond museum. Stijn has already been, so we'll skip it. Says Stijn.</em>",
+  "h-req":"The <b>requirements</b>","p-req":"Everyone had one demand. Sölden ticks them all.",
+  "r-igor-s":"Igor","r-igor-h":"Higher","r-igor-p":"Better snow. At the village lifts in Saalbach it turned to slush fast. Sölden: glaciers up to 3,250 m.","r-igor-c":"3,250 m",
+  "r-stijn-s":"Stijn","r-stijn-h":"Funpark","r-stijn-p":"\"I just want a funpark. Even if it's covered in moss.\" Snowpark Area 47 at the Giggijoch — and this time not on day one.",
+  "r-daan-s":"Daan","r-daan-h":"Wide &amp; blue","r-daan-p":"Wide blue pistes (nice for boarding), not too far to drive, and \"properly expensive\". 70 km of blue, 840 km, and yes: it's expensive.","r-daan-c":"blue",
+  "r-danny-s":"Danny","r-danny-h":"Anything goes","r-danny-p":"\"As long as you lot agree.\" Meanwhile supplied the filter that produced Sölden: high, not flat, lots of blue.","r-danny-c":"filter",
+  "r-pascal-s":"Pascal","r-pascal-h":"Good skiing","r-pascal-p":"\"As long as the skiing is good and it's not a methadone clinic.\" Picked Sölden, booked the cabin, keeping all tendons this year.","r-pascal-c":"booked",
+  "h-house":"The <b>cabin</b>","p-house":"Booked by Pascal on 11 July, before the group chat had finished voting. Danny: \"Don't ask for permission, ask for forgiveness.\"",
+  "hs-h":"Chalet in Sölden, <b>with sauna</b>",
+  "hs-1":"Four real beds (two queen-size, two singles) plus two big couches upstairs: everyone gets a bed, no sofa-bed lottery like in Saalbach. Sauna included — \"on every day after skiing\", according to Daan.",
+  "hs-2":"The ski bus stops 150 metres away and takes you to the gondolas, so the big area means a short bus ride. Pascal: \"Usually good fun on the way back, singing in the bus in ski gear.\" Parking at the door. The address is pinned in the group chat.",
+  "sp1":"beds + couches","sp2":"total · 4 nights","sp3":"p.p. with 5","sp4":"to the ski bus","sp5":"free cancellation until","sp6-b":"Fibre","sp6":"wifi · Danny: \"Abort.\"",
+  "hc1-s":"The alternative","hc1-h":"€2,167, skatepark at the door","hc1-p":"Cheaper and close to the lift, but not enough beds. Pascal: \"I'd go for the cottage. More rooms and everyone gets a bed.\" Danny voted yes; Daan: \"Mega romantic 🥰. Buy it.\"",
+  "hc2-s":"Is it still standing?","hc2-h":"Yes","hc2-p":"In late July, footage from the Ötztal did the rounds. Daan: \"Is our cabin still there?\" It was 16 km away; Pascal messaged the host. Answer: all fine. \"Nice work detective.\"",
+  "hc3-s":"Neighbour","hc3-h":"Rotes Kreuz Ortsstelle Sölden","hc3-p":"Right around the corner. Stijn: \"You made sure of that, didn't you Pascal?\" Pascal: \"Haha funny.\"",
+  "h-trip":"Getting <b>there</b>","p-trip":"840 kilometres. \"Six hours with Daan driving\" (Pascal) or \"nine hours\" (Stijn). The truth is somewhere on the A3.",
+  "t1-s":"Transport","t1-h":"Two of our own cars","t1-p":"Daan drives; Stijn puts winter tyres on the Renault. Saves money and \"we don't have to sit in a Peugeot\" — nobody misses the 2026 rental. Igor: \"Car was fine, most stuff came along. And this year I can probably drive too.\"",
+  "t2-s":"Departure","t2-h":"Thu 4 Feb, or the night before","t2-p":"Stijn is considering leaving in the night of 3 to 4 February with whoever can: \"I've driven 14 hours in a French traffic jam with crying kids, so this is peanuts.\" Pascal: \"Agreed.\"",
+  "t3-s":"Arrival","t3-h":"Half a day of shredding?","t3-p":"\"If we leave early we can still shred for half a day. But that's a utopia.\" — Stijn, realist.",
+  "t4-s":"Return","t4-h":"Mon 8 Feb","t4-p":"Four nights, three full ski days. Whoever loses a tooth or a tendon gets the front seat.",
+  "h-lessons":"Lessons from <b>Saalbach</b>","p-lessons":"Wintersport 2026 was a great week. This is what we're taking with us.",
+  "l1":"<strong>Book the number of nights you're actually staying.</strong> The apartment was booked for three nights, the trip lasted four. Last night: wellness hotel with a pool. Danny: \"I won't make that mistake again.\" Stijn: \"Even with misunderstandings, solved superbly.\"",
+  "l2":"<strong>All snorers in the living room.</strong> Daan was snoring before he was asleep; Igor wanted to sleep in the bathroom. Stijn, surprisingly, is a very quiet sleeper.",
+  "l3":"<strong>Don't go all-out on day one.</strong> \"And more coffee breaks.\" — Stijn, after a week of sore muscles and a tailbone that only healed in June.",
+  "l4":"<strong>Rent gear online.</strong> On site is pricier, Igor discovered on day one. Sort it in advance this year.",
+  "l5":"<strong>Higher is better.</strong> At the village lifts it turned to slush fast. Hence: glaciers.",
+  "l6":"<strong>Stijn makes breakfast.</strong> His brekkie was Daan's top-2 moment of the whole holiday. \"Just cosy.\" Stijn is now officially chef; Daan does the eggs.",
+  "l7":"<strong>Pool on the last day: bliss.</strong> \"Tired legs into the pool.\" The cabin has a sauna, and Stijn is bringing swim shorts.",
+  "l8":"<strong>Leave tooth and Achilles tendon at home.</strong> Pascal lost a tooth on day one (dentist a 7-minute walk away) and tore his Achilles tendon on day three — and kept skiing. \"This time I won't immediately lose my own tooth or tear my Achilles.\"",
+  "l9":"<strong>Share live location.</strong> \"Pascal is lost.\" \"I'm behind you.\" Everyone their own journey, but with location on.",
+  "l10":"<strong>No laptop.</strong> Stijn to Pascal: \"Will be nice if you just stick with the group. And no laptop either.\" Fibre wifi or not.",
+  "h-todo":"Still to <b>arrange</b>","p-todo":"The big stuff is done. This is the rest, in order of panic.",
+  "td1-b":"Pick the dates","td1-s":"Thu 4 – Mon 8 Feb 2027. Danny has informed Inge.",
+  "td2-b":"Pick the area","td2-s":"Ischgl → Kaprun → Serfaus → Sölden. Igor wanted higher, Igor got higher.",
+  "td3-b":"Book the cabin","td3-s":"Pascal, 11 July. Free cancellation until 5 January.",
+  "td4-b":"Ski passes","td4-s":"Three or four days of Ötztal. Last year the pass was in the package; now separate.",
+  "td5-b":"Rent gear","td5-s":"Online, in advance — lesson 4. Ski: Danny, Pascal. Board: Daan, Stijn. Igor: hybrid, decides on the spot.",
+  "td6-b":"Cars &amp; winter tyres","td6-s":"Daan + Stijn's Renault. Snow chains? Igor: \"Chains are handy, yes.\"",
+  "td7-b":"Sleeping arrangement","td7-s":"Snorers in the living room. We know who they are.",
+  "td8-b":"Groceries &amp; brekkie","td8-s":"Full English breakfast on day one (Stijn). Eggs, bacon, a bucket of coffee. Zaanse mayo in a tube.",
+  "td9-b":"Practice days","td9-s":"Daan's winter schedule: Landgraaf (warm-up) → Winterberg (2 days) → Bottrop (practice and beer) → Austria.","td9-e":"Pre-season",
+  "td10-b":"Savings pot","td10-s":"Daan: €100 a month on autopilot, \"then your holiday is free\". Danny: €400 plus 1.4% interest compounding. Stijn set aside €500 of holiday pay; a week later a motorbike appeared in the photos.","td10-e":"Ongoing",
+  "td11-b":"Aftermovie","td11-s":"Stijn: \"I'm not filming anything. Just shredding.\" Daan: \"Agreed.\" So: Danny films.",
+  "h-plan":"How we <b>got here</b>","p-plan":"From \"too little too late\" to a booked cabin in five months.",
+  "e1-t":"Ten days after Saalbach: \"Wintersport 2027 planning\"","e1-s":"Stijn renames the group. Daan: \"Let's just go to Saalbach again next year.\" Igor: \"For snow certainty, higher is better.\" Stijn: \"I just want a funpark.\"",
+  "e2-t":"Dates set: Thursday 4 to Monday 8 February","e2-s":"Danny: \"I've informed Inge of 4 to 8 Feb 2027.\" Pascal, with last year in mind: \"Do double-check the days haha.\"",
+  "e3-t":"The savings plan","e3-s":"Daan: \"Have you set up an automatic transfer of €100 a month yet? Then your holiday is free.\" Stijn wanted to put his holiday pay in ETH. Daan: \"Nooooo. Pls.\"",
+  "e4-t":"Choosing the area","e4-s":"Ischgl, Kaprun and Serfaus come and go. Danny's filter (high, not flat, lots of blue): \"So Sölden or Gurgl.\" Stijn: \"Gurgl already sounds like gargling, perfect.\" Pascal: \"Sölden.\"",
+  "e5-t":"Cabin booked","e5-s":"Pascal: \"Already booked. Free cancellation until 5 January.\" Daan: \"I'm proud of you.\" Danny: \"From October onwards you're allowed to say that.\"",
+  "e6-t":"Cabin still standing","e6-s":"Checked with the host after footage from the Ötztal. \"Nice work detective.\"",
+  "e7-t":"Departure plan","e7-s":"Stijn suggests a night drive on 3 February. The cabin sleeps six: \"I'd count on five, but great if someone else wants in.\" — Pascal",
+  "e8-t":"Point of no return","e8-s":"Last day of free cancellation. After that: skin in the game.",
+  "e9-t":"Departure","e9-s":"Pilgrimage into the Abyss, part two.",
+  "h-geng":"The <b>gang</b>","p-geng":"Five regulars, a cabin for six, and a bench.",
+  "m-danny":"Ski · booked 2026, films 2027","m-daan":"Board · drives · does the eggs","m-igor":"Hybrid · wanted higher","m-pascal":"Ski · booked the cabin · tendons intact","m-stijn":"Board · chef · funpark, not on day one",
+  "m-jorg":"Mystery guest #6 · seeing how the days fall","m-roel":"Couldn't make 2027 · \"2028 he has to come\"",
+  "geng-note":"Thomas likes 35 degrees and is therefore unlikely, but the sledge is ready.",
   "back":"← Back to the timeline",
-  "foot":"pengpeng.nl · this page grows as soon as there's news in the group chat."
+  "foot":"pengpeng.nl · this page grows with the group chat · <a href=\"/green-divide-2026/\">Green Divide 2026</a>"
 }};
 document.querySelectorAll('[data-i18n]').forEach(function(el){ I18N.nl[el.dataset.i18n]=el.innerHTML; });
 function setLang(l){
