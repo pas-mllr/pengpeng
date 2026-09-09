@@ -7,6 +7,7 @@
 <meta name="description" content="Wintersport 2027 van de Peng Peng Geng: Sölden, Ötztal. Donderdag 4 t/m maandag 8 februari 2027. Huisje met sauna geboekt.">
 <meta property="og:title" content="Sölden 2027 — Peng Peng Geng">
 <meta property="og:description" content="Hoger, kouder, sneeuwzekerder. 4–8 februari 2027.">
+<meta property="og:image" content="https://pengpeng.nl/wintersport-2027/img/huisje.jpg">
 <meta name="theme-color" content="#0f0e0c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -167,6 +168,24 @@
   footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center}
   footer .big{font-family:var(--display);font-size:1.4rem;letter-spacing:.08em;color:var(--ink);text-decoration:none}
   footer .big b{color:var(--peng);font-weight:400}
+  /* media uit de groepsapp */
+  .sub{font-family:var(--display);font-size:clamp(1.5rem,4vw,2rem);letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);margin:34px 0 12px;line-height:1}
+  .sub b{color:var(--ice);font-weight:400}
+  .fig{margin:0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
+  .fig img{display:block;width:100%;height:auto;cursor:zoom-in;background:#000;transition:opacity .2s}
+  .fig img:hover{opacity:.92}
+  .fig figcaption{padding:11px 14px 13px;font-size:.84rem;line-height:1.45;color:var(--ink-soft)}
+  .fig figcaption b{color:var(--ink);font-weight:600}
+  .fig figcaption .who{display:block;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:800;margin-bottom:4px}
+  .feature{margin:22px 0 0}
+  .feature img{max-height:70vh;object-fit:cover;object-position:center}
+  .gallery{columns:3 250px;column-gap:12px;margin-top:14px}
+  .gallery .fig{break-inside:avoid;margin-bottom:12px}
+  .gallery .fig.contain img{background:#fff}
+  #lightbox{display:none;position:fixed;inset:0;z-index:100;background:rgba(15,14,12,.96);align-items:center;justify-content:center;flex-direction:column;padding:20px;cursor:zoom-out}
+  #lightbox.on{display:flex}
+  #lightbox img{max-width:100%;max-height:82vh;border-radius:10px;border:1px solid var(--line)}
+  #lightbox .lb-cap{color:var(--ink-soft);font-size:.85rem;margin-top:12px;text-align:center;max-width:70ch}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
@@ -227,8 +246,24 @@
     </div>
     <div class="pistes" aria-hidden="true"><i style="width:48%;background:#3fa9e6"></i><i style="width:32%;background:#e04a3a"></i><i style="width:20%;background:#f4efe6"></i></div>
     <div class="legend"><span><i style="background:#3fa9e6"></i>70 km <span data-i18n="lg-b">blauw</span> (48%)</span><span><i style="background:#e04a3a"></i>45 km <span data-i18n="lg-r">rood</span> (32%)</span><span><i style="background:#f4efe6"></i>29 km <span data-i18n="lg-z">zwart</span> (20%)</span></div>
-    <p class="body" data-i18n="area-1">Twee gletsjers (Rettenbach en Tiefenbach), drie toppen boven de 3.000 meter en een dal op 1.350 meter. Wie boven de Giggijoch blijft, zit de hele dag op 2.000+ — precies wat Igor wilde na de papsneeuw bij de dorpsliften van Saalbach. Het snowpark Area 47 ligt bij de Giggijoch: Stijns funpark, al ligt er mos.</p>
+    <figure class="fig feature">
+      <img src="img/solden-pistekaart.jpg" alt="Pistekaart van Sölden: Rettenbach- en Tiefenbachgletsjer, Gaislachkogl en Giggijoch" width="2000" height="1414">
+      <figcaption data-i18n="fig-solden"><span class="who">Danny · 9 juli</span>De pistekaart van Sölden. <b>"Bijvoorbeeld vergeleken met een Sölden."</b> Alles boven de Giggijoch en de Gaislachkogl-middenstation blijft boven de 2.000 meter, en de gletsjers gaan door tot 3.250.</figcaption>
+    </figure>
+    <p class="body" style="margin-top:22px" data-i18n="area-1">Twee gletsjers (Rettenbach en Tiefenbach), drie toppen boven de 3.000 meter en een dal op 1.350 meter. Wie boven de Giggijoch blijft, zit de hele dag op 2.000+ — precies wat Igor wilde na de papsneeuw bij de dorpsliften van Saalbach. Het snowpark Area 47 ligt bij de Giggijoch: Stijns funpark, al ligt er mos.</p>
     <p class="body" data-i18n="area-2"><em>Op de Gaislachkogl (3.058 m) zit 007 Elements, het James Bond-museum. Stijn is er al geweest, dus dat slaan we over. Zegt Stijn.</em></p>
+
+    <h3 class="sub" data-i18n="h-losers">De <b>afvallers</b></h3>
+    <p class="body" data-i18n="p-losers">Wat er in de groepsapp voorbijkwam voordat het Sölden werd. Klik voor groot.</p>
+    <div class="gallery">
+      <figure class="fig"><img src="img/kaprun-pistekaart.jpg" alt="Pistekaart Kitzsteinhorn / Kaprun" loading="lazy" width="1600" height="1183"><figcaption data-i18n="fig-kaprun"><span class="who">Danny · 6 juli</span>Kaprun. <b>"Ik heb iets gevonden waardoor we wél naar Kaprun moeten gaan."</b> Pascal: "Kaprun ben ik vaak geweest. Alleen ligt het best laag, je moet dan de Kitzsteinhorn op."</figcaption></figure>
+      <figure class="fig contain"><img src="img/kaprun-black-mamba.jpg" alt="Uitsnede van de pistekaart met de zwarte piste Black Mamba" loading="lazy" width="375" height="276"><figcaption data-i18n="fig-mamba"><span class="who">Danny · 6 juli</span>Dat iets: de <b>Black Mamba</b>, piste 14 onder de Langwiedbahn. Stijn: "Haha." Daan: "Lfg."</figcaption></figure>
+      <figure class="fig contain"><img src="img/kaprun-votters.jpg" alt="Booking.com-resultaat: Vötter's Hotel in Kaprun, €3.073 voor 5 volwassenen, 4 nachten" loading="lazy" width="825" height="367"><figcaption data-i18n="fig-votters"><span class="who">Stijn · 6 juli</span>Vötter's Hotel, Kaprun. <b>"3000 ekkies met zwembad, sauna, ontbijt en parkeren."</b> Daan: "Ja maar een huisje is ook wel top." Stijn: "Oke oke."</figcaption></figure>
+      <figure class="fig"><img src="img/serfaus-pistekaart.jpg" alt="Pistekaart Serfaus-Fiss-Ladis" loading="lazy" width="2000" height="944"><figcaption data-i18n="fig-serfaus"><span class="who">Danny · 9 juli</span>Serfaus-Fiss-Ladis, Daans voorstel: "Veel blauwe en rode brede pistes. Breed is fijn voor snowboarden." Danny: <b>"Al die blauwe routes zitten onder 2000 meter."</b></figcaption></figure>
+      <figure class="fig contain"><img src="img/zell-bear-bison.jpg" alt="Booking.com-resultaat: Bear & Bison Lake View, Zell am See, €11.311" loading="lazy" width="945" height="900"><figcaption data-i18n="fig-bison"><span class="who">Danny · 9 juli</span>Pascal vond het hotel "wel een eind lopen naar de lift". Danny, zeven minuten later: <b>"Fixed."</b> Bear &amp; Bison Lake View, 100 m van de lift, hot tub, €11.311.</figcaption></figure>
+      <figure class="fig contain"><img src="img/gorgels.jpg" alt="Logo van De Gorgels" loading="lazy" width="768" height="768"><figcaption data-i18n="fig-gorgels"><span class="who">Igor · 5 juli</span>Stijn: "Obergurgl-Hochgurgl." Igor antwoordt met een plaatje. Later, toen Gurgl echt op de shortlist stond: <b>"Gurgl klinkt al als gorgelen, perfect."</b></figcaption></figure>
+      <figure class="fig contain"><img src="img/weersvoorspelling.jpg" alt="Grafiek van Our World in Data over de nauwkeurigheid van weersvoorspellingen sinds 1981" loading="lazy" width="1350" height="1108"><figcaption data-i18n="fig-weer"><span class="who">Danny · 9 juli</span>Igor deelde Snowplaza's winterverwachting 2026-2027. Daan: "Ze kunnen het weer voor morgen nog niet eens accuraat voorspellen." Igor: "Maar wel steeds beter." Danny, met grafiek: <b>"Jammer dat er geen 160-dagenlijntje bij staat. Maar ik durf te zeggen dat het &lt; 10% is."</b> Pascal: "Hebben we quantum computers voor nodig."</figcaption></figure>
+    </div>
   </section>
 
   <!-- EISENPAKKET -->
@@ -252,6 +287,10 @@
       <h2 class="display" data-i18n="h-house">Het <b>huisje</b></h2>
       <p data-i18n="p-house">Op 11 juli geboekt door Pascal, nog voordat de groepsapp klaar was met stemmen. Danny: "Don't ask for permission, ask for forgiveness."</p>
     </div>
+    <figure class="fig feature" style="margin:0 0 12px">
+      <img src="img/huisje.jpg" alt="Houten berghuis met kapelletje in een herfstig dal vol gele lariksen, met twee auto's voor de deur" width="1547" height="1800">
+      <figcaption data-i18n="fig-huisje"><span class="who">Pascal · 11 juli</span><b>Uriges Berghaus mit Sauna &amp; Bergblick</b>, Heiligkreuz, 7 km boven Sölden in het Venter Tal. Daan: "Ik vind het ook wel bij ons passen om niet midden in het feestgedruis te zitten. Weggestopt in een vuig huisje. In het duister. Dit is zo vet."</figcaption>
+    </figure>
     <div class="house">
       <div class="big">
         <h3 data-i18n="hs-h">Chalet in Sölden, <b>met sauna</b></h3>
@@ -271,6 +310,16 @@
         <div class="card"><h3><small data-i18n="hc2-s">Staat het er nog?</small><span data-i18n="hc2-h">Ja</span></h3><p data-i18n="hc2-p">Eind juli kwamen er beelden uit de Ötztal voorbij. Daan: "Staat ons huisje er nog?" Het lag 16 km verderop; Pascal stuurde de host een berichtje. Antwoord: alles in orde. "Nice work detective."</p></div>
         <div class="card"><h3><small data-i18n="hc3-s">Buurman</small><span data-i18n="hc3-h">Rotes Kreuz Ortsstelle Sölden</span></h3><p data-i18n="hc3-p">Zit om de hoek. Stijn: "Heb jij daar zeker rekening mee gehouden, Pascal?" Pascal: "Haha funny."</p></div>
       </div>
+    </div>
+
+    <h3 class="sub" data-i18n="h-detective">Het <b>detectivewerk</b></h3>
+    <p class="body" data-i18n="p-detective">Boeking, route en de vraag of het er eind juli nog stond. Uit de groepsapp, in volgorde.</p>
+    <div class="gallery">
+      <figure class="fig"><img src="img/huisje-route.jpg" alt="Google Maps-route van het huisje naar de Bergbahnen Sölden: 7 km, 9 minuten" loading="lazy" width="873" height="1200"><figcaption data-i18n="fig-route"><span class="who">Pascal · 11 juli</span>Van de voordeur naar de Bergbahnen Sölden: <b>7 km, 9 minuten</b> door het Venter Tal. "Enige nadeel is dat je even met de auto naar de gondel moet." Danny: "Skibus op 150 m toch?" "Ja dat ook."</figcaption></figure>
+      <figure class="fig contain"><img src="img/huisje-betaling.jpg" alt="Airbnb-betaaloverzicht: €718,80 betaald op 11 juli, €2.875,20 te betalen op 20 januari" loading="lazy" width="944" height="1100"><figcaption data-i18n="fig-betaling"><span class="who">Pascal · 12 juli</span>Stijn: "Kun jij dat huisje al claimen?" Pascal: "Ja, al geboekt." <b>€718,80 aanbetaald</b>, de resterende €2.875,20 gaat op 20 januari van de kaart. Stijn: "Wie moet ik wat betalen? Kan ik het weer vergeten."</figcaption></figure>
+      <figure class="fig"><img src="img/satelliet-otztal.jpg" alt="Sentinel-2-satellietbeeld van het Ötztal en Venter Tal met Sölden en het huisje gemarkeerd" loading="lazy" width="995" height="1400"><figcaption data-i18n="fig-sat1"><span class="who">Pascal · 31 juli</span>Na beelden van noodweer in de Ötztal vraagt Daan: "Staat ons huisje er nog?" Het noodweer zat 16 km verderop. Pascal laat Claude satellietbeelden trekken: <b>de laatste heldere opname, 28 juli</b>, met Sölden en het huisje.</figcaption></figure>
+      <figure class="fig"><img src="img/satelliet-nederweg.jpg" alt="Twee Sentinel-2-opnames van de omgeving van het huisje: 28 juli helder, 29 juli onder de wolken" loading="lazy" width="1600" height="851"><figcaption data-i18n="fig-sat2"><span class="who">Pascal · 31 juli</span>Dezelfde plek van dichtbij: 28 juli helder, 29 juli twaalf uur voor de storm al half onder de wolken. Conclusie: nog geen bewijs, wel een berichtje naar de host. Daan: <b>"Nice work detective."</b></figcaption></figure>
+      <figure class="fig contain"><img src="img/host-angela.jpg" alt="Airbnb-bericht van host Angela: alles is in orde, het huis ligt ruim boven de rivier" loading="lazy" width="634" height="1100"><figcaption data-i18n="fig-host"><span class="who">Pascal · 31 juli, 23:08</span>Het antwoord van host Angela: de Venter Ache, die vlak onder het huis stroomt, kwam flink omhoog, maar <b>het huis ligt ruim boven de rivier</b>. Twee uur stroomuitval, verder niets. Daan: "Nice 😊."</figcaption></figure>
     </div>
   </section>
 
@@ -327,6 +376,12 @@
       <li><i></i><div><b data-i18n="td10-b">Spaarpot</b><span data-i18n="td10-s">Daan: €100 per maand automatisch, "dan is je vakantie gratis". Danny: €400 plus 1,4% rente die compoundt. Stijn zette €500 vakantiegeld apart; een week later stond er een motor op de foto.</span><em data-i18n="td10-e">Lopend</em></div></li>
       <li><i></i><div><b data-i18n="td11-b">Aftermovie</b><span data-i18n="td11-s">Stijn: "Ik ga helemaal niks filmen. Alleen shredden." Daan: "Akkoord." Dus: Danny filmt.</span></div></li>
     </ul>
+
+    <h3 class="sub" data-i18n="h-savings">Het spaarplan <b>in beeld</b></h3>
+    <div class="gallery">
+      <figure class="fig"><img src="img/motor-stijn.jpg" alt="Zwarte Honda VFR-motor geparkeerd naast een blauwe auto voor een flat" loading="lazy" width="788" height="1400"><figcaption data-i18n="fig-motor"><span class="who">Stijn · 22 mei</span>Twee weken na het overmaken van €500 vakantiegeld naar de spaarrekening: <b>"Ik heb goed nieuws en slecht nieuws."</b> Igor: "Je had vakantiegeld." Stijn: "Idd. Nu dit." Een Honda VFR 750, "ding rijdt in de 2 al naar de 80."</figcaption></figure>
+      <figure class="fig"><img src="img/scooter-igor.jpg" alt="Rode Honda Elite-scooter uit de jaren tachtig op een oprit" loading="lazy" width="945" height="710"><figcaption data-i18n="fig-scooter"><span class="who">Igor · 22 mei</span>Igors reactie, diezelfde avond: <b>"Wat is er met deze gebeurd?"</b> Daan: "Pohhhh. Dik."</figcaption></figure>
+    </div>
   </section>
 
   <!-- PLANNING -->
@@ -369,6 +424,8 @@
   <p style="margin-top:40px"><a class="btn" href="/" data-i18n="back">← Terug naar de tijdlijn</a></p>
 </main>
 
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Foto" onclick="closeLb()"><img id="lbImg" src="" alt=""><div class="lb-cap" id="lbCap"></div></div>
+
 <footer>
   <div class="wrap">
     <a class="big" href="/">PENG<b>PENG</b>GENG</a>
@@ -394,6 +451,19 @@
   tick(); setInterval(tick,1000);
 })();
 
+// Lightbox: every figure image opens full-size; Escape or a click closes it.
+function openLb(img){
+  var fig=img.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+  document.getElementById('lbImg').src=img.currentSrc||img.src;
+  document.getElementById('lbImg').alt=img.alt;
+  document.getElementById('lbCap').textContent=cap?cap.innerText:'';
+  document.getElementById('lightbox').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeLb(){ document.getElementById('lightbox').classList.remove('on'); document.body.style.overflow=''; }
+document.querySelectorAll('.fig img').forEach(function(img){ img.addEventListener('click',function(){openLb(img);}); });
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLb(); });
+
 // i18n — Dutch is captured from the markup, English lives here.
 var I18N={nl:{},en:{
   "nav-area":"The area","nav-house":"The cabin","nav-lessons":"Lessons from Saalbach","nav-todo":"To do","nav-geng":"The gang",
@@ -407,6 +477,15 @@ var I18N={nl:{},en:{
   "lg-b":"blue","lg-r":"red","lg-z":"black",
   "area-1":"Two glaciers (Rettenbach and Tiefenbach), three peaks above 3,000 metres and a valley at 1,350. Stay above the Giggijoch and you spend the whole day at 2,000+ — exactly what Igor wanted after the slush at Saalbach's village lifts. Snowpark Area 47 sits at the Giggijoch: Stijn's funpark, moss or no moss.",
   "area-2":"<em>On the Gaislachkogl (3,058 m) is 007 Elements, the James Bond museum. Stijn has already been, so we'll skip it. Says Stijn.</em>",
+  "fig-solden":"<span class=\"who\">Danny · 9 July</span>The Sölden piste map. <b>\"Compared with a Sölden, for example.\"</b> Everything above the Giggijoch and the Gaislachkogl mid-station stays above 2,000 metres, and the glaciers go on up to 3,250.",
+  "h-losers":"The <b>runners-up</b>","p-losers":"What went through the group chat before it became Sölden. Click to enlarge.",
+  "fig-kaprun":"<span class=\"who\">Danny · 6 July</span>Kaprun. <b>\"I've found something that means we do have to go to Kaprun.\"</b> Pascal: \"I've been to Kaprun a lot. It's just pretty low, you have to go up the Kitzsteinhorn.\"",
+  "fig-mamba":"<span class=\"who\">Danny · 6 July</span>That something: the <b>Black Mamba</b>, run 14 under the Langwiedbahn. Stijn: \"Haha.\" Daan: \"Lfg.\"",
+  "fig-votters":"<span class=\"who\">Stijn · 6 July</span>Vötter's Hotel, Kaprun. <b>\"3000 euros with pool, sauna, breakfast and parking.\"</b> Daan: \"Yes, but a cabin is pretty great too.\" Stijn: \"Okay okay.\"",
+  "fig-serfaus":"<span class=\"who\">Danny · 9 July</span>Serfaus-Fiss-Ladis, Daan's suggestion: \"Lots of wide blue and red pistes. Wide is nice for snowboarding.\" Danny: <b>\"All those blue runs are below 2,000 metres.\"</b>",
+  "fig-bison":"<span class=\"who\">Danny · 9 July</span>Pascal thought the hotel was \"quite a walk to the lift\". Danny, seven minutes later: <b>\"Fixed.\"</b> Bear &amp; Bison Lake View, 100 m from the lift, hot tub, €11,311.",
+  "fig-gorgels":"<span class=\"who\">Igor · 5 July</span>Stijn: \"Obergurgl-Hochgurgl.\" Igor replies with a picture of De Gorgels, the Dutch children's book. Later, once Gurgl was really on the shortlist: <b>\"Gurgl already sounds like gargling, perfect.\"</b>",
+  "fig-weer":"<span class=\"who\">Danny · 9 July</span>Igor shared Snowplaza's winter outlook for 2026-2027. Daan: \"They can't even forecast tomorrow's weather accurately.\" Igor: \"But it keeps getting better.\" Danny, with a chart: <b>\"Shame there's no 160-day line. But I dare say it's &lt; 10%.\"</b> Pascal: \"We'll need quantum computers for that.\"",
   "h-req":"The <b>requirements</b>","p-req":"Everyone had one demand. Sölden ticks them all.",
   "r-igor-s":"Igor","r-igor-h":"Higher","r-igor-p":"Better snow. At the village lifts in Saalbach it turned to slush fast. Sölden: glaciers up to 3,250 m.","r-igor-c":"3,250 m",
   "r-stijn-s":"Stijn","r-stijn-h":"Funpark","r-stijn-p":"\"I just want a funpark. Even if it's covered in moss.\" Snowpark Area 47 at the Giggijoch — and this time not on day one.",
@@ -414,6 +493,13 @@ var I18N={nl:{},en:{
   "r-danny-s":"Danny","r-danny-h":"Anything goes","r-danny-p":"\"As long as you lot agree.\" Meanwhile supplied the filter that produced Sölden: high, not flat, lots of blue.","r-danny-c":"filter",
   "r-pascal-s":"Pascal","r-pascal-h":"Good skiing","r-pascal-p":"\"As long as the skiing is good and it's not a methadone clinic.\" Picked Sölden, booked the cabin, keeping all tendons this year.","r-pascal-c":"booked",
   "h-house":"The <b>cabin</b>","p-house":"Booked by Pascal on 11 July, before the group chat had finished voting. Danny: \"Don't ask for permission, ask for forgiveness.\"",
+  "fig-huisje":"<span class=\"who\">Pascal · 11 July</span><b>Uriges Berghaus mit Sauna &amp; Bergblick</b>, Heiligkreuz, 7 km above Sölden in the Venter valley. Daan: \"I think it suits us not to be in the middle of the party noise. Tucked away in a grubby little cabin. In the dark. This is so cool.\"",
+  "h-detective":"The <b>detective work</b>","p-detective":"Booking, route and the question of whether it was still standing at the end of July. From the group chat, in order.",
+  "fig-route":"<span class=\"who\">Pascal · 11 July</span>From the front door to the Bergbahnen Sölden: <b>7 km, 9 minutes</b> through the Venter valley. \"Only downside is that you have to drive a bit to the gondola.\" Danny: \"Ski bus at 150 m, right?\" \"Yes, that too.\"",
+  "fig-betaling":"<span class=\"who\">Pascal · 12 July</span>Stijn: \"Can you claim that cabin yet?\" Pascal: \"Yes, already booked.\" <b>€718.80 deposit paid</b>, the remaining €2,875.20 comes off the card on 20 January. Stijn: \"Who do I pay what? So I can forget it again.\"",
+  "fig-sat1":"<span class=\"who\">Pascal · 31 July</span>After footage of storms in the Ötztal, Daan asks: \"Is our cabin still there?\" The storm was 16 km away. Pascal has Claude pull satellite imagery: <b>the last clear scene, 28 July</b>, with Sölden and the cabin.",
+  "fig-sat2":"<span class=\"who\">Pascal · 31 July</span>The same spot up close: 28 July clear, 29 July already half under cloud twelve hours before the storm. Conclusion: no proof yet, but a message to the host. Daan: <b>\"Nice work detective.\"</b>",
+  "fig-host":"<span class=\"who\">Pascal · 31 July, 23:08</span>Host Angela's reply: the Venter Ache, which flows right below the house, rose a lot, but <b>the house sits well above the river</b>. A two-hour power outage, nothing else. Daan: \"Nice 😊.\"",
   "hs-h":"Chalet in Sölden, <b>with sauna</b>",
   "hs-1":"Four real beds (two queen-size, two singles) plus two big couches upstairs: everyone gets a bed, no sofa-bed lottery like in Saalbach. Sauna included — \"on every day after skiing\", according to Daan.",
   "hs-2":"The ski bus stops 150 metres away and takes you to the gondolas, so the big area means a short bus ride. Pascal: \"Usually good fun on the way back, singing in the bus in ski gear.\" Parking at the door. The address is pinned in the group chat.",
@@ -449,6 +535,9 @@ var I18N={nl:{},en:{
   "td9-b":"Practice days","td9-s":"Daan's winter schedule: Landgraaf (warm-up) → Winterberg (2 days) → Bottrop (practice and beer) → Austria.","td9-e":"Pre-season",
   "td10-b":"Savings pot","td10-s":"Daan: €100 a month on autopilot, \"then your holiday is free\". Danny: €400 plus 1.4% interest compounding. Stijn set aside €500 of holiday pay; a week later a motorbike appeared in the photos.","td10-e":"Ongoing",
   "td11-b":"Aftermovie","td11-s":"Stijn: \"I'm not filming anything. Just shredding.\" Daan: \"Agreed.\" So: Danny films.",
+  "h-savings":"The savings plan, <b>illustrated</b>",
+  "fig-motor":"<span class=\"who\">Stijn · 22 May</span>Two weeks after transferring €500 of holiday pay to the savings account: <b>\"I have good news and bad news.\"</b> Igor: \"You had holiday pay.\" Stijn: \"Yep. Now this.\" A Honda VFR 750, \"thing does 80 in second gear already.\"",
+  "fig-scooter":"<span class=\"who\">Igor · 22 May</span>Igor's reply, the same evening: <b>\"What happened to this one?\"</b> Daan: \"Pohhhh. Sick.\"",
   "h-plan":"How we <b>got here</b>","p-plan":"From \"too little too late\" to a booked cabin in five months.",
   "e1-t":"Ten days after Saalbach: \"Wintersport 2027 planning\"","e1-s":"Stijn renames the group. Daan: \"Let's just go to Saalbach again next year.\" Igor: \"For snow certainty, higher is better.\" Stijn: \"I just want a funpark.\"",
   "e2-t":"Dates set: Thursday 4 to Monday 8 February","e2-s":"Danny: \"I've informed Inge of 4 to 8 Feb 2027.\" Pascal, with last year in mind: \"Do double-check the days haha.\"",
