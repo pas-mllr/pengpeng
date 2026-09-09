@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wintersport 2027 — Peng Peng Geng</title>
+<meta name="description" content="Peng Peng Geng gaat op wintersport in 2027. Geboekt — details volgen.">
+<meta name="theme-color" content="#0f0e0c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f0e0c;--bg2:#191815;--card:#1c1b18;--line:#2d2b26;
+    --ink:#f4efe6;--ink-soft:#a8a295;--peng:#ff4a1c;--gold:#e2b64a;--ice:#8fd3ff;
+    --display:"Bebas Neue","Oswald","Arial Narrow",Impact,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg)}
+  body{
+    background:var(--bg);color:var(--ink);min-height:100svh;display:flex;flex-direction:column;
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased;padding:0 16px;overflow-x:hidden;
+  }
+  a{color:inherit}
+  .wrap{max-width:1100px;margin:0 auto;width:100%}
+  header.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0}
+  .brand{font-family:var(--display);font-size:1.5rem;letter-spacing:.06em;text-decoration:none;line-height:1;white-space:nowrap}
+  .brand b{color:var(--peng);font-weight:400}
+  .langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:99px;padding:3px;background:var(--bg2)}
+  .langs button{border:0;background:transparent;font:inherit;font-size:.78rem;font-weight:700;padding:4px 11px;border-radius:99px;cursor:pointer;color:var(--ink-soft)}
+  .langs button.active{background:var(--ink);color:var(--bg)}
+
+  main{flex:1;display:flex;align-items:center}
+  .hero{
+    position:relative;width:100%;padding:56px 0 40px;
+  }
+  .snow{
+    position:absolute;inset:-40px -16px 0;pointer-events:none;overflow:hidden;
+    background:
+      radial-gradient(2px 2px at 12% 18%,rgba(244,239,230,.55),transparent 60%),
+      radial-gradient(2px 2px at 30% 62%,rgba(244,239,230,.45),transparent 60%),
+      radial-gradient(3px 3px at 52% 30%,rgba(244,239,230,.35),transparent 60%),
+      radial-gradient(2px 2px at 70% 75%,rgba(244,239,230,.5),transparent 60%),
+      radial-gradient(2px 2px at 84% 22%,rgba(244,239,230,.4),transparent 60%),
+      radial-gradient(3px 3px at 92% 58%,rgba(244,239,230,.3),transparent 60%),
+      radial-gradient(2px 2px at 40% 88%,rgba(244,239,230,.4),transparent 60%),
+      radial-gradient(600px 300px at 50% 0%,rgba(143,211,255,.10),transparent 70%);
+  }
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    border:1px solid var(--gold);color:var(--gold);padding:6px 12px;border-radius:99px;margin-bottom:18px;
+  }
+  h1{font-family:var(--display);font-weight:400;font-size:clamp(4.6rem,19vw,14rem);line-height:.82;letter-spacing:.02em;text-transform:uppercase;margin:0 0 20px -.03em}
+  h1 b{color:var(--ice);font-weight:400}
+  .lead{font-size:clamp(1.05rem,2.4vw,1.4rem);max-width:40ch;text-wrap:balance}
+  .lead em{font-style:normal;color:var(--ink-soft)}
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:28px 0 30px;max-width:700px}
+  .fact{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px}
+  .fact b{display:block;font-family:var(--display);font-size:1.9rem;line-height:1;letter-spacing:.03em}
+  .fact span{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+  .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:.92rem;padding:12px 18px;border-radius:99px;border:1px solid rgba(244,239,230,.25);background:var(--bg2)}
+  .btn:hover{background:rgba(244,239,230,.12)}
+  footer{padding:24px 0 34px;border-top:1px solid var(--line);color:var(--ink-soft);font-size:.86rem;margin:0 -16px;padding-left:16px;padding-right:16px}
+</style>
+</head>
+<body>
+<header class="top wrap">
+  <a class="brand" href="/">← PENG<b>PENG</b>GENG</a>
+  <div class="langs" role="group" aria-label="Taal / Language">
+    <button id="btn-nl" class="active" onclick="setLang('nl')">NL</button>
+    <button id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="snow" aria-hidden="true"></div>
+    <div class="kicker" data-i18n="kicker">Geboekt · Peng Peng Geng trip #2</div>
+    <h1>Winter<br><b>sport</b><br>2027</h1>
+    <p class="lead" data-i18n="lead">Volgende halte: sneeuw. <em>Bestemming, data, huisje en wie er naast wie slaapt volgen zodra de groepsapp het eens is.</em></p>
+    <div class="facts">
+      <div class="fact"><b data-i18n="f1-b">Geboekt</b><span data-i18n="f1-s">Status</span></div>
+      <div class="fact"><b data-i18n="f2-b">Volgt</b><span data-i18n="f2-s">Bestemming</span></div>
+      <div class="fact"><b data-i18n="f3-b">Volgt</b><span data-i18n="f3-s">Data</span></div>
+      <div class="fact"><b>5</b><span data-i18n="f4-s">Man, als het goed is</span></div>
+    </div>
+    <a class="btn" href="/" data-i18n="back">← Terug naar de tijdlijn</a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" data-i18n="foot">pengpeng.nl · deze pagina groeit mee zodra er nieuws is in de groepsapp.</div>
+</footer>
+
+<script>
+var I18N={nl:{},en:{
+  "kicker":"Booked · Peng Peng Geng trip #2",
+  "lead":"Next stop: snow. <em>Destination, dates, the cabin and who sleeps next to whom follow once the group chat agrees.</em>",
+  "f1-b":"Booked","f1-s":"Status","f2-b":"TBA","f2-s":"Destination","f3-b":"TBA","f3-s":"Dates","f4-s":"Guys, if all goes well",
+  "back":"← Back to the timeline",
+  "foot":"pengpeng.nl · this page grows as soon as there's news in the group chat."
+}};
+document.querySelectorAll('[data-i18n]').forEach(function(el){ I18N.nl[el.dataset.i18n]=el.innerHTML; });
+function setLang(l){
+  var d=I18N[l]||I18N.nl;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.dataset.i18n; if(d[k]!=null) el.innerHTML=d[k]; });
+  document.documentElement.lang=l;
+  document.getElementById('btn-nl').classList.toggle('active',l==='nl');
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  try{localStorage.setItem('pp-lang',l);}catch(e){}
+}
+try{ if(localStorage.getItem('pp-lang')==='en') setLang('en'); }catch(e){}
+</script>
+</body>
+</html>
