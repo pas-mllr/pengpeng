@@ -186,6 +186,32 @@
   #lightbox.on{display:flex}
   #lightbox img{max-width:100%;max-height:82vh;border-radius:10px;border:1px solid var(--line)}
   #lightbox .lb-cap{color:var(--ink-soft);font-size:.85rem;margin-top:12px;text-align:center;max-width:70ch}
+  /* de pot */
+  .potbar{height:12px;border-radius:99px;background:var(--bg2);border:1px solid var(--line);overflow:hidden;max-width:640px;margin:0 0 10px}
+  .potbar i{display:block;height:100%;width:0;background:var(--ice);transition:width .6s ease}
+  #pot-stats .stat b{font-size:1.75rem}
+  .pot-next{color:var(--ink-soft);font-size:.92rem;margin-bottom:22px;max-width:70ch}
+  .pot-next b{color:var(--gold);font-weight:700}
+  .pay .owed{font-family:var(--display);font-size:2.4rem;line-height:1;letter-spacing:.03em;margin:2px 0 2px}
+  .pay .owed small{font-family:ui-sans-serif,system-ui,sans-serif;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;margin-left:6px}
+  .pay .mini{height:6px;border-radius:99px;background:var(--bg2);overflow:hidden;margin:10px 0 4px}
+  .pay .mini i{display:block;height:100%;background:var(--ice)}
+  .pay.done{border-color:rgba(143,211,255,.45)}
+  .pay.done .owed{color:var(--ice)}
+  .pay.late{border-color:rgba(255,74,28,.55)}
+  .sched{list-style:none;margin:12px 0 2px;display:grid;gap:0}
+  .sched li{display:flex;justify-content:space-between;gap:10px;font-size:.86rem;color:var(--ink-soft);border-top:1px solid var(--line);padding:6px 0;font-variant-numeric:tabular-nums}
+  .sched li.ok{color:var(--ice)}
+  .sched li.next{color:var(--ink);font-weight:600}
+  .sched li.late{color:var(--peng);font-weight:600}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 2px}
+  .chips button{font:inherit;font-size:.8rem;font-weight:700;padding:7px 12px;border-radius:99px;border:1px solid var(--line);background:var(--bg2);color:var(--ink-soft);cursor:pointer}
+  .chips button:hover{color:var(--ink)}
+  .chips button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .pay .hint{font-size:.8rem;color:var(--ink-soft);margin-top:8px}
+  .btn.bunq{margin-top:12px;background:var(--ice);color:var(--bg);border-color:var(--ice)}
+  .btn.bunq:hover{background:#b5e2ff}
+  .pot-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
@@ -198,6 +224,7 @@
     <a href="#gebied" data-i18n="nav-area">Gebied</a>
     <a href="#huisje" data-i18n="nav-house">Huisje</a>
     <a href="#lessen" data-i18n="nav-lessons">Lessen</a>
+    <a href="#pot" data-i18n="nav-pot">De pot</a>
     <a href="#todo" data-i18n="nav-todo">Te regelen</a>
   </nav>
   <div class="langs" role="group" aria-label="Taal / Language">
@@ -398,6 +425,27 @@
     </ol>
   </section>
 
+  <!-- POT -->
+  <section id="pot">
+    <div class="sec-head">
+      <h2 class="display" data-i18n="h-pot">De <b>pot</b></h2>
+      <p data-i18n="p-pot">Pascal schoot het huisje voor. Stijns vraag uit juli, "Wie moet ik wat betalen?", eindelijk beantwoord.</p>
+    </div>
+    <div class="stats" id="pot-stats"></div>
+    <div class="potbar" id="pot-bar" role="progressbar" aria-label="Terugbetaald aan Pascal"><i></i></div>
+    <p class="pot-next" id="pot-next"></p>
+    <div class="grid" id="pot-people"></div>
+
+    <h3 class="sub" data-i18n="h-pot-how">Zo <b>werkt het</b></h3>
+    <ol class="lessons">
+      <li data-i18n="ph1"><strong>Kies zelf hoe je betaalt.</strong> In één keer, in twee of in vier termijnen. Tik op je plan en betaal de eerste termijn; daarmee ligt je keuze vast.</li>
+      <li data-i18n="ph2"><strong>Betaal via bunq.me.</strong> Bedrag en omschrijving staan al klaar. Je hebt geen bunq nodig, elke Europese bankrekening werkt.</li>
+      <li data-i18n="ph3"><strong>Vier betaalmomenten.</strong> Steeds de laatste werkdag van de maand: vr 30 okt, ma 30 nov, do 31 dec en vr 29 jan. Eerder betalen mag altijd.</li>
+      <li data-i18n="ph4"><strong>De stand loopt mee.</strong> Pascal vinkt binnengekomen betalingen af; een paar dagen voor elk betaalmoment komt er een herinnering in de groepsapp.</li>
+    </ol>
+    <div class="pot-actions"><a class="btn" id="pot-wa" href="#" target="_blank" rel="noopener" data-i18n="pot-wa">Herinnering delen in WhatsApp</a></div>
+  </section>
+
   <!-- TODO -->
   <section id="todo">
     <div class="sec-head">
@@ -408,6 +456,7 @@
       <li class="done"><i></i><div><b data-i18n="td1-b">Data prikken</b><span data-i18n="td1-s">Do 4 – ma 8 feb 2027, vast sinds 21 maart.</span></div></li>
       <li class="done"><i></i><div><b data-i18n="td2-b">Gebied kiezen</b><span data-i18n="td2-s">Ischgl → Kaprun → Serfaus → Sölden.</span></div></li>
       <li class="done"><i></i><div><b data-i18n="td3-b">Huisje boeken</b><span data-i18n="td3-s">Pascal, 11 juli. Aanbetaald; de rest gaat 20 januari van de kaart.</span></div></li>
+      <li><i></i><div><b data-i18n="td12-b">Pascal terugbetalen</b><span data-i18n="td12-s">€718,80 p.p., in één keer of in termijnen. Zie <a href="#pot">de pot</a>.</span><em data-i18n="td12-e">Vóór 29 jan</em></div></li>
       <li><i></i><div><b data-i18n="td4-b">Skipassen</b><span data-i18n="td4-s">Drie of vier dagen Ötztal. Vorig jaar zat de pas in het pakket; nu los.</span></div></li>
       <li><i></i><div><b data-i18n="td5-b">Materiaal huren</b><span data-i18n="td5-s">Online, vooraf — les 4. Ski: Danny, Pascal. Board: Daan, Stijn. Igor: hybride, beslist ter plekke.</span></div></li>
       <li><i></i><div><b data-i18n="td6-b">Auto's &amp; winterbanden</b><span data-i18n="td6-s">Daan + Stijns Renault. Sneeuwkettingen? Igor: "Ketting en zijn wel handig ja."</span></div></li>
@@ -467,6 +516,138 @@ function openLb(img){
 function closeLb(){ document.getElementById('lightbox').classList.remove('on'); document.body.style.overflow=''; }
 document.querySelectorAll('.fig img').forEach(function(img){ img.addEventListener('click',function(){openLb(img);}); });
 document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLb(); });
+
+// De pot — who pays Pascal back what, and when.
+// To record a payment, add {d:'YYYY-MM-DD', a:179.70} to that person's `paid` list.
+// Once someone has chosen a plan, set `plan` to 1, 2 or 4.
+// If Jorg joins, add him to `people`: every share drops to €599 and later installments adjust.
+var POT={
+  total:3594,
+  bunq:'https://bunq.me/pasmllr',
+  due:['2026-10-30','2026-11-30','2026-12-31','2027-01-29'], // last working day of Oct, Nov, Dec, Jan
+  plans:{1:[3],2:[2,3],4:[0,1,2,3]},                         // which of the dates each plan uses
+  people:[
+    {n:'Pascal',booker:true},
+    {n:'Danny',plan:null,paid:[]},
+    {n:'Daan',plan:null,paid:[]},
+    {n:'Igor',plan:null,paid:[]},
+    {n:'Stijn',plan:4,paid:[]}
+  ]
+};
+var POT_T={
+  nl:{total:'totaal huisje',back:'terug naar Pascal',pp:'per persoon',open:'open',paidOff:'betaald',
+      noPlan:'kiest nog',plan:{1:'In één keer',2:'2 termijnen',4:'4 termijnen'},chip:{1:'1×',2:'2×',4:'4×'},
+      inst:'termijn',of:'van',payBtn:'Betaal',booker:'Boekte het huisje',deposit:'Aanbetaling',
+      hint:'Kies je plan; de eerste betaling legt het vast.',late:'te laat',
+      next:'Volgende betaalmoment: <b>{d}</b>.',nextNone:'Alle betaalmomenten zijn geweest.',allDone:'Alles is binnen. Peng peng.',
+      bar:'{a} van {b} terugbetaald'},
+  en:{total:'cabin total',back:'back to Pascal',pp:'per person',open:'open',paidOff:'paid',
+      noPlan:'still choosing',plan:{1:'All at once',2:'2 installments',4:'4 installments'},chip:{1:'1×',2:'2×',4:'4×'},
+      inst:'installment',of:'of',payBtn:'Pay',booker:'Booked the cabin',deposit:'Deposit',
+      hint:'Pick your plan; the first payment locks it in.',late:'overdue',
+      next:'Next payment date: <b>{d}</b>.',nextNone:'All payment dates have passed.',allDone:'All paid up. Peng peng.',
+      bar:'{a} of {b} paid back'}
+};
+var potPick={}; // plan someone is previewing in this browser (not saved anywhere)
+function potLang(){ return document.documentElement.lang==='en'?'en':'nl'; }
+function r2(x){ return Math.round(x*100)/100; }
+function eur(x,l){ return '€'+x.toLocaleString(l==='en'?'en-GB':'nl-NL',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function eur0(x,l){ var d=x%1?2:0; return '€'+x.toLocaleString(l==='en'?'en-GB':'nl-NL',{minimumFractionDigits:d,maximumFractionDigits:d}); }
+function dnice(s,l){ return new Date(s+'T12:00:00').toLocaleDateString(l==='en'?'en-GB':'nl-NL',{weekday:'short',day:'numeric',month:'short'}).replace('.',''); }
+function today(){ var d=new Date(); return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }
+function potShare(){ return r2(POT.total/POT.people.length); }
+
+// Work out one person's schedule: cumulative targets per plan date, compared with what's been paid.
+function potState(p){
+  var share=potShare(), paid=r2((p.paid||[]).reduce(function(s,x){return s+x.a;},0));
+  var st={share:share,paid:paid,open:r2(Math.max(0,share-paid)),rows:[],next:null,late:false};
+  var n=p.plan||potPick[p.n]; if(!n) return st;
+  var idx=POT.plans[n], t=today();
+  idx.forEach(function(di,j){
+    var target=r2(share*(j+1)/n), d=POT.due[di];
+    var row={d:d,a:r2(share/n),k:j+1,n:n};
+    if(paid+0.005>=target) row.s='ok';
+    else{
+      if(!st.next){ row.s=t>d?'late':'next'; row.pay=r2(target-paid); st.next=row; if(t>d) st.late=true; }
+      else row.s='todo';
+    }
+    st.rows.push(row);
+  });
+  return st;
+}
+function bunqLink(p,amount,label){
+  var desc=('Solden 2027 '+p.n+' '+label).replace(/[^A-Za-z0-9 \-]/g,'');
+  return POT.bunq+'/'+amount.toFixed(2)+'/'+encodeURIComponent(desc);
+}
+function renderPot(){
+  var l=potLang(), T=POT_T[l], share=potShare(), t=today();
+  var others=POT.people.filter(function(p){return !p.booker;});
+  var target=r2(share*others.length), got=0;
+  others.forEach(function(p){ got+=potState(p).paid; }); got=r2(got);
+
+  document.getElementById('pot-stats').innerHTML=
+    '<div class="stat"><b>'+eur0(POT.total,l)+'</b><span>'+T.total+'</span></div>'+
+    '<div class="stat"><b>'+eur0(target,l)+'</b><span>'+T.back+'</span></div>'+
+    '<div class="stat"><b>'+eur0(share,l)+'</b><span>'+T.pp+'</span></div>';
+  var bar=document.getElementById('pot-bar');
+  bar.querySelector('i').style.width=(target?Math.min(100,got/target*100):0)+'%';
+  bar.setAttribute('aria-valuenow',Math.round(target?got/target*100:0));
+  var nd=POT.due.filter(function(d){return d>=t;})[0];
+  document.getElementById('pot-next').innerHTML=T.bar.replace('{a}',eur(got,l)).replace('{b}',eur(target,l))+' · '+
+    (got+0.005>=target?T.allDone:(nd?T.next.replace('{d}',dnice(nd,l)):T.nextNone));
+
+  document.getElementById('pot-people').innerHTML=POT.people.map(function(p){
+    if(p.booker) return '<div class="card pay done"><h3><small>'+p.n+' · '+T.booker+'</small></h3>'+
+      '<div class="owed">'+eur(share,l)+'<small>'+T.paidOff+' ✓</small></div>'+
+      '<ul class="sched"><li class="ok"><span>'+T.deposit+' · '+dnice('2026-07-11',l)+'</span><span>✓</span></li></ul></div>';
+    var st=potState(p), n=p.plan||potPick[p.n], done=st.open<0.005;
+    var h='<div class="card pay'+(done?' done':'')+(st.late?' late':'')+'">';
+    h+='<h3><small>'+p.n+' · '+(p.plan?T.plan[p.plan]:T.noPlan)+'</small></h3>';
+    h+='<div class="owed">'+(done?eur(share,l)+'<small>'+T.paidOff+' ✓</small>':eur(st.open,l)+'<small>'+T.open+'</small>')+'</div>';
+    h+='<div class="mini"><i style="width:'+(st.paid/share*100)+'%"></i></div>';
+    if(!p.plan && !done){
+      h+='<div class="chips">'+[1,2,4].map(function(k){
+        return '<button type="button" class="'+(potPick[p.n]===k?'on':'')+'" onclick="potChoose(\''+p.n+'\','+k+')" title="'+T.plan[k]+'">'+T.chip[k]+' '+eur(r2(share/k),l)+'</button>';
+      }).join('')+'</div>';
+      if(!n) h+='<p class="hint">'+T.hint+'</p>';
+    }
+    if(st.rows.length){
+      h+='<ul class="sched">'+st.rows.map(function(r){
+        var right=r.s==='ok'?'✓':eur(r.a,l)+(r.s==='late'?' · '+T.late:'');
+        return '<li class="'+r.s+'"><span>'+dnice(r.d,l)+(r.n>1?' · '+r.k+'/'+r.n:'')+'</span><span>'+right+'</span></li>';
+      }).join('')+'</ul>';
+    }
+    if(st.next){
+      var lab=st.next.n>1?st.next.k+'-'+st.next.n:'volledig';
+      h+='<a class="btn bunq" href="'+bunqLink(p,st.next.pay,lab)+'" target="_blank" rel="noopener">'+T.payBtn+' '+eur(st.next.pay,l)+' →</a>';
+    }
+    return h+'</div>';
+  }).join('');
+
+  document.getElementById('pot-wa').href='https://wa.me/?text='+encodeURIComponent(potReminder());
+}
+function potChoose(name,k){ potPick[name]=potPick[name]===k?undefined:k; renderPot(); }
+
+// The WhatsApp reminder for the next payment date (always Dutch: it's for the group chat).
+function potReminder(){
+  var t=today(), nd=POT.due.filter(function(d){return d>=t;})[0]||POT.due[POT.due.length-1];
+  var lines=['⛷️ *Sölden 2027 · betaalmoment '+dnice(nd,'nl')+'*',''], undecided=[];
+  POT.people.forEach(function(p){
+    if(p.booker) return;
+    var st=potState(p);
+    if(st.open<0.005) return;
+    if(!p.plan){ undecided.push(p.n); return; }
+    if(st.next && st.next.d<=nd){
+      var lab=st.next.n>1?st.next.k+'-'+st.next.n:'volledig';
+      lines.push('• '+p.n+': '+eur(st.next.pay,'nl')+(st.next.n>1?' (termijn '+st.next.k+'/'+st.next.n+')':'')+(st.late?' ⚠️ te laat':'')+'\n  '+bunqLink(p,st.next.pay,lab));
+    }
+  });
+  if(undecided.length) lines.push('• '+undecided.join(', ')+': kies je plan, '+eur(potShare(),'nl')+' in één keer, 2× '+eur(r2(potShare()/2),'nl')+' of 4× '+eur(r2(potShare()/4),'nl'));
+  if(lines.length===2) lines.push('Deze ronde staat niks open. 🙌');
+  lines.push('','Stand en betaallinks: https://pengpeng.nl/wintersport-2027/#pot');
+  return lines.join('\n');
+}
+renderPot();
 
 // i18n — Dutch is captured from the markup, English lives here.
 var I18N={nl:{},en:{
@@ -554,6 +735,15 @@ var I18N={nl:{},en:{
   "m-danny":"Ski · booked 2026, films 2027","m-daan":"Board · drives · does the eggs","m-igor":"Hybrid · wanted higher","m-pascal":"Ski · booked the cabin · tendons intact","m-stijn":"Board · chef · funpark, not on day one",
   "m-jorg":"Mystery guest #6 · seeing how the days fall","m-roel":"Couldn't make 2027 · \"2028 he has to come\"",
   "geng-note":"Thomas likes 35 degrees and is therefore unlikely, but the sledge is ready.",
+  "nav-pot":"The pot",
+  "h-pot":"The <b>pot</b>","p-pot":"Pascal fronted the cabin. Stijn's question from July, \"Who do I pay what?\", finally answered.",
+  "h-pot-how":"How it <b>works</b>",
+  "ph1":"<strong>Choose how you pay.</strong> All at once, in two or in four installments. Tap your plan and pay the first installment; that locks in your choice.",
+  "ph2":"<strong>Pay via bunq.me.</strong> Amount and description are already filled in. You don't need bunq, any European bank account works.",
+  "ph3":"<strong>Four payment dates.</strong> Always the last working day of the month: Fri 30 Oct, Mon 30 Nov, Thu 31 Dec and Fri 29 Jan. Paying early is always fine.",
+  "ph4":"<strong>The tally keeps up.</strong> Pascal ticks off payments as they come in; a few days before each payment date a reminder goes into the group chat.",
+  "pot-wa":"Share reminder on WhatsApp",
+  "td12-b":"Pay Pascal back","td12-s":"€718.80 each, all at once or in installments. See <a href=\"#pot\">the pot</a>.","td12-e":"Before 29 Jan",
   "back":"← Back to the timeline",
   "foot":"pengpeng.nl · this page grows with the group chat · <a href=\"/saalbach-2026/\">Saalbach 2026</a> · <a href=\"/green-divide-2026/\">Green Divide 2026</a>"
 }};
@@ -565,6 +755,7 @@ function setLang(l){
   document.getElementById('btn-nl').classList.toggle('active',l==='nl');
   document.getElementById('btn-en').classList.toggle('active',l==='en');
   try{localStorage.setItem('pp-lang',l);}catch(e){}
+  if(typeof renderPot==='function') renderPot();
 }
 try{ if(localStorage.getItem('pp-lang')==='en') setLang('en'); }catch(e){}
 </script>
